@@ -21,12 +21,12 @@ struct LoginView: View {
                 Image("full-white")
                     .resizable()
                     .scaledToFit()
-//                    .frame(width: 400,height: 600)
                     
                 VStack{
                     VStack {
                         TextField("Enter Your Email", text: $email)
                             .padding(10)
+                            .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                             
                         SecureField("Password", text: $password)
                             .padding(10)
@@ -73,9 +73,10 @@ struct LoginView: View {
                     .foregroundColor(.gray)
                     
                     HStack {
-                        Image("apple")
+                        Image(systemName: "apple.logo")
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .frame(width: 14, height: 14)
+
                         
                         Text("Continue with Apple")
                             .font(.footnote)
@@ -85,7 +86,6 @@ struct LoginView: View {
                     .padding(.top, 8)
                 }
                 .offset(y: -120)
-                //text fields
                 
                 
                 Spacer()
