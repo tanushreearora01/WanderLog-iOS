@@ -12,19 +12,23 @@ struct ProfileGridView: View {
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     var body: some View {
         VStack{
-            ProfileView()
-            HStack{
-                Button{
-                    print("Back button pressed")
-                }label:{
-                    HStack{
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
-                        Spacer()
+            VStack{
+                ProfileView()
+                
+                HStack{
+                    Button{
+                        print("Back button pressed")
+                    }label:{
+                        HStack{
+                            Image(systemName: "chevron.backward")
+                            Text("Back")
+                            Spacer()
+                        }
+                        .foregroundStyle(.black)
                     }
-                    .foregroundStyle(.black)
                 }
             }
+            .padding()
             ScrollView{
                 LazyVGrid(columns: columngrid, spacing: 5){
                     ForEach(images, id:\.self){ image in

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavBarUI()
+        VStack{
+            Spacer()
+            NavBarUI()
+        }
+        .preferredColorScheme(.dark)
     }
+    
 }
 
 #Preview {

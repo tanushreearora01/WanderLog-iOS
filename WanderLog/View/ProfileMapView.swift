@@ -12,11 +12,14 @@ struct ProfileMapView: View {
     var body: some View {
         VStack{
             ProfileView()
+                .padding()
             GlobeView()
             ProgressView(value: progress)
+                .padding()
             Spacer().frame(height: 30)
         }
-        .padding()
+        
+        
         
         
     }
