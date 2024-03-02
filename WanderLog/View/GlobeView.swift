@@ -20,9 +20,13 @@ struct GlobeView: View {
                 .tint(.blue)
             Marker("India Home", coordinate: home)
                 .tint(.pink)
+            
             UserAnnotation()
         }
-        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+        .clipShape(Circle())
+        .onTapGesture {
+            ProfileGridView()
+        }
     }
 }
 

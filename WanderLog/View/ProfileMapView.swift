@@ -16,6 +16,7 @@ struct ProfileMapView: View {
             ProgressView(value: progress)
             Spacer().frame(height: 30)
         }
+        .padding()
         
         
     }

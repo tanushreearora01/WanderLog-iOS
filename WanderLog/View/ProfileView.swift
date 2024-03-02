@@ -45,6 +45,7 @@ struct ProfileView: View {
                 Text("100\nFollowing")
                     .multilineTextAlignment(.center)
             }
+            .fixedSize(horizontal: false, vertical: true)
             
             HStack{
                 Text("Tarasha Bansal")

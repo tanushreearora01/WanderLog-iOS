@@ -13,6 +13,18 @@ struct ProfileGridView: View {
     var body: some View {
         VStack{
             ProfileView()
+            HStack{
+                Button{
+                    print("Back button pressed")
+                }label:{
+                    HStack{
+                        Image(systemName: "chevron.backward")
+                        Text("Back")
+                        Spacer()
+                    }
+                    .foregroundStyle(.black)
+                }
+            }
             ScrollView{
                 LazyVGrid(columns: columngrid, spacing: 5){
                     ForEach(images, id:\.self){ image in
