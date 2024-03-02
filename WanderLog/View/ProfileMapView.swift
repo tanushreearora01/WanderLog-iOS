@@ -10,9 +10,14 @@ import SwiftUI
 struct ProfileMapView: View {
     @State private var progress = 0.7
     var body: some View {
-        ProfileView()
-        GlobeView()
-        ProgressView(value: progress)
+        VStack{
+            ProfileView()
+            GlobeView()
+            ProgressView(value: progress)
+            Spacer().frame(height: 30)
+        }
+        
+        
     }
 }
 

@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct ProfileGridView: View {
+    var images: [String] = ["1","2","3","4","5","6","7"]
+    var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     var body: some View {
         VStack{
             ProfileView()
-            
+            ScrollView{
+                LazyVGrid(columns: columngrid, spacing: 5){
+                    ForEach(images, id:\.self){ image in
+                        Image(image)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    
+                }
+            }
+            Spacer()
         }
         
     }

@@ -14,61 +14,57 @@ struct ProfileView: View {
     
     var body: some View {
         VStack{
-            VStack{
-                HStack{
-                    if colorScheme == .light {
-                        Image("text-white")
-                            .resizable()
-                            .frame(width: 100, height: 50)
-                    } else {
-                        Image("text-black")
-                            .resizable()
-                            .frame(width: 100, height: 50)
-                        
-                    }
-                    Spacer()
-                    Text("@tarasha.bansal")
-                        .font(.title3)
-                        .bold()
-                }
-                HStack{
-                    Image(systemName: "person.circle.fill")
+            HStack{
+                if colorScheme == .light {
+                    Image("text-white")
                         .resizable()
-                        .frame( width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                        .clipShape(Circle())
-                    Spacer().frame(width: 20)
-                    Text("100\nPosts")
-                        .multilineTextAlignment(.center)
-                    Spacer().frame(width: 20)
-                    Text("100\nFollowers")
-                        .multilineTextAlignment(.center)
-                    Spacer().frame(width: 20)
-                    Text("100\nFollowing")
-                        .multilineTextAlignment(.center)
+                        .frame(width: 100, height: 50)
+                } else {
+                    Image("text-black")
+                        .resizable()
+                        .frame(width: 100, height: 50)
+                    
                 }
-                
-                HStack{
-                    Text("Tarasha Bansal")
-                    Spacer()
-                }
-                HStack{
-                    Text("Geez!")
-                    Spacer()
-                }
-                Button(action:{
-                    print("Hello")
-                }){
-                    Text("Edit Profile")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
-                .tint(.black)
-                .controlSize(.regular)
-                
-                Divider()
+                Spacer()
+                Text("@tarasha.bansal")
+                    .font(.title3)
+                    .bold()
             }
-            .padding()
+            HStack{
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame( width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    .clipShape(Circle())
+                Spacer().frame(width: 20)
+                Text("100\nPosts")
+                    .multilineTextAlignment(.center)
+                Spacer().frame(width: 20)
+                Text("100\nFollowers")
+                    .multilineTextAlignment(.center)
+                Spacer().frame(width: 20)
+                Text("100\nFollowing")
+                    .multilineTextAlignment(.center)
+            }
             
+            HStack{
+                Text("Tarasha Bansal")
+                Spacer()
+            }
+            HStack{
+                Text("Geez!")
+                Spacer()
+            }
+            Button(action:{
+                print("Hello")
+            }){
+                Text("Edit Profile")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .tint(.black)
+            .controlSize(.regular)
+            
+            Divider()
         }
     }
         
