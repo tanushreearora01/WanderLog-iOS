@@ -15,6 +15,7 @@ struct ProfileView: View {
     var body: some View {
         VStack{
             HStack{
+                
                 if colorScheme == .light {
                     Image("text-white")
                         .resizable()
@@ -23,13 +24,16 @@ struct ProfileView: View {
                     Image("text-black")
                         .resizable()
                         .frame(width: 100, height: 50)
-                    
+                        .onAppear(){
+                            
+                        }
                 }
                 Spacer()
                 Text("@tarasha.bansal")
                     .font(.title3)
                     .bold()
             }
+            
             HStack{
                 Image(systemName: "person.circle.fill")
                     .resizable()
@@ -62,8 +66,10 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
-            .tint(.black)
+            .tint(.white)
             .controlSize(.regular)
+            
+            
             
             Divider()
         }

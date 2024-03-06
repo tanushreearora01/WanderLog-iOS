@@ -16,9 +16,10 @@ struct ProfileMapView: View {
             GlobeView()
             ProgressView(value: progress)
                 .padding()
+                
             Spacer().frame(height: 30)
         }
-        
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         
         
         
