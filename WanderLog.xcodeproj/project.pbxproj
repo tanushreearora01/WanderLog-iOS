@@ -20,6 +20,7 @@
 		29B076672B868025007E9BB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076662B868025007E9BB0 /* ContentView.swift */; };
 		29B076692B868026007E9BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B076682B868026007E9BB0 /* Assets.xcassets */; };
 		29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B0766B2B868026007E9BB0 /* Preview Assets.xcassets */; };
+		29E5203A2B9902D8005D28CF /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E520392B9902D8005D28CF /* CheckBoxView.swift */; };
 		6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB110D62B8D0950005ED8D5 /* LoginView.swift */; };
 		6EB110DB2B8D0D7A005ED8D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB110DA2B8D0D79005ED8D5 /* FirebaseAnalytics */; };
 		6EB110DD2B8D0D7A005ED8D5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 6EB110DC2B8D0D7A005ED8D5 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -43,6 +44,7 @@
 		29B076662B868025007E9BB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29B076682B868026007E9BB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B0766B2B868026007E9BB0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29E520392B9902D8005D28CF /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				291B2AE32B93D47C0093DD5E /* CameraView.swift */,
 				291B2AE52B93D49A0093DD5E /* AIView.swift */,
 				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
+				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
 				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
 				291B2AD32B911E830093DD5E /* ProfileView.swift */,
 				291B2AD92B91501C0093DD5E /* ProfileMapView.swift */,
@@ -212,6 +215,7 @@
 				291B2AD82B914FF20093DD5E /* ProfileGridView.swift in Sources */,
 				291B2AD62B9143090093DD5E /* GlobeView.swift in Sources */,
 				291B2AE42B93D47C0093DD5E /* CameraView.swift in Sources */,
+				29E5203A2B9902D8005D28CF /* CheckBoxView.swift in Sources */,
 				29B076672B868025007E9BB0 /* ContentView.swift in Sources */,
 				291B2ADA2B91501C0093DD5E /* ProfileMapView.swift in Sources */,
 				29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */,
