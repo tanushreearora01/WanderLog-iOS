@@ -15,9 +15,6 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-      
-                
-                //logo image
                 Image("full-white")
                     .resizable()
                     .scaledToFit()
@@ -85,12 +82,9 @@ struct LoginView: View {
                     }
                     .padding(.top, 8)
                 }
-                .offset(y: -120)
                 
                 
-                Spacer()
                 
-                Divider()
                 
                 
             }
