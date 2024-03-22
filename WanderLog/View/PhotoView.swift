@@ -79,3 +79,4 @@ struct PhotoView: View {
         .cornerRadius(15)
     }
 }
+

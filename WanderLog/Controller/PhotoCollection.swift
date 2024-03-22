@@ -100,10 +100,10 @@ class PhotoCollection: NSObject, ObservableObject {
 
         logger.log("Creating photo album named: \(name)")
         
-        if let assetCollection = try? await PhotoCollection.createAlbum(named: name) {
-            self.assetCollection = assetCollection
-            await refreshPhotoAssets()
-        }
+//        if let assetCollection = try? await PhotoCollection.createAlbum(named: name) {
+//            self.assetCollection = assetCollection
+//            await refreshPhotoAssets()
+//        }
     }
     
     func addImage(_ imageData: Data) async throws {

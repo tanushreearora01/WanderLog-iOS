@@ -162,7 +162,7 @@ class Camera: NSObject {
         self.photoOutput = photoOutput
         self.videoOutput = videoOutput
         
-//        photoOutput.isHighResolutionCaptureEnabled = true
+        photoOutput.isHighResolutionCaptureEnabled = true
         photoOutput.maxPhotoQualityPrioritization = .quality
         
         updateVideoOutputConnection()
@@ -239,7 +239,6 @@ class Camera: NSObject {
             logger.error("Camera access was not authorized.")
             return
         }
-        
         if isCaptureSessionConfigured {
             if !captureSession.isRunning {
                 sessionQueue.async { [self] in
@@ -289,15 +288,14 @@ class Camera: NSObject {
         //TODO: Figure out if we need this for anything.
     }
     
-    private func videoOrientationFor(_ deviceOrientation: UIDeviceOrientation)  {
-//        switch deviceOrientation {
-//        case .portrait: return AVCaptureVideoOrientation.portrait
-//        case .portraitUpsideDown: return AVCaptureVideoOrientation.portraitUpsideDown
-//        case .landscapeLeft: return AVCaptureVideoOrientation.landscapeRight
-//        case .landscapeRight: return AVCaptureVideoOrientation.landscapeLeft
-          
-//        }
-        print("None")
+    private func videoOrientationFor(_ deviceOrientation: UIDeviceOrientation) -> AVCaptureVideoOrientation? {
+        switch deviceOrientation {
+        case .portrait: return AVCaptureVideoOrientation.portrait
+        case .portraitUpsideDown: return AVCaptureVideoOrientation.portraitUpsideDown
+        case .landscapeLeft: return AVCaptureVideoOrientation.landscapeRight
+        case .landscapeRight: return AVCaptureVideoOrientation.landscapeLeft
+        default: return nil
+        }
     }
     
     func takePhoto() {
@@ -313,18 +311,18 @@ class Camera: NSObject {
             
             let isFlashAvailable = self.deviceInput?.device.isFlashAvailable ?? false
             photoSettings.flashMode = isFlashAvailable ? .auto : .off
-//            photoSettings.isHighResolutionPhotoEnabled = true
+            photoSettings.isHighResolutionPhotoEnabled = true
             if let previewPhotoPixelFormatType = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhotoPixelFormatType]
             }
             photoSettings.photoQualityPrioritization = .balanced
             
-//            if let photoOutputVideoConnection = photoOutput.connection(with: .video) {
-//                if photoOutputVideoConnection.isVideoOrientationSupported,
-//                    let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
-//                    photoOutputVideoConnection.videoOrientation = videoOrientation
-//                }
-//            }
+            if let photoOutputVideoConnection = photoOutput.connection(with: .video) {
+                if photoOutputVideoConnection.isVideoOrientationSupported,
+                    let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
+                    photoOutputVideoConnection.videoOrientation = videoOrientation
+                }
+            }
             
             photoOutput.capturePhoto(with: photoSettings, delegate: self)
         }
@@ -349,10 +347,10 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = sampleBuffer.imageBuffer else { return }
         
-//        if connection.isVideoOrientationSupported,
-//           let videoOrientation = videoOrientationFor(deviceOrientation) {
-//            connection.videoOrientation = videoOrientation
-//        }
+        if connection.isVideoOrientationSupported,
+           let videoOrientation = videoOrientationFor(deviceOrientation) {
+            connection.videoOrientation = videoOrientation
+        }
 
         addToPreviewStream?(CIImage(cvPixelBuffer: pixelBuffer))
     }
