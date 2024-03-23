@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ProfileGridView: View {
+    @State private var showMap = false
     var images: [String] = ["1","2","3","4","5","6","7"]
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     var body: some View {
-        VStack{
+        NavigationStack{
             VStack{
-                ProfileView()
+//                ProfileView()
                 
                 HStack{
+                    
                     Button{
                         print("Back button pressed")
+                        showMap = true
                     }label:{
+                        
                         HStack{
                             Image(systemName: "chevron.backward")
                             Text("Back")
@@ -41,6 +45,11 @@ struct ProfileGridView: View {
             }
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $showMap) {
+                         NavBarUI(tabViewSelection: 4)
+                     }
+        
         
     }
 }

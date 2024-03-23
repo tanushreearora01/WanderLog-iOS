@@ -11,7 +11,7 @@ import MapKit
 
 struct ProfileView: View {
     @Environment(\.colorScheme) var colorScheme
-    
+    @State private var showPhotos = false
     var body: some View {
         VStack{
             HStack{
@@ -59,6 +59,7 @@ struct ProfileView: View {
                 Text("Geez!")
                 Spacer()
             }
+            
             Button(action:{
                 print("Hello")
             }){
@@ -66,8 +67,25 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
-            .tint(.white)
+            .tint(.black)
             .controlSize(.regular)
+            NavigationStack{
+            
+                Button{
+                    showPhotos = true
+                    print("Hello")
+                }label:{
+                    Text("Show Photos")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(.black)
+                .controlSize(.regular)
+            }
+            .navigationDestination(isPresented: $showPhotos) {
+                             ProfileGridView()
+                         }
+            
             
             
             

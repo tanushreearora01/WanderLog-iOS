@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct WanderLogApp: App {
+    init() {
+        UINavigationBar.applyCustomAppearance()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+    }
+}
+//Got the below code from Apple Tutorials:  https://developer.apple.com/tutorials/sample-apps/capturingphotos-camerapreview
+fileprivate extension UINavigationBar {
+    
+    static func applyCustomAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }
