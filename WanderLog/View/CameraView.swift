@@ -9,44 +9,62 @@ import SwiftUI
 
 struct CameraView: View {
     @StateObject private var model = DataModel()
- 
+    @State private var closed = false
     private static let barHeightFactor = 0.15
     
     
     var body: some View {
-        
-        NavigationStack {
-            GeometryReader { geometry in
-                ViewfinderView(image:  $model.viewfinderImage )
-                    .overlay(alignment: .top) {
-                        Color.black
-                            .opacity(0.75)
-                            .frame(height: geometry.size.height * Self.barHeightFactor)
+       
+            ZStack{
+                HStack{
+                    Spacer()
+                    Button{
+                        print("Back button pressed")
+                    }label:{
+                        Image(systemName: "x.circle")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundStyle(.white)
+
                     }
-                    .overlay(alignment: .bottom) {
-                        buttonsView()
-                            .frame(height: geometry.size.height * Self.barHeightFactor)
-                            .background(.black.opacity(0.75))
-                    }
-                    .overlay(alignment: .center)  {
-                        Color.clear
-                            .frame(height: geometry.size.height * (1 - (Self.barHeightFactor * 2)))
-                            .accessibilityElement()
-                            .accessibilityLabel("View Finder")
-                            .accessibilityAddTraits([.isImage])
-                    }
-                    .background(.black)
+                }
+                NavigationStack {
+                GeometryReader { geometry in
+                    ViewfinderView(image:  $model.viewfinderImage )
+                        .overlay(alignment: .top) {
+                            Color.black
+                                .opacity(0.75)
+                                .frame(height: geometry.size.height * Self.barHeightFactor)
+                            closeButtonView()
+                        }
+                        .overlay(alignment: .bottom) {
+                            buttonsView()
+                                .frame(height: geometry.size.height * Self.barHeightFactor)
+                                .background(.black.opacity(0.75))
+                        }
+                        .overlay(alignment: .center)  {
+                            Color.clear
+                                .frame(height: geometry.size.height * (1 - (Self.barHeightFactor * 2)))
+                                .accessibilityElement()
+                                .accessibilityLabel("View Finder")
+                                .accessibilityAddTraits([.isImage])
+                        }
+                        .background(.black)
+                }
+                .task {
+                    await model.camera.start()
+                    await model.loadPhotos()
+                    await model.loadThumbnail()
+                }
+                .navigationTitle("Camera")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+                .ignoresSafeArea()
+                .statusBar(hidden: true)
+                .navigationDestination(isPresented: $closed) {
+                                 ContentView()
+                             }
             }
-            .task {
-                await model.camera.start()
-                await model.loadPhotos()
-                await model.loadThumbnail()
-            }
-            .navigationTitle("Camera")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
-            .ignoresSafeArea()
-            .statusBar(hidden: true)
         }
     }
     
@@ -89,6 +107,7 @@ struct CameraView: View {
             }
             
             Button {
+                print("turn")
                 model.camera.switchCaptureDevice()
             } label: {
                 Label("Switch Camera", systemImage: "arrow.triangle.2.circlepath")
@@ -102,6 +121,25 @@ struct CameraView: View {
         .buttonStyle(.plain)
         .labelStyle(.iconOnly)
         .padding()
+    }
+    private func closeButtonView() -> some View {
+        HStack() {
+            Spacer()
+            Button {
+                print("close")
+//                closed = true
+            } label: {
+                NavigationLink(destination: ContentView()){
+                    Image(systemName: "x.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(.white)
+                }
+                
+            }
+        }
+        .buttonStyle(.plain)
+        .padding(30)
     }
     
 }

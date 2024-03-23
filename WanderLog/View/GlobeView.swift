@@ -24,6 +24,7 @@ struct GlobeView: View {
     var body: some View {
         Map(position: $mapCamPos){
             ForEach(locations){ location in
+                
                 Marker(location.name,coordinate: location.coordinate)
             }
         }

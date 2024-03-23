@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+class AppVariables: ObservableObject {
+    @Published var selectedTab: Int = 0
+    
+}
 
 struct ContentView: View {
     var body: some View {
         VStack{
            NavBarUI()
         }
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
     }
     
 }
