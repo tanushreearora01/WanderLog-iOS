@@ -62,7 +62,7 @@ struct CameraView: View {
                 .ignoresSafeArea()
                 .statusBar(hidden: true)
                 .navigationDestination(isPresented: $closed) {
-                                 ContentView()
+                                 NavBarUI(tabViewSelection: 0)
                              }
             }
         }
