@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct LoginView: View {
-    @State private var email = ""
+    let db = Firestore.firestore()
+    @State var users = [User]()
+    @State private var username = ""
     @State private var password = ""
-    
+    @State private var showSignUp = false
+
     
     var body: some View {
         NavigationStack {
             VStack {
-                Image("full-white")
-                    .resizable()
-                    .scaledToFit()
-                    
+                FullLogoView()
                 VStack{
                     VStack {
-                        TextField("Enter Your Email", text: $email)
+                        TextField("Username", text: $username)
                             .padding(10)
                             .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                             
@@ -44,6 +45,7 @@ struct LoginView: View {
                     
                     Button {
                         print("login")
+                        login()
                     } label: {
                         Text("Log In")
                             .font(.subheadline)
@@ -54,7 +56,6 @@ struct LoginView: View {
                             .cornerRadius(10)
                     }
                     .padding(.vertical)
-                    
                     HStack {
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
@@ -81,12 +82,53 @@ struct LoginView: View {
                             .foregroundColor(.black)
                     }
                     .padding(.top, 8)
+                    Spacer()
+                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    HStack(spacing:3){
+                        Text("Don't have an account yet?")
+                        Button{
+                            showSignUp = true
+                        }label:{
+                            Text("Sign Up")
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .font(.system(size:14))
                 }
-                
-                
-                
-                
-                
+            }
+        }
+        .navigationDestination(isPresented: $showSignUp) {
+            SignUpView()
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+    func login(){
+        if (username=="" || password==""){
+            print("Login failed!")
+            username = ""
+            password = ""
+        }
+        else{
+            
+        }
+    }
+    func getUser(){
+        self.users = []
+        db.collection("users")
+        .getDocuments(){
+            (querySnapshot,err) in
+            if let err = err{ //error not nil
+                print("Error getting documents: \(err)")
+            }
+            else{ //get users from db
+                for document in querySnapshot!.documents{
+                    print("\(document.documentID)")
+                    if let user = User(id:document.documentID, data: document.data()){
+                        print("\(user)")
+                        self.users.append(user)
+                    }
+                }
             }
         }
     }

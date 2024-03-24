@@ -10,24 +10,12 @@ import MapKit
 
 
 struct ProfileView: View {
-    @Environment(\.colorScheme) var colorScheme
+    
     @State private var showPhotos = false
     var body: some View {
         VStack{
             HStack{
-                
-                if colorScheme == .light {
-                    Image("text-white")
-                        .resizable()
-                        .frame(width: 100, height: 50)
-                } else {
-                    Image("text-black")
-                        .resizable()
-                        .frame(width: 100, height: 50)
-                        .onAppear(){
-                            
-                        }
-                }
+                LogoView()
                 Spacer()
                 Text("@tarasha.bansal")
                     .font(.title3)
