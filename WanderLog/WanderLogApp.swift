@@ -6,13 +6,26 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import Firebase
+public var currentUserId:String = ""
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
 
 @main
 struct WanderLogApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     init() {
         UINavigationBar.applyCustomAppearance()
     }
     var body: some Scene {
+       
         WindowGroup {
             ContentView()
         }

@@ -10,11 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-            NavBarUI(tabViewSelection:0)
+            LoginView()
+//            NavBarUI(tabViewSelection:0)
         }
         .preferredColorScheme(.light)
     }
-    
 }
 
 #Preview {
