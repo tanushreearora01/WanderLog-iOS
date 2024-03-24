@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavBarUI: View {
     @State public var tabViewSelection : Int
+//    @State public var currentUser : User
     var body: some View {
         NavigationStack{
             TabView(selection: $tabViewSelection){
@@ -38,12 +39,13 @@ struct NavBarUI: View {
             
         }
         .navigationBarHidden(true)
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
     }
 }
 
-#Preview {
-    NavBarUI(tabViewSelection : 0)
-}
+//#Preview {
+//    NavBarUI(tabViewSelection : 0,)
+//}
 
 
 

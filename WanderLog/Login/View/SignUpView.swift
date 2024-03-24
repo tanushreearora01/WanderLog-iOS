@@ -62,6 +62,9 @@ struct SignUpView: View {
                 }
                 .font(.system(size:14))
             }
+        .onAppear(){
+            print(currentUserId)
+        }
             
         }
         .navigationDestination(isPresented: $showLogin) {

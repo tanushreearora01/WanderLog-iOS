@@ -7,10 +7,12 @@
 
 import SwiftUI
 import FirebaseFirestore
+//import UsefulValues
 
 struct LoginView: View {
     let db = Firestore.firestore()
     @State var users = [User]()
+   
     @State private var username = ""
     @State private var password = ""
     @State private var loginSucces = false
@@ -49,21 +51,29 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                    Button {
-                        print("login")
-                        login()
-                    } label: {
-                        NavigationLink(destination: NavBarUI(tabViewSelection: 0),  isActive: $loginSucces) {
-//                            HomeView()
-                            Text("Log In")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .frame(width: 360, height: 44)
-                                .background(Color(.systemBlue))
-                                .cornerRadius(10)
+                   
+//                    NavigationStack {
+                        Button {
+                            print("login")
+                            login()
+                            print($loginSucces)
+                        } label: {
+                        Text("Log In")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 360, height: 44)
+                            .background(Color(.systemBlue))
+                            .cornerRadius(10)
                         }
-                    }
+                        .sheet(isPresented: $loginSucces) {
+                            NavBarUI(tabViewSelection: 4)
+                        }
+//                    }
+//                    .navigationBarBackButtonHidden(true)
+//                    .navigationDestination(isPresented: $loginSucces) {
+//                                     NavBarUI(tabViewSelection: 4)
+//                                     }
                     .padding(.vertical)
                     HStack {
                         Rectangle()
@@ -126,6 +136,7 @@ struct LoginView: View {
                     if(i.password == data[1]){
                         print("Login Success")
                         loginSucces = true
+                        UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
                     }
                     else{
                         incorrectPassword = true
@@ -155,6 +166,7 @@ struct LoginView: View {
                     if let user = User(id:document.documentID, data: document.data()){
                         print("\(user)")
                         self.users.append(user)
+//                        print(document.data())
                     }
                 }
             }

@@ -7,17 +7,20 @@
 
 import SwiftUI
 import MapKit
-
+import FirebaseFirestore
 
 struct ProfileView: View {
-    
+    let db = Firestore.firestore()
     @State private var showPhotos = false
+    @State private var fullname =  ""
+    @State private var username =  ""
+    @State private var bio =  ""
     var body: some View {
         VStack{
             HStack{
                 LogoView()
                 Spacer()
-                Text("@tarasha.bansal")
+                Text("@"+username)
                     .font(.title3)
                     .bold()
             }
@@ -40,11 +43,11 @@ struct ProfileView: View {
             .fixedSize(horizontal: false, vertical: true)
             
             HStack{
-                Text("Tarasha Bansal")
+                Text(fullname)
                 Spacer()
             }
             HStack{
-                Text("Geez!")
+                Text(bio)
                 Spacer()
             }
             
@@ -58,7 +61,7 @@ struct ProfileView: View {
             .tint(.black)
             .controlSize(.regular)
             NavigationStack{
-            
+                
                 Button{
                     showPhotos = true
                     print("Hello")
@@ -71,13 +74,25 @@ struct ProfileView: View {
                 .controlSize(.regular)
             }
             .navigationDestination(isPresented: $showPhotos) {
-                             ProfileGridView()
-                         }
-            
-            
-            
+                ProfileGridView()
+            }
             
             Divider()
+        }
+        .onAppear(){
+            getCurrentUser()
+        }
+    }
+    
+    
+    func getCurrentUser(){
+        if let currentUser = UserManager.shared.currentUser {
+            print("Showing profile for \(currentUser.username)")
+            username = currentUser.username
+            fullname = currentUser.fullname
+            bio = currentUser.bio
+        } else {
+            print("No user is currently logged in.")
         }
     }
         
