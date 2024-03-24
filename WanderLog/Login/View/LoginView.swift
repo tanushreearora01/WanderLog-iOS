@@ -13,11 +13,13 @@ struct LoginView: View {
     @State var users = [User]()
     @State private var username = ""
     @State private var password = ""
+    @State private var loginSucces = false
+    @State private var incorrectPassword = false
     @State private var showSignUp = false
 
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 FullLogoView()
                 VStack{
@@ -30,8 +32,12 @@ struct LoginView: View {
                             .padding(10)
 
                     }.padding(20)
+                    if incorrectPassword{
+                        Text("Incorrect Password! Please Try again!")
+                            .foregroundStyle(.red)
+                    }
                         
-                    
+                        
                     Button {
                         print("show forget password")
                     } label: {
@@ -47,13 +53,16 @@ struct LoginView: View {
                         print("login")
                         login()
                     } label: {
-                        Text("Log In")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 360, height: 44)
-                            .background(Color(.systemBlue))
-                            .cornerRadius(10)
+                        NavigationLink(destination: NavBarUI(tabViewSelection: 0),  isActive: $loginSucces) {
+//                            HomeView()
+                            Text("Log In")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .frame(width: 360, height: 44)
+                                .background(Color(.systemBlue))
+                                .cornerRadius(10)
+                        }
                     }
                     .padding(.vertical)
                     HStack {
@@ -86,9 +95,10 @@ struct LoginView: View {
                         .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                     HStack(spacing:3){
                         Text("Don't have an account yet?")
-                        Button{
-                            showSignUp = true
-                        }label:{
+                        NavigationLink {
+                            // destination view to navigation to
+                            SignUpView()
+                        } label: {
                             Text("Sign Up")
                                 .fontWeight(.bold)
                                 .foregroundColor(.blue)
@@ -97,20 +107,38 @@ struct LoginView: View {
                     .font(.system(size:14))
                 }
             }
+            .onAppear(){
+                getUser()
+            }
         }
-        .navigationDestination(isPresented: $showSignUp) {
-            SignUpView()
-        }
-        .navigationBarBackButtonHidden(true)
+        
     }
     func login(){
-        if (username=="" || password==""){
+        let data = [username,password]
+        if (data[0]=="" || data[1]==""){
             print("Login failed!")
             username = ""
             password = ""
         }
         else{
-            
+            for i in users{
+                if(i.username == data[0]){
+                    if(i.password == data[1]){
+                        print("Login Success")
+                        loginSucces = true
+                    }
+                    else{
+                        incorrectPassword = true
+                        print("Incorrect Password")
+                    }
+                    break
+                }
+                else{
+                    print("User not found!")
+                    username = ""
+                    password = ""
+                }
+            }
         }
     }
     func getUser(){
