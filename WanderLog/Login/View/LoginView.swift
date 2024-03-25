@@ -21,7 +21,7 @@ struct LoginView: View {
 
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 FullLogoView()
                 VStack{
@@ -51,11 +51,16 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                    NavigationLink(destination: NavBarUI(tabViewSelection: 4), isActive: $loginSuccess){}
-                    Button("Login", action:{
+                    NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $loginSuccess){}
+                    Button( action:{
                         login()
                         
-                    } )
+                    } ,label:{
+                        Text("Login")
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    })
+                    .buttonStyle(.borderedProminent)
+                    .padding()
                     HStack {
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
@@ -101,7 +106,7 @@ struct LoginView: View {
                 getUser()
             }
         }
-        
+        .navigationBarBackButtonHidden(true)
     }
     func login() {
         let data = [username,password]

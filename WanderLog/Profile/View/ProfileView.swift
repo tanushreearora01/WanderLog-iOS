@@ -15,6 +15,8 @@ struct ProfileView: View {
     @State private var fullname =  ""
     @State private var username =  ""
     @State private var bio =  ""
+    @State private var logoutSuccess =  false
+    @State private var showPopOver =  false
     var body: some View {
         VStack{
             HStack{
@@ -23,6 +25,20 @@ struct ProfileView: View {
                 Text("@"+username)
                     .font(.title3)
                     .bold()
+                Menu {
+                    NavigationLink(destination: LoginView(), isActive: $logoutSuccess){}
+                    Button( action:{
+                        UserManager.shared.logout()
+                        logoutSuccess = true
+                        
+                    } ,label:{
+                        Text("Logout")
+                    })
+                } label: {
+                    Label("",systemImage: "gearshape.fill")
+                        .foregroundColor(.black)
+                }
+                
             }
             
             HStack{
@@ -61,7 +77,6 @@ struct ProfileView: View {
             .tint(.black)
             .controlSize(.regular)
             NavigationStack{
-                
                 Button{
                     showPhotos = true
                     print("Hello")
@@ -76,8 +91,6 @@ struct ProfileView: View {
             .navigationDestination(isPresented: $showPhotos) {
                 ProfileGridView()
             }
-            
-            Divider()
         }
         .onAppear(){
             getCurrentUser()
