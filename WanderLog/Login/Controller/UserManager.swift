@@ -6,7 +6,7 @@
 //
 
 // UserManager.swift
-
+// This Singleton class tracks the current user that is logged in.
 import Foundation
 
 class UserManager {
@@ -25,6 +25,10 @@ class UserManager {
 
     func updateUser(id: String, username: String, email: String,  bio: String, fullname:String) {
         currentUser = User(id: id,username: username, email: email,  bio: bio, fullname: fullname)
+    }
+    
+    func logout() {
+        currentUser = nil
     }
 }
 

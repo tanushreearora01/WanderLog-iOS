@@ -16,18 +16,6 @@ struct CameraView: View {
     var body: some View {
        
             ZStack{
-                HStack{
-                    Spacer()
-                    Button{
-                        print("Back button pressed")
-                    }label:{
-                        Image(systemName: "x.circle")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .foregroundStyle(.white)
-
-                    }
-                }
                 NavigationStack {
                 GeometryReader { geometry in
                     ViewfinderView(image:  $model.viewfinderImage )
@@ -61,9 +49,6 @@ struct CameraView: View {
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
                 .statusBar(hidden: true)
-                .navigationDestination(isPresented: $closed) {
-                                 NavBarUI(tabViewSelection: 0)
-                             }
             }
         }
     }
@@ -129,7 +114,7 @@ struct CameraView: View {
                 print("close")
 //                closed = true
             } label: {
-                NavigationLink(destination: ContentView()){
+                NavigationLink(destination: NavBarUI(tabViewSelection: 0)){
                     Image(systemName: "x.circle.fill")
                         .resizable()
                         .frame(width: 30, height: 30)
