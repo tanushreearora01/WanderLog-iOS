@@ -6,7 +6,7 @@
 //
 
 // UserManager.swift
-
+// This Singleton class tracks the current user that is logged in.
 import Foundation
 
 class UserManager {

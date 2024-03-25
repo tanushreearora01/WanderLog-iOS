@@ -10,6 +10,7 @@ import MapKit
 
 struct Locations: Identifiable {
     var id: String
+    var userId: String
     var city: String
     var country: String
     var latitude: Double
@@ -17,6 +18,7 @@ struct Locations: Identifiable {
     
     init? (id: String, data: [String: Any]){
         self.id = id
+        self.userId = data["userID"] as! String
         self.city = data["city"] as! String
         self.country = data["country"] as! String
         self.latitude = data["latitude"] as! Double

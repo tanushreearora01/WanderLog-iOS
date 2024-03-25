@@ -33,6 +33,11 @@ struct GlobeView: View {
     }
     func getLocations(){
         self.locations = []
+        var userID=""
+        if let currentUser = UserManager.shared.currentUser {
+            print("Showing profile for \(currentUser.username)")
+            userID = currentUser.id
+        }
         db.collection("locations")
         .getDocuments(){
             (querySnapshot,err) in
@@ -43,8 +48,10 @@ struct GlobeView: View {
                 for document in querySnapshot!.documents{
                     print("\(document.documentID)")
                     if let location = Locations(id:document.documentID, data: document.data()){
-                        print("\(location)")
-                        self.locations.append(location)
+                        if location.userId == userID{
+                            print("\(location)")
+                            self.locations.append(location)
+                        }
                     }
                 }
             }

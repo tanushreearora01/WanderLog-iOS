@@ -15,7 +15,7 @@ struct LoginView: View {
    
     @State private var username = ""
     @State private var password = ""
-    @State private var loginSucces = false
+    @State private var loginSuccess = false
     @State private var incorrectPassword = false
     @State private var showSignUp = false
 
@@ -51,30 +51,11 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                   
-//                    NavigationStack {
-                        Button {
-                            print("login")
-                            login()
-                            print($loginSucces)
-                        } label: {
-                        Text("Log In")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 360, height: 44)
-                            .background(Color(.systemBlue))
-                            .cornerRadius(10)
-                        }
-                        .sheet(isPresented: $loginSucces) {
-                            NavBarUI(tabViewSelection: 4)
-                        }
-//                    }
-//                    .navigationBarBackButtonHidden(true)
-//                    .navigationDestination(isPresented: $loginSucces) {
-//                                     NavBarUI(tabViewSelection: 4)
-//                                     }
-                    .padding(.vertical)
+                    NavigationLink(destination: NavBarUI(tabViewSelection: 4), isActive: $loginSuccess){}
+                    Button("Login", action:{
+                        login()
+                        
+                    } )
                     HStack {
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
@@ -122,7 +103,7 @@ struct LoginView: View {
         }
         
     }
-    func login(){
+    func login() {
         let data = [username,password]
         if (data[0]=="" || data[1]==""){
             print("Login failed!")
@@ -134,7 +115,8 @@ struct LoginView: View {
                 if(i.username == data[0]){
                     if(i.password == data[1]){
                         print("Login Success")
-                        loginSucces = true
+                        loginSuccess = true
+                        
                         UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
                     }
                     else{

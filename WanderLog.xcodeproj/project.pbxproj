@@ -29,7 +29,7 @@
 		295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */; };
 		295D6FBC2BAF6DF100C135E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 295D6FBB2BAF6DF100C135E3 /* Assets.xcassets */; };
 		2987C7612BB1E3D300139BDB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C7602BB1E3D300139BDB /* Location.swift */; };
-		2987C7632BB1EC1900139BDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2987C7622BB1EC1900139BDB /* GoogleService-Info.plist */; };
+		2987C7652BB2011400139BDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2987C7642BB2011400139BDB /* GoogleService-Info.plist */; };
 		29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076642B868025007E9BB0 /* WanderLogApp.swift */; };
 		29B076672B868025007E9BB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076662B868025007E9BB0 /* ContentView.swift */; };
 		29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B0766B2B868026007E9BB0 /* Preview Assets.xcassets */; };
@@ -69,7 +69,7 @@
 		295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridView.swift; sourceTree = "<group>"; };
 		295D6FBB2BAF6DF100C135E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		2987C7602BB1E3D300139BDB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		2987C7622BB1EC1900139BDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2987C7642BB2011400139BDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		29B076612B868025007E9BB0 /* WanderLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B076642B868025007E9BB0 /* WanderLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderLogApp.swift; sourceTree = "<group>"; };
 		29B076662B868025007E9BB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		29B076582B868025007E9BB0 = {
 			isa = PBXGroup;
 			children = (
-				2987C7622BB1EC1900139BDB /* GoogleService-Info.plist */,
+				2987C7642BB2011400139BDB /* GoogleService-Info.plist */,
 				29B076632B868025007E9BB0 /* WanderLog */,
 				29B076622B868025007E9BB0 /* Products */,
 				6EB110E42B8D0DA9005ED8D5 /* Frameworks */,
@@ -350,7 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D0FE242BAB7B9E0084575B /* Launch Screen.storyboard in Resources */,
-				2987C7632BB1EC1900139BDB /* GoogleService-Info.plist in Resources */,
+				2987C7652BB2011400139BDB /* GoogleService-Info.plist in Resources */,
 				295D6FBC2BAF6DF100C135E3 /* Assets.xcassets in Resources */,
 				29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */,
 			);
