@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>My app uses photos </string>
+	<string>WanderLog uses the photo gallery to add your pictures.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>NSCameraUsageDescription add</string>
+	<string>WanderLog uses the camera to click your pictures.</string>
 </dict>
 </plist>

@@ -27,6 +27,9 @@ struct CameraView: View {
                         .foregroundStyle(.white)
 
                     }
+                    .sheet(isPresented: $closed) {
+                        NavBarUI(tabViewSelection: 0)
+                    }
                 }
                 NavigationStack {
                 GeometryReader { geometry in
@@ -61,9 +64,9 @@ struct CameraView: View {
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
                 .statusBar(hidden: true)
-                .navigationDestination(isPresented: $closed) {
-                                 NavBarUI(tabViewSelection: 0)
-                             }
+//                .navigationDestination(isPresented: $closed) {
+//                                 NavBarUI(tabViewSelection: 0)
+//                             }
             }
         }
     }

@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-            LoginView()
-//            NavBarUI(tabViewSelection:0)
+//            LoginView()
+            NavBarUI(tabViewSelection:0)
         }
         .preferredColorScheme(.light)
     }
