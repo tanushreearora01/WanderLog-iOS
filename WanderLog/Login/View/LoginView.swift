@@ -7,7 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
-//import UsefulValues
+
 
 struct LoginView: View {
     let db = Firestore.firestore()
