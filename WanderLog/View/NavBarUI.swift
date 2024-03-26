@@ -39,13 +39,12 @@ struct NavBarUI: View {
             
         }
         .navigationBarHidden(true)
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
     }
 }
 
-//#Preview {
-//    NavBarUI(tabViewSelection : 0,)
-//}
+#Preview {
+    NavBarUI(tabViewSelection : 4)
+}
 
 
 

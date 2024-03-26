@@ -15,13 +15,13 @@ struct LoginView: View {
    
     @State private var username = ""
     @State private var password = ""
-    @State private var loginSucces = false
+    @State private var loginSuccess = false
     @State private var incorrectPassword = false
     @State private var showSignUp = false
 
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 FullLogoView()
                 VStack{
@@ -51,30 +51,16 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                   
-//                    NavigationStack {
-                        Button {
-                            print("login")
-                            login()
-                            print($loginSucces)
-                        } label: {
-                        Text("Log In")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 360, height: 44)
-                            .background(Color(.systemBlue))
-                            .cornerRadius(10)
-                        }
-                        .sheet(isPresented: $loginSucces) {
-                            NavBarUI(tabViewSelection: 4)
-                        }
-//                    }
-//                    .navigationBarBackButtonHidden(true)
-//                    .navigationDestination(isPresented: $loginSucces) {
-//                                     NavBarUI(tabViewSelection: 4)
-//                                     }
-                    .padding(.vertical)
+                    NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $loginSuccess){}
+                    Button( action:{
+                        login()
+                        
+                    } ,label:{
+                        Text("Login")
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    })
+                    .buttonStyle(.borderedProminent)
+                    .padding()
                     HStack {
                         Rectangle()
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
@@ -106,7 +92,6 @@ struct LoginView: View {
                     HStack(spacing:3){
                         Text("Don't have an account yet?")
                         NavigationLink {
-                            // destination view to navigation to
                             SignUpView()
                         } label: {
                             Text("Sign Up")
@@ -121,10 +106,11 @@ struct LoginView: View {
                 getUser()
             }
         }
-        
+        .navigationBarBackButtonHidden(true)
     }
-    func login(){
+    func login() {
         let data = [username,password]
+        //if textfields are empty login should fail
         if (data[0]=="" || data[1]==""){
             print("Login failed!")
             username = ""
@@ -132,18 +118,25 @@ struct LoginView: View {
         }
         else{
             for i in users{
+                //find entered username
                 if(i.username == data[0]){
+                    //if found, check password
                     if(i.password == data[1]){
+                        //if correct, login success
                         print("Login Success")
-                        loginSucces = true
+                        loginSuccess = true
+                        //update currentUser
                         UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
                     }
                     else{
+                        //Incorrect password error
                         incorrectPassword = true
                         print("Incorrect Password")
                     }
+                    //break out of loop once user is found
                     break
                 }
+                //if user not found, clear fields.
                 else{
                     print("User not found!")
                     username = ""
@@ -162,11 +155,8 @@ struct LoginView: View {
             }
             else{ //get users from db
                 for document in querySnapshot!.documents{
-                    print("\(document.documentID)")
                     if let user = User(id:document.documentID, data: document.data()){
-                        print("\(user)")
                         self.users.append(user)
-//                        print(document.data())
                     }
                 }
             }

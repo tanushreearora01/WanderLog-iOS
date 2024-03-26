@@ -15,6 +15,7 @@
 		291B2AE22B93D4100093DD5E /* BucketListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B2AE12B93D4100093DD5E /* BucketListView.swift */; };
 		291B2AE42B93D47C0093DD5E /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B2AE32B93D47C0093DD5E /* CameraView.swift */; };
 		291B2AE62B93D49A0093DD5E /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B2AE52B93D49A0093DD5E /* AIView.swift */; };
+		294D872A2BB3254900A5E18E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294D87292BB3254900A5E18E /* Assets.xcassets */; };
 		29524B672BB0A78600C4A28D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B662BB0A78600C4A28D /* SignUpView.swift */; };
 		29524B692BB0A7B600C4A28D /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B682BB0A7B600C4A28D /* LogoView.swift */; };
 		29524B6B2BB0A88C00C4A28D /* FullLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */; };
@@ -25,10 +26,10 @@
 		29524B752BB0B27600C4A28D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 29524B742BB0B27600C4A28D /* FirebaseAppCheck */; };
 		29524B772BB0B32000C4A28D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 29524B762BB0B32000C4A28D /* FirebaseFirestore */; };
 		29524B7A2BB0B36600C4A28D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B792BB0B36600C4A28D /* User.swift */; };
-		29524B812BB0BBE900C4A28D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29524B802BB0BBE900C4A28D /* GoogleService-Info.plist */; };
 		29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B872BB0E5EF00C4A28D /* UserManager.swift */; };
 		295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */; };
-		2987C7672BB23A9200139BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2987C7662BB23A9200139BDB /* Assets.xcassets */; };
+		2987C7612BB1E3D300139BDB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C7602BB1E3D300139BDB /* Location.swift */; };
+		2987C7652BB2011400139BDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2987C7642BB2011400139BDB /* GoogleService-Info.plist */; };
 		2987C76B2BB31E9000139BDB /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C76A2BB31E9000139BDB /* Following.swift */; };
 		29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076642B868025007E9BB0 /* WanderLogApp.swift */; };
 		29B076672B868025007E9BB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076662B868025007E9BB0 /* ContentView.swift */; };
@@ -64,14 +65,15 @@
 		291B2AE12B93D4100093DD5E /* BucketListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListView.swift; sourceTree = "<group>"; };
 		291B2AE32B93D47C0093DD5E /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		291B2AE52B93D49A0093DD5E /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
+		294D87292BB3254900A5E18E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/Downloads/Assets.xcassets"; sourceTree = "<group>"; };
 		29524B662BB0A78600C4A28D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		29524B682BB0A7B600C4A28D /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullLogoView.swift; sourceTree = "<group>"; };
 		29524B792BB0B36600C4A28D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		29524B802BB0BBE900C4A28D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		29524B872BB0E5EF00C4A28D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridView.swift; sourceTree = "<group>"; };
-		2987C7662BB23A9200139BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Library/Messages/Attachments/b3/03/D07FA1E6-FA61-41EE-AFDA-4BA8FC1BA3CB/Assets.xcassets"; sourceTree = "<group>"; };
+		2987C7602BB1E3D300139BDB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2987C7642BB2011400139BDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2987C76A2BB31E9000139BDB /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
 		29B076612B868025007E9BB0 /* WanderLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B076642B868025007E9BB0 /* WanderLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderLogApp.swift; sourceTree = "<group>"; };
@@ -172,10 +174,55 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		2987C75B2BB1E16400139BDB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2987C75F2BB1E3C900139BDB /* Model */,
+				2987C75C2BB1E16D00139BDB /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2987C75C2BB1E16D00139BDB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				291B2AD32B911E830093DD5E /* ProfileView.swift */,
+				295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */,
+				291B2AD92B91501C0093DD5E /* ProfileMapView.swift */,
+				291B2AD52B9143090093DD5E /* GlobeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2987C75F2BB1E3C900139BDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2987C7602BB1E3D300139BDB /* Location.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2987C7682BB24DB700139BDB /* BucketList */ = {
+			isa = PBXGroup;
+			children = (
+				2987C7692BB24DC200139BDB /* View */,
+			);
+			path = BucketList;
+			sourceTree = "<group>";
+		};
+		2987C7692BB24DC200139BDB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
+				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		29B076582B868025007E9BB0 = {
 			isa = PBXGroup;
 			children = (
-				29524B802BB0BBE900C4A28D /* GoogleService-Info.plist */,
+				2987C7642BB2011400139BDB /* GoogleService-Info.plist */,
 				29B076632B868025007E9BB0 /* WanderLog */,
 				29B076622B868025007E9BB0 /* Products */,
 				6EB110E42B8D0DA9005ED8D5 /* Frameworks */,
@@ -194,11 +241,13 @@
 			isa = PBXGroup;
 			children = (
 				6EA72E4F2BB21BC6006DC548 /* Social Media */,
+				2987C7682BB24DB700139BDB /* BucketList */,
+				2987C75B2BB1E16400139BDB /* Profile */,
 				29524B632BB0A70400C4A28D /* Login */,
 				29524B612BB0A5A700C4A28D /* Camera */,
 				29099C3E2BAE4060001A53F1 /* WanderLog.entitlements */,
+				294D87292BB3254900A5E18E /* Assets.xcassets */,
 				29099C3C2BAE3E99001A53F1 /* Info.plist */,
-				2987C7662BB23A9200139BDB /* Assets.xcassets */,
 				29B076642B868025007E9BB0 /* WanderLogApp.swift */,
 				29B0766A2B868026007E9BB0 /* Preview Content */,
 				6EB110D82B8D0959005ED8D5 /* View */,
@@ -268,13 +317,7 @@
 				29B076662B868025007E9BB0 /* ContentView.swift */,
 				291B2ADB2B93D32C0093DD5E /* NavBarUI.swift */,
 				291B2AE52B93D49A0093DD5E /* AIView.swift */,
-				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
-				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
 				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
-				291B2AD32B911E830093DD5E /* ProfileView.swift */,
-				295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */,
-				291B2AD92B91501C0093DD5E /* ProfileMapView.swift */,
-				291B2AD52B9143090093DD5E /* GlobeView.swift */,
 				29524B682BB0A7B600C4A28D /* LogoView.swift */,
 				29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */,
 			);
@@ -359,8 +402,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D0FE242BAB7B9E0084575B /* Launch Screen.storyboard in Resources */,
-				29524B812BB0BBE900C4A28D /* GoogleService-Info.plist in Resources */,
-				2987C7672BB23A9200139BDB /* Assets.xcassets in Resources */,
+				2987C7652BB2011400139BDB /* GoogleService-Info.plist in Resources */,
+				294D872A2BB3254900A5E18E /* Assets.xcassets in Resources */,
 				29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +446,7 @@
 				29D0FE4C2BACF2860084575B /* Camera.swift in Sources */,
 				29D0FE5A2BACF46B0084575B /* PhotoCollectionView.swift in Sources */,
 				29B076672B868025007E9BB0 /* ContentView.swift in Sources */,
+				2987C7612BB1E3D300139BDB /* Location.swift in Sources */,
 				291B2ADA2B91501C0093DD5E /* ProfileMapView.swift in Sources */,
 				29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */,
 			);
