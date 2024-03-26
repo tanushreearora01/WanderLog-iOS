@@ -194,6 +194,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2987C7682BB24DB700139BDB /* BucketList */ = {
+			isa = PBXGroup;
+			children = (
+				2987C7692BB24DC200139BDB /* View */,
+			);
+			path = BucketList;
+			sourceTree = "<group>";
+		};
+		2987C7692BB24DC200139BDB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
+				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		29B076582B868025007E9BB0 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +232,7 @@
 		29B076632B868025007E9BB0 /* WanderLog */ = {
 			isa = PBXGroup;
 			children = (
+				2987C7682BB24DB700139BDB /* BucketList */,
 				2987C75B2BB1E16400139BDB /* Profile */,
 				29524B632BB0A70400C4A28D /* Login */,
 				29524B612BB0A5A700C4A28D /* Camera */,
@@ -264,8 +282,6 @@
 				29B076662B868025007E9BB0 /* ContentView.swift */,
 				291B2ADB2B93D32C0093DD5E /* NavBarUI.swift */,
 				291B2AE52B93D49A0093DD5E /* AIView.swift */,
-				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
-				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
 				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
 				29524B682BB0A7B600C4A28D /* LogoView.swift */,
 				29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */,

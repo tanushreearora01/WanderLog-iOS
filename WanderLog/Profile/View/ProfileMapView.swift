@@ -10,27 +10,22 @@ import SwiftUI
 struct ProfileMapView: View {
     @State private var progress = 0.7
     @State private var showPhotos = false
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack{
             VStack{
-                
                 ProfileView()
-                
                 Divider()
             }                
             .padding()
             GlobeView()
             ProgressView(value: progress)
                 .padding()
-                
-            Spacer().frame(height: 30)
+            Spacer()
+                .frame(height: 30)
         }
         .onAppear(){
             print(currentUserId)
         }
-        
-        
     }
 }
 

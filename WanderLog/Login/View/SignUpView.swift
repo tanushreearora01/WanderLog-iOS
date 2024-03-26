@@ -88,13 +88,16 @@ struct SignUpView: View {
         }
     }
     func createUser(){
+        //if any text field is left empty, should show error
         if email == "" || username == "" || fullname == "" || password == "" || confirmPassword == ""{
             emptyFields = true
             
         }
+        //if passwords dont match, should show error
         else if confirmPassword != password{
             passwordMismatch = true
         }
+        //otherwise sign up complete
         else{
             emptyFields = false
             passwordMismatch = false
@@ -104,6 +107,7 @@ struct SignUpView: View {
                         "password":password,
                         "bio":""] as [String:Any]
             var ref: DocumentReference? = nil
+            //Add entry to db
             ref = db.collection("users")
                 .addDocument(data: data){ err in
                     if let err = err{
@@ -117,13 +121,6 @@ struct SignUpView: View {
         }
         
     }
-    func resetTextFields(){
-        email=""
-        fullname=""
-        username=""
-        password=""
-    }
-    
 }
     
 #Preview {

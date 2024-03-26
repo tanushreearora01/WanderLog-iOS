@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import MapKit
 
+//Data Model for locations collection
 struct Locations: Identifiable {
     var id: String
     var userId: String
