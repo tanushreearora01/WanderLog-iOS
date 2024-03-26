@@ -110,6 +110,7 @@ struct LoginView: View {
     }
     func login() {
         let data = [username,password]
+        //if textfields are empty login should fail
         if (data[0]=="" || data[1]==""){
             print("Login failed!")
             username = ""
@@ -117,19 +118,25 @@ struct LoginView: View {
         }
         else{
             for i in users{
+                //find entered username
                 if(i.username == data[0]){
+                    //if found, check password
                     if(i.password == data[1]){
+                        //if correct, login success
                         print("Login Success")
                         loginSuccess = true
-                        
+                        //update currentUser
                         UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
                     }
                     else{
+                        //Incorrect password error
                         incorrectPassword = true
                         print("Incorrect Password")
                     }
+                    //break out of loop once user is found
                     break
                 }
+                //if user not found, clear fields.
                 else{
                     print("User not found!")
                     username = ""
@@ -148,11 +155,8 @@ struct LoginView: View {
             }
             else{ //get users from db
                 for document in querySnapshot!.documents{
-                    print("\(document.documentID)")
                     if let user = User(id:document.documentID, data: document.data()){
-                        print("\(user)")
                         self.users.append(user)
-//                        print(document.data())
                     }
                 }
             }

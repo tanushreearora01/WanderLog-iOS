@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ProfileGridView: View {
     @State private var showMap = false
+    //Hardcoding pictures list for now. Will make it dynamic after posting feature is implemented
     var images: [String] = ["1","2","3","4","5","6","7"]
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     var body: some View {
         NavigationStack{
             VStack{
-//                ProfileView()
-                
                 HStack{
                     
                     Button{

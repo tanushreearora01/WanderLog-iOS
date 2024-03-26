@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// Data Model for users collection
 class User:Identifiable{
     var id: String
     var fullname: String
