@@ -9,19 +9,19 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
-struct Followers: View {
-    @State private var followerUsernames = [String]()
-    @State var follower : [String]
+struct Following: View {
+    @State private var followingUsernames = [String]()
+    @State var following : [String]
     let db = Firestore.firestore()
 
     var body: some View {
         
         VStack{
-            Text("Followers (\(follower.count))")
+            Text("Following (\(following.count))")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
 
-            List(followerUsernames, id: \.self) { username in
+            List(followingUsernames, id: \.self) { username in
                 HStack {
                     Image(systemName: "person.fill")
                         .resizable()
@@ -35,10 +35,10 @@ struct Followers: View {
                     Spacer()
                     
                     Button(action: {
-                        // need to implement remove follower functionality here
+                        // need to implement follow/unfollow functionality here
                     })
                     {
-                        Text("Remove")
+                        Text("Following")
                             .foregroundColor(.white)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -53,25 +53,25 @@ struct Followers: View {
         }
         .padding()
         .onAppear {
-            fetchfollowerUsernames()
+            fetchFollowingUsernames()
         }
         
     }
     
     
-    func fetchfollowerUsernames() {
-        print("follower")
+    func fetchFollowingUsernames() {
+        print("following")
         db.collection("users").getDocuments(){(QuerySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             }else {
                 for document in QuerySnapshot!.documents{
                     if let user = User (id:document.documentID, data: document.data()){
-                        for userid in follower{
-                            print("follower"+userid)
+                        for userid in following{
+                            print("Following"+userid)
                             if user.id == userid{
                                 print(user.username)
-                                followerUsernames.append(user.username)
+                                followingUsernames.append(user.username)
                             }
                         }
                     }
@@ -88,6 +88,6 @@ struct Followers: View {
 }
 
 #Preview {
-    Followers(follower: [""])
+    Following(following: [""])
 }
 
