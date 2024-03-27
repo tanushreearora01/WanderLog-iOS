@@ -13,21 +13,19 @@ struct PhotoCollectionView: View {
     
     @Environment(\.displayScale) private var displayScale
         
-    private static let itemSpacing = 12.0
-    private static let itemCornerRadius = 15.0
-    private static let itemSize = CGSize(width: 90, height: 90)
+    private static let itemSpacing = 1.0
+    private static let itemCornerRadius = 0.0
+    private static let itemSize = CGSize(width: 120, height: 120)
     
     private var imageSize: CGSize {
         return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
     }
     
-    private let columns = [
-        GridItem(.adaptive(minimum: itemSize.width, maximum: itemSize.height), spacing: itemSpacing)
-    ]
+    private let columns = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: Self.itemSpacing) {
+            LazyVGrid(columns: columns) {
                 ForEach(photoCollection.photoAssets) { asset in
                     NavigationLink {
                         PhotoView(asset: asset, cache: photoCollection.cache)

@@ -10,21 +10,19 @@ import SwiftUI
 struct CameraView: View {
     @StateObject private var model = DataModel()
     @State private var closed = false
+    @State private var photoTaken = false
     private static let barHeightFactor = 0.15
-    
     
     var body: some View {
        
-            ZStack{
-                NavigationStack {
+        ZStack{
+            NavigationStack {
                 GeometryReader { geometry in
                     ViewfinderView(image:  $model.viewfinderImage )
-                        .overlay(alignment: .top) {
-                            Color.black
-                                .opacity(0.75)
-                                .frame(height: geometry.size.height * Self.barHeightFactor)
+                        .overlay(alignment: .topTrailing){
                             closeButtonView()
                         }
+                        
                         .overlay(alignment: .bottom) {
                             buttonsView()
                                 .frame(height: geometry.size.height * Self.barHeightFactor)
@@ -73,24 +71,25 @@ struct CameraView: View {
                     ThumbnailView(image: model.thumbnailImage)
                 }
             }
-            
-            Button {
-                model.camera.takePhoto()
-            } label: {
-                Label {
-                    Text("Take Photo")
-                } icon: {
-                    ZStack {
-                        Circle()
-                            .strokeBorder(.white, lineWidth: 3)
-                            .frame(width: 62, height: 62)
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 50, height: 50)
+            NavigationLink (destination:PhotoCollectionView(photoCollection: model.photoCollection),isActive: $photoTaken){
+                Button {
+                    model.camera.takePhoto()
+                    photoTaken = true
+                } label: {
+                    Label {
+                        Text("Take Photo")
+                    } icon: {
+                        ZStack {
+                            Circle()
+                                .strokeBorder(.white, lineWidth: 3)
+                                .frame(width: 60, height: 62)
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 50, height: 50)
+                        }
                     }
                 }
             }
-            
             Button {
                 print("turn")
                 model.camera.switchCaptureDevice()
@@ -124,7 +123,8 @@ struct CameraView: View {
             }
         }
         .buttonStyle(.plain)
-        .padding(30)
+        .padding(.top,50)
+        .padding(.trailing,30)
     }
     
 }

@@ -52,7 +52,7 @@ struct ProfileView: View {
                     Spacer().frame(width: 20)
                     Text("100\nPosts")
                         .multilineTextAlignment(.center)
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 15)
                     NavigationLink{
                         Followers(follower: followers)
                     } label:{
@@ -60,7 +60,7 @@ struct ProfileView: View {
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.black)
                     }
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 15)
                     NavigationLink{
                         Following(following: following)
                     } label:{
@@ -106,11 +106,9 @@ struct ProfileView: View {
                     .navigationDestination(isPresented: $showPhotos) {
                         ProfileGridView()
                     }
-                    
-                    Divider()
                 }
                 .onAppear(){
-                    getCurrentUser()
+//                    getCurrentUser()
                     getFollowing()
                     getFollowers()
                 }
@@ -118,70 +116,55 @@ struct ProfileView: View {
         }
         
     }
-        func getCurrentUser(){
-            if let currentUser = UserManager.shared.currentUser {
-                print("Showing profile for \(currentUser.username)")
-                username = currentUser.username
-                fullname = currentUser.fullname
-                bio = currentUser.bio
-            } else {
-                print("No user is currently logged in.")
-            }
-        }
-        func getFollowing(){
-            self.following=[]
-            if let currentUser = UserManager.shared.currentUser{
-                print("Logged In")
-                
-                db.collection("connections").getDocuments(){(QuerySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    }
-                    else {
-                        for document in QuerySnapshot!.documents{
-                            if let connection = Connections (id:document.documentID, data: document.data()){
-                                if(connection.userID1 == currentUser.id){
-                                    print("Step1 :",connection.userID1)
-                                    following.append(connection.userID2)
-                                }
-                            }
+    func getFollowing(){
+        self.following=[]
+        if let currentUser = UserManager.shared.currentUser{
+            print("Logged In")
+            username = currentUser.username
+            bio = currentUser.username
+            fullname = currentUser.fullname
+            db.collection("connections").whereField("userID1", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                }
+                else {
+                    for document in QuerySnapshot!.documents{
+                        if let connection = Connections (id:document.documentID, data: document.data()){
+                            following.append(connection.userID2)
                         }
-                        
                     }
+                    
                 }
             }
-            else{
-                print("Not logged in")
-            }
-            
         }
-        func getFollowers(){
-            self.followers=[]
-            if let currentUser = UserManager.shared.currentUser{
-                print("Logged In")
-                
-                db.collection("connections").getDocuments(){(QuerySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: \(err)")
-                    }
-                    else {
-                        for document in QuerySnapshot!.documents{
-                            if let connection = Connections (id:document.documentID, data: document.data()){
-                                if(connection.userID2 == currentUser.id){
-                                    followers.append(connection.userID1)
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-            else{
-                print("Not logged in")
-            }
-            
+        else{
+            print("Not logged in")
         }
         
+    }
+    func getFollowers(){
+        self.followers=[]
+        if let currentUser = UserManager.shared.currentUser{
+            db.collection("connections").whereField("userID2", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                }
+                else {
+                    for document in QuerySnapshot!.documents{
+                        if let connection = Connections (id:document.documentID, data: document.data()){
+                                followers.append(connection.userID1)
+                        }
+                    }
+                    
+                }
+            }
+        }
+        else{
+            print("Not logged in")
+        }
+        
+    }
+    
     
 }
 
