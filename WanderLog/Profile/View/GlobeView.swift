@@ -16,7 +16,7 @@ struct GlobeView: View {
     @State private var mapCamPos: MapCameraPosition = .camera(MapCamera(
         centerCoordinate: CLLocationCoordinate2D(latitude: 39, longitude: 34),
         distance: 30000000))
-    //Location array to store merkers from the locations collection in the db
+    //Location array to store markers from the locations collection in the db
     @State private var locations = [Locations]()
     var body: some View {
         ZStack{
