@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             LoginView()
-//            NavBarUI(tabViewSelection:0)
+//            NavBarUI(tabViewSelection:2)
         }
         .preferredColorScheme(.light)
     }

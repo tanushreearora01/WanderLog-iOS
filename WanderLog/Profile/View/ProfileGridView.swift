@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseFirestore
 
 struct ProfileGridView: View {
     @State private var showMap = false
+    @State private var navigate = false
+//    @State var currentUser = UserManager()
     //Hardcoding pictures list for now. Will make it dynamic after posting feature is implemented
-    var images: [String] = ["1","2","3","4","5","6","7"]
+    @State var images = [UIImage]()
+    @State var paths = [String]()
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
+    private static let itemSize = CGSize(width: 120, height: 120)
+    @Environment(\.displayScale) private var displayScale
+    private var imageSize: CGSize {
+        return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
+    }
     var body: some View {
         NavigationStack{
             VStack{
@@ -35,9 +45,15 @@ struct ProfileGridView: View {
             ScrollView{
                 LazyVGrid(columns: columngrid, spacing: 5){
                     ForEach(images, id:\.self){ image in
-                        Image(image)
-                            .resizable()
-                            .scaledToFit()
+                        NavigationLink{
+                            PostView(image:image,images:images,paths:paths)
+                        }
+                        label:{
+                            Image(uiImage:image)
+                                .resizable()
+                                .frame(width: Self.itemSize.width, height: Self.itemSize.height)
+                        }
+                        
                     }
                     
                 }
@@ -48,8 +64,45 @@ struct ProfileGridView: View {
         .navigationDestination(isPresented: $showMap) {
                          NavBarUI(tabViewSelection: 4)
                      }
+        .onAppear(){
+            retrieveImages()
+        }
         
         
+    }
+    func retrieveImages(){
+        paths = []
+        images = []
+        let db = Firestore.firestore()
+        let firestoreRef = Storage.storage().reference()
+        if let currentUser = UserManager.shared.currentUser{
+            db.collection("posts").whereField("userID", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                }
+                else {
+                    for document in QuerySnapshot!.documents{
+                        if let post = Posts(id:document.documentID, data: document.data()){
+                            let path = post.imageUrl
+                            let fileRef = firestoreRef.child(path)
+                            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                                if error ==  nil && data != nil{
+                                    if let i = UIImage(data: data!){
+                                        DispatchQueue.main.async{
+                                            images.append(i)
+                                            paths.append(path)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else{
+            print("Not logged in")
+        }
     }
 }
 

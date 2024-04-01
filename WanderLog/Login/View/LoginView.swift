@@ -109,6 +109,7 @@ struct LoginView: View {
         .navigationBarBackButtonHidden(true)
     }
     func login() {
+        var found = 0
         let data = [username,password]
         //if textfields are empty login should fail
         if (data[0]=="" || data[1]==""){
@@ -127,21 +128,22 @@ struct LoginView: View {
                         loginSuccess = true
                         //update currentUser
                         UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
+                        //break out of loop once user is logged in
+                        found = 1
+                        break
                     }
                     else{
                         //Incorrect password error
                         incorrectPassword = true
                         print("Incorrect Password")
                     }
-                    //break out of loop once user is found
-                    break
+                    
                 }
-                //if user not found, clear fields.
-                else{
-                    print("User not found!")
-                    username = ""
-                    password = ""
-                }
+            }
+            if found==0{
+                print("User not found!")
+                username = ""
+                password = ""
             }
         }
     }
