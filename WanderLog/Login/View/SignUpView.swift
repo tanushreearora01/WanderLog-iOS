@@ -104,7 +104,7 @@ struct SignUpView: View {
             let data = ["username":username,
                         "email":email,
                         "fullname":fullname,
-                        "password":password,
+                        "password":password.hash,
                         "bio":""] as [String:Any]
             var ref: DocumentReference? = nil
             //Add entry to db

@@ -82,7 +82,6 @@ struct ProfileView: View {
                 NavigationStack{
                     Button{
                         showPhotos = true
-                        print("Hello")
                     }label:{
                         Text("Edit Profile")
                             .frame(maxWidth: .infinity)
@@ -94,7 +93,6 @@ struct ProfileView: View {
                         
                         Button{
                             showPhotos = true
-                            print("Hello")
                         }label:{
                             Text("Show Photos")
                                 .frame(maxWidth: .infinity)

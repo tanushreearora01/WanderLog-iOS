@@ -12,11 +12,10 @@ import FirebaseFirestore
 struct PostView: View {
     @State var username : String = ""
     @State var caption : String = ""
-    @State var posts = [ImageData]()
+    @State var post : ImageData
     @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
+    @State var isLiked = false
     @State private var path = ""
-//    @State var images : [UIImage]
-//    @State var paths : [String]
     private static let itemSize = CGSize(width: 300, height: 300)
     @Environment(\.displayScale) private var displayScale
     private var imageSize: CGSize {
@@ -29,40 +28,61 @@ struct PostView: View {
                     .resizable()
                     .frame( width: 40, height: 40)
                     .clipShape(Circle())
-                Text(self.username)
+                Text(post.username)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
-            Image(uiImage: image)
+            Image(uiImage: post.image)
                 .resizable()
                 .frame(width: Self.itemSize.width, height: Self.itemSize.height)
                 .scaledToFit()
             HStack{
-                Image(systemName: "heart")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                if isLiked{
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                }
+                else{
+                    Image(systemName: "heart")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                }
+                Text("\(post.likes.count)")
                 Image(systemName: "bubble")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                Text("\(post.comments.count)")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
             HStack{
-                Text(username)
+                Text(post.username)
                     .bold()
-                Text(caption)
+                Text(post.caption)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Spacer()
         }
         .padding()
+        .onAppear(){
+            liked()
+        }
     }
-    
+    func liked(){
+        if let currentUser = UserManager.shared.currentUser{
+            if post.likes.contains(currentUser.id){
+                isLiked = true
+            }
+//            print(currentUser.id)
+//            print(post.likes)
+        }
+    }
 }
 
-#Preview {
-    PostView()
-}
+//#Preview {
+//    PostView()
+//}

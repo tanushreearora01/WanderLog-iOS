@@ -53,7 +53,7 @@ struct LoginView: View {
                     
                     NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $loginSuccess){}
                     Button( action:{
-                        login()
+                        getUser()
                         
                     } ,label:{
                         Text("Login")
@@ -61,34 +61,6 @@ struct LoginView: View {
                     })
                     .buttonStyle(.borderedProminent)
                     .padding()
-                    HStack {
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                        
-                        Text("OR")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                        
-                        
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                    }
-                    .foregroundColor(.gray)
-                    
-                    HStack {
-                        Image(systemName: "apple.logo")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-
-                        
-                        Text("Continue with Apple")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                    }
-                    .padding(.top, 8)
-                    Spacer()
-                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                     HStack(spacing:3){
                         Text("Don't have an account yet?")
                         NavigationLink {
@@ -102,54 +74,12 @@ struct LoginView: View {
                     .font(.system(size:14))
                 }
             }
-            .onAppear(){
-                getUser()
-            }
         }
         .navigationBarBackButtonHidden(true)
     }
-    func login() {
-        var found = 0
-        let data = [username,password]
-        //if textfields are empty login should fail
-        if (data[0]=="" || data[1]==""){
-            print("Login failed!")
-            username = ""
-            password = ""
-        }
-        else{
-            for i in users{
-                //find entered username
-                if(i.username == data[0]){
-                    //if found, check password
-                    if(i.password == data[1]){
-                        //if correct, login success
-                        print("Login Success")
-                        loginSuccess = true
-                        //update currentUser
-                        UserManager.shared.updateUser(id: i.id, username: i.username, email: i.email,  bio: i.bio, fullname: i.fullname)
-                        //break out of loop once user is logged in
-                        found = 1
-                        break
-                    }
-                    else{
-                        //Incorrect password error
-                        incorrectPassword = true
-                        print("Incorrect Password")
-                    }
-                    
-                }
-            }
-            if found==0{
-                print("User not found!")
-                username = ""
-                password = ""
-            }
-        }
-    }
     func getUser(){
         self.users = []
-        db.collection("users")
+        db.collection("users").whereField("username", isEqualTo: username)
         .getDocuments(){
             (querySnapshot,err) in
             if let err = err{ //error not nil
@@ -158,7 +88,16 @@ struct LoginView: View {
             else{ //get users from db
                 for document in querySnapshot!.documents{
                     if let user = User(id:document.documentID, data: document.data()){
-                        self.users.append(user)
+                        if Int(user.password) == password.hash{
+                            print("Logged in")
+                            loginSuccess = true
+                            //update currentUser
+                            UserManager.shared.updateUser(id: user.id, username: user.username, email: user.email,  bio: user.bio, fullname: user.fullname)
+                        }
+                        else{
+                            print(password.hash)
+                            print("Fail")
+                        }
                     }
                 }
             }

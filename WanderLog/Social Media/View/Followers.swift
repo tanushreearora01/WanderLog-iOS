@@ -60,7 +60,6 @@ struct Followers: View {
     
     
     func fetchfollowerUsernames() {
-        print("follower")
         db.collection("users").getDocuments(){(QuerySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -68,9 +67,7 @@ struct Followers: View {
                 for document in QuerySnapshot!.documents{
                     if let user = User (id:document.documentID, data: document.data()){
                         for userid in follower{
-                            print("follower"+userid)
                             if user.id == userid{
-                                print(user.username)
                                 followerUsernames.append(user.username)
                             }
                         }

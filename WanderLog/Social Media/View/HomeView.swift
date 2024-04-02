@@ -39,10 +39,19 @@ struct HomeView: View {
                     .bold()
                     .italic()
                     .frame(maxWidth: .infinity, alignment: .leading)
+                if (posts.count == 0){
+                    VStack{
+                        Image(systemName: "person.2.slash")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                        Text("No Posts to show")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        
+                    }
+                }
                 LazyVGrid(columns: columngrid, spacing: 5){
                     ForEach(posts){ post in
-                        PostView(username:post.username,caption: post.caption,image:post.image)
-                        
+                        PostView(post:post)
                     }
                     
                 }
@@ -50,6 +59,7 @@ struct HomeView: View {
                 
                     
             }
+            .padding()
             .frame(maxWidth: .infinity)
             .onAppear(){
                 getFollowing()
@@ -96,21 +106,19 @@ struct HomeView: View {
                 }
                 else {
                     for document in QuerySnapshot!.documents{
-                        print(document)
                         if let post = Posts(id:document.documentID, data: document.data()){
                             db.collection("users").document(post.userID).getDocument { snapshot, err in
                                 if let user = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
                                     username1 = user.username
                                 }
                             }
-//                            print(user)
                             let path = post.imageUrl
                             let fileRef = firestoreRef.child(path)
                             fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
                                 if error ==  nil && data != nil{
                                     if let i = UIImage(data: data!){
                                         DispatchQueue.main.async{
-                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1 ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
+                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1, "likes":post.likes, "comments":post.comments ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
                                            
                                         }
                                     }

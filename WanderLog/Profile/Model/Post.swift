@@ -12,12 +12,16 @@ class Posts:Identifiable{
     var content: String
     var imageUrl: String
     var userID: String
+    var likes : [String] = []
+    var comments : [[String:String]] = []
     
     init? (id: String, data: [String: Any]){
         self.id = id
         self.content = data["content"] as! String
         self.imageUrl = data["imageUrl"] as! String
         self.userID = data["userID"] as! String
+        self.likes = data["likes"] as! [String]
+        self.comments = data["comments"] as! [[String:String]]
     }
 }
 

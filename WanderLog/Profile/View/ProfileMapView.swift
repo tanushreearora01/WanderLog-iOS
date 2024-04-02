@@ -23,9 +23,6 @@ struct ProfileMapView: View {
             Spacer()
                 .frame(height: 30)
         }
-        .onAppear(){
-            print(currentUserId)
-        }
     }
 }
 

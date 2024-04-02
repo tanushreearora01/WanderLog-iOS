@@ -27,9 +27,7 @@ struct ProfileGridView: View {
         NavigationStack{
             VStack{
                 HStack{
-                    
                     Button{
-                        print("Back button pressed")
                         showMap = true
                     }label:{
                         
@@ -44,22 +42,34 @@ struct ProfileGridView: View {
             }
             .padding()
             ScrollView{
-                LazyVGrid(columns: columngrid, spacing: 5){
-                    ForEach(posts){ post in
-                        NavigationLink{
-                            PostView(username: post.username, caption: post.caption, image: post.image)
-                        }
+                if (posts.count == 0){
+                    VStack{
+                        Image(systemName: "camera.circle")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                        Text("No posts yet")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        
+                    }
+                }
+                else{
+                    LazyVGrid(columns: columngrid, spacing: 5){
+                        ForEach(posts){ post in
+                            NavigationLink{
+                                PostView(post:post)
+                            }
                         label:{
                             Image(uiImage:post.image)
                                 .resizable()
                                 .frame(width: Self.itemSize.width, height: Self.itemSize.height)
                         }
+                            
+                        }
                         
                     }
-                    
+                    Spacer()
                 }
             }
-            Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $showMap) {
@@ -91,7 +101,7 @@ struct ProfileGridView: View {
                                 if error ==  nil && data != nil{
                                     if let i = UIImage(data: data!){
                                         DispatchQueue.main.async{
-                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": currentUser.username ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
+                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": currentUser.username, "likes":post.likes, "comments":post.comments]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
                                             images.append(i)
                                            
                                         }
