@@ -12,6 +12,7 @@ import FirebaseFirestore
 struct ProfileGridView: View {
     @State private var showMap = false
     @State private var navigate = false
+    @State var posts = [ImageData]()
 //    @State var currentUser = UserManager()
     //Hardcoding pictures list for now. Will make it dynamic after posting feature is implemented
     @State var images = [UIImage]()
@@ -44,12 +45,12 @@ struct ProfileGridView: View {
             .padding()
             ScrollView{
                 LazyVGrid(columns: columngrid, spacing: 5){
-                    ForEach(images, id:\.self){ image in
+                    ForEach(posts){ post in
                         NavigationLink{
-                            PostView(image:image,images:images,paths:paths)
+                            PostView(username: post.username, caption: post.caption, image: post.image)
                         }
                         label:{
-                            Image(uiImage:image)
+                            Image(uiImage:post.image)
                                 .resizable()
                                 .frame(width: Self.itemSize.width, height: Self.itemSize.height)
                         }
@@ -73,6 +74,7 @@ struct ProfileGridView: View {
     func retrieveImages(){
         paths = []
         images = []
+        posts = []
         let db = Firestore.firestore()
         let firestoreRef = Storage.storage().reference()
         if let currentUser = UserManager.shared.currentUser{
@@ -89,8 +91,9 @@ struct ProfileGridView: View {
                                 if error ==  nil && data != nil{
                                     if let i = UIImage(data: data!){
                                         DispatchQueue.main.async{
+                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": currentUser.username ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
                                             images.append(i)
-                                            paths.append(path)
+                                           
                                         }
                                     }
                                 }

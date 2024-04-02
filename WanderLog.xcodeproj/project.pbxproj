@@ -34,7 +34,6 @@
 		298E31712BB3C3E50042EA52 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E31702BB3C3E50042EA52 /* ImageHandler.swift */; };
 		298E31732BB4827A0042EA52 /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E31722BB4827A0042EA52 /* NewPost.swift */; };
 		298E31752BB499830042EA52 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E31742BB499830042EA52 /* Post.swift */; };
-		298E31792BB49CCF0042EA52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 298E31782BB49CCF0042EA52 /* GoogleService-Info.plist */; };
 		298E317B2BB49E460042EA52 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E317A2BB49E460042EA52 /* PostView.swift */; };
 		29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076642B868025007E9BB0 /* WanderLogApp.swift */; };
 		29B076672B868025007E9BB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076662B868025007E9BB0 /* ContentView.swift */; };
@@ -53,6 +52,8 @@
 		29D0FE682BACF7AF0084575B /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D0FE672BACF7AF0084575B /* ThumbnailView.swift */; };
 		29D0FE6C2BACF7DD0084575B /* ViewfinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D0FE6B2BACF7DD0084575B /* ViewfinderView.swift */; };
 		29E5203A2B9902D8005D28CF /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E520392B9902D8005D28CF /* CheckBoxView.swift */; };
+		29E7ADBB2BBB33FA0083AB12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E7ADBA2BBB33FA0083AB12 /* GoogleService-Info.plist */; };
+		29E7ADBD2BBB39370083AB12 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7ADBC2BBB39370083AB12 /* ImageData.swift */; };
 		6EA72E492BB1A2C0006DC548 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6EA72E482BB1A2C0006DC548 /* FirebaseFirestoreSwift */; };
 		6EA72E5B2BB225D9006DC548 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E592BB225D9006DC548 /* Followers.swift */; };
 		6EA72E612BB22672006DC548 /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E602BB22671006DC548 /* Connections.swift */; };
@@ -82,7 +83,6 @@
 		298E31702BB3C3E50042EA52 /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		298E31722BB4827A0042EA52 /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
 		298E31742BB499830042EA52 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		298E31782BB49CCF0042EA52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		298E317A2BB49E460042EA52 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		29B076612B868025007E9BB0 /* WanderLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B076642B868025007E9BB0 /* WanderLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderLogApp.swift; sourceTree = "<group>"; };
@@ -102,6 +102,8 @@
 		29D0FE672BACF7AF0084575B /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 		29D0FE6B2BACF7DD0084575B /* ViewfinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderView.swift; sourceTree = "<group>"; };
 		29E520392B9902D8005D28CF /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		29E7ADBA2BBB33FA0083AB12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		29E7ADBC2BBB39370083AB12 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		6EA72E592BB225D9006DC548 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		6EA72E602BB22671006DC548 /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				2987C7602BB1E3D300139BDB /* Location.swift */,
 				298E31742BB499830042EA52 /* Post.swift */,
+				29E7ADBC2BBB39370083AB12 /* ImageData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,7 +237,7 @@
 		29B076582B868025007E9BB0 = {
 			isa = PBXGroup;
 			children = (
-				298E31782BB49CCF0042EA52 /* GoogleService-Info.plist */,
+				29E7ADBA2BBB33FA0083AB12 /* GoogleService-Info.plist */,
 				29B076632B868025007E9BB0 /* WanderLog */,
 				29B076622B868025007E9BB0 /* Products */,
 				6EB110E42B8D0DA9005ED8D5 /* Frameworks */,
@@ -312,6 +315,7 @@
 				6EA72E592BB225D9006DC548 /* Followers.swift */,
 				2987C76A2BB31E9000139BDB /* Following.swift */,
 				298E317A2BB49E460042EA52 /* PostView.swift */,
+				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,7 +335,6 @@
 				29B076662B868025007E9BB0 /* ContentView.swift */,
 				291B2ADB2B93D32C0093DD5E /* NavBarUI.swift */,
 				291B2AE52B93D49A0093DD5E /* AIView.swift */,
-				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
 				29524B682BB0A7B600C4A28D /* LogoView.swift */,
 				29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */,
 			);
@@ -417,7 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D0FE242BAB7B9E0084575B /* Launch Screen.storyboard in Resources */,
-				298E31792BB49CCF0042EA52 /* GoogleService-Info.plist in Resources */,
+				29E7ADBB2BBB33FA0083AB12 /* GoogleService-Info.plist in Resources */,
 				294D872A2BB3254900A5E18E /* Assets.xcassets in Resources */,
 				29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */,
 			);
@@ -432,6 +435,7 @@
 			files = (
 				6EA72E5B2BB225D9006DC548 /* Followers.swift in Sources */,
 				29D0FE682BACF7AF0084575B /* ThumbnailView.swift in Sources */,
+				29E7ADBD2BBB39370083AB12 /* ImageData.swift in Sources */,
 				29524B692BB0A7B600C4A28D /* LogoView.swift in Sources */,
 				291B2AE22B93D4100093DD5E /* BucketListView.swift in Sources */,
 				29D0FE502BACF3870084575B /* PhotoLibrary.swift in Sources */,

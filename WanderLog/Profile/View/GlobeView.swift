@@ -35,7 +35,7 @@ struct GlobeView: View {
         self.locations = []
         if let currentUser = UserManager.shared.currentUser {
             db.collection("locations")
-                .whereField("userId", isEqualTo: currentUser.id).getDocuments(){
+                .whereField("userID", isEqualTo: currentUser.id).getDocuments(){
                     (querySnapshot,err) in
                     if let err = err{ //error not nil
                         print("Error getting documents: \(err)")

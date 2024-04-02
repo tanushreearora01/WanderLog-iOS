@@ -10,13 +10,14 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct PostView: View {
-    @State private var username = "tarasha"
-    @State private var caption = "Hello"
-    @State var image : UIImage
+    @State var username : String = ""
+    @State var caption : String = ""
+    @State var posts = [ImageData]()
+    @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
     @State private var path = ""
-    @State var images : [UIImage]
-    @State var paths : [String]
-    private static let itemSize = CGSize(width: 200, height: 200)
+//    @State var images : [UIImage]
+//    @State var paths : [String]
+    private static let itemSize = CGSize(width: 300, height: 300)
     @Environment(\.displayScale) private var displayScale
     private var imageSize: CGSize {
         return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
@@ -55,38 +56,13 @@ struct PostView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
+            Spacer()
         }
         .padding()
-        .onAppear(){
-            let x:Int = images.firstIndex(of: image)!
-            path = paths[x]
-            retrieveImage()
-        }
     }
-    func retrieveImage(){
-        let db = Firestore.firestore()
-        if let currentUser = UserManager.shared.currentUser{
-            username = currentUser.username
-            db.collection("posts").whereField("imageUrl", isEqualTo: path).getDocuments(){(QuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                }
-                else {
-                    for document in QuerySnapshot!.documents{
-                        if let post = Posts(id:document.documentID, data: document.data()){
-                            caption = post.content
-                        }
-                    }
-                }
-            }
-        }
-        else{
-            print("Not logged in")
-        }
-    }
+    
 }
 
 #Preview {
-    PostView(image: UIImage(imageLiteralResourceName: "1"), images:[UIImage(imageLiteralResourceName: "1"),UIImage(imageLiteralResourceName: "2"),UIImage(imageLiteralResourceName: "3")],
-    paths: ["","",""])
+    PostView()
 }
