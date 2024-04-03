@@ -15,6 +15,7 @@ struct PostView: View {
     @State var post : ImageData
     @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
     @State var isLiked = false
+    @State var showComments = false
     @State var currentUser = UserManager.shared.currentUser
     @State private var path = ""
     private static let itemSize = CGSize(width: 300, height: 300)
@@ -67,6 +68,12 @@ struct PostView: View {
                     .resizable()
                     .frame(width: 20, height: 20)
                     .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .onTapGesture {
+                        showComments = true
+                    }
+                    .sheet(isPresented: $showComments, content: {
+                        CommentsView()
+                    })
                     
                 Text("\(post.comments.count)")
             }
