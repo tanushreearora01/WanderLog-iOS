@@ -15,6 +15,7 @@ struct PostView: View {
     @State var post : ImageData
     @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
     @State var isLiked = false
+    @State var currentUser = UserManager.shared.currentUser
     @State private var path = ""
     private static let itemSize = CGSize(width: 300, height: 300)
     @Environment(\.displayScale) private var displayScale
@@ -42,18 +43,31 @@ struct PostView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                         .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.red)
+                        .onTapGesture {
+                            isLiked = false
+                            let x = post.likes.firstIndex(of: currentUser?.id ?? "")
+                            post.likes.remove(at: x ?? -1)
+                            removeLikes()
+                        }
                 }
                 else{
                     Image(systemName: "heart")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            isLiked = true
+                            post.likes.append(currentUser?.id ?? "")
+                            updateLikes()
+                        }
                 }
                 Text("\(post.likes.count)")
                 Image(systemName: "bubble")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    
                 Text("\(post.comments.count)")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -77,9 +91,15 @@ struct PostView: View {
             if post.likes.contains(currentUser.id){
                 isLiked = true
             }
-//            print(currentUser.id)
-//            print(post.likes)
         }
+    }
+    func updateLikes(){
+        let db = Firestore.firestore()
+        db.collection("posts").document(post.id).updateData(["likes":FieldValue.arrayUnion([currentUser?.id ?? ""])])
+    }
+    func removeLikes(){
+        let db = Firestore.firestore()
+        db.collection("posts").document(post.id).updateData(["likes":FieldValue.arrayRemove([currentUser?.id ?? ""])])
     }
 }
 

@@ -11,7 +11,7 @@ class User:Identifiable{
     var id: String
     var fullname: String
     var email: String
-    var password: String
+    var password: Int
     var username: String
     var bio: String
     
@@ -19,7 +19,7 @@ class User:Identifiable{
         self.id = id
         self.fullname = data["fullname"] as! String
         self.email = data["email"] as! String
-        self.password = data["password"] as! String
+        self.password = data["password"] as! Int
         self.username = data["username"] as! String
         self.bio = data["bio"] as! String
     }

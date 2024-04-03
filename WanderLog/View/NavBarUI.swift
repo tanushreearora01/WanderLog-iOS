@@ -26,14 +26,10 @@ struct NavBarUI: View {
                         Image(systemName: "camera")
                     }.tag(2)
                     .toolbar(.hidden, for: .tabBar)
-                AIView()
-                    .tabItem {
-                        Image(systemName: "sparkles.rectangle.stack")
-                    }.tag(3)
                 ProfileMapView()
                     .tabItem {
                         Image(systemName: "person")
-                    }.tag(4)
+                    }.tag(3)
             }
             
             
@@ -43,7 +39,7 @@ struct NavBarUI: View {
 }
 
 #Preview {
-    NavBarUI(tabViewSelection : 4)
+    NavBarUI(tabViewSelection : 3)
 }
 
 

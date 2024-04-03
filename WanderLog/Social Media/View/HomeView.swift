@@ -15,24 +15,45 @@ struct HomeView: View {
     @State var images =  [UIImage]()
     @State var posts = [ImageData]()
     @State var following = [String]()
+    @State private var showSearchBar = false
+    @State private var searchText = ""
 
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5)]
     @State private var username =  ""
     var body: some View {
         VStack{
             HStack{
-                LogoView()
-                Spacer()
-                Image(systemName: "magnifyingglass")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                Image(systemName: "heart")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                
+                
+                
+                    LogoView()
+                    Spacer()
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            showSearchBar.toggle()
+                        }
+                    Image(systemName: "heart")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+        
             }
             .padding()
+            if showSearchBar{
+                HStack{
+                    TextField("Search Here...", text: $searchText)
+                        .textFieldStyle(.roundedBorder)
+                        .padding()
+                    Button{}label:{
+                        Text("Search")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                }
+            }
             ScrollView{
                 Text("Posts")
                     .font(.title)
@@ -44,7 +65,7 @@ struct HomeView: View {
                         Image(systemName: "person.2.slash")
                             .resizable()
                             .frame(width: 150, height: 150)
-                        Text("No Posts to show")
+                        Text("Start following users to see their posts")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         
                     }

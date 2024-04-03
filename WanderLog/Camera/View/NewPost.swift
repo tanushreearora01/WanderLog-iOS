@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 struct NewPost: View {
     @State private var caption = ""
+    @State private var city = ""
+    @State private var country = ""
     @State var image: Image
     @State private var photoUploaded = false
     var body: some View {
@@ -22,6 +24,12 @@ struct NewPost: View {
             TextField("Write a caption", text: $caption, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
+            
+            TextField("City", text: $city, axis: .vertical)
+                .textFieldStyle(.roundedBorder)
+            
+            TextField("Country", text: $country, axis: .vertical)
+                .textFieldStyle(.roundedBorder)
 
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
@@ -63,7 +71,9 @@ struct NewPost: View {
                         "userID" : currentUser.id,
                         "imageUrl" : path,
                         "content" : caption,
-                        "location" : [0,0]
+                        "location" : [0,0],
+                        "likes" : [],
+                        "comments" : [],
                     ])
                 }
             }

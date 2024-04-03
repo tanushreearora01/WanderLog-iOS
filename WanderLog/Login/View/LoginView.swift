@@ -88,7 +88,7 @@ struct LoginView: View {
             else{ //get users from db
                 for document in querySnapshot!.documents{
                     if let user = User(id:document.documentID, data: document.data()){
-                        if Int(user.password) == password.hash{
+                        if user.password == password.hash{
                             print("Logged in")
                             loginSuccess = true
                             //update currentUser
