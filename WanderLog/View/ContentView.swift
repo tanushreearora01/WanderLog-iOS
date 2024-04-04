@@ -13,7 +13,7 @@ struct ContentView: View {
             LoginView()
 //            NavBarUI(tabViewSelection:2)
         }
-        .preferredColorScheme(.light)
+        .preferredColorScheme(.dark)
     }
 }
 

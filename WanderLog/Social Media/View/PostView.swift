@@ -72,7 +72,7 @@ struct PostView: View {
                         showComments = true
                     }
                     .sheet(isPresented: $showComments, content: {
-                        CommentsView()
+                        CommentsView(post: post)
                     })
                     
                 Text("\(post.comments.count)")
