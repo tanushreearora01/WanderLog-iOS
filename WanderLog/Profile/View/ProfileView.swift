@@ -10,11 +10,11 @@ import MapKit
 import FirebaseFirestore
 
 struct ProfileView: View {
+    @State var user : User
+    @State var selfProfile : Bool
+    @Environment(\.colorScheme) var colorScheme
     let db = Firestore.firestore()
     @State private var showPhotos = false
-    @State private var fullname =  ""
-    @State private var username =  ""
-    @State private var bio =  ""
     @State private var logoutSuccess =  false
     @State private var showPopOver =  false
     @State private var following = [String]()
@@ -25,21 +25,29 @@ struct ProfileView: View {
                 HStack{
                     LogoView()
                     Spacer()
-                    Text("@"+username)
+                    Text("@ \(user.username)")
                         .font(.title3)
                         .bold()
-                    Menu {
-                        NavigationLink(destination: LoginView(), isActive: $logoutSuccess){}
-                        Button( action:{
-                            UserManager.shared.logout()
-                            logoutSuccess = true
-                            
-                        } ,label:{
-                            Text("Logout")
-                        })
-                    } label: {
-                        Label("",systemImage: "gearshape.fill")
-                            .foregroundColor(.black)
+                    if selfProfile{
+                        Menu {
+                            NavigationLink(destination: LoginView(), isActive: $logoutSuccess){}
+                            Button( action:{
+                                UserManager.shared.logout()
+                                logoutSuccess = true
+                                
+                            } ,label:{
+                                Text("Logout")
+                            })
+                        } label: {
+                            if (colorScheme == .light){
+                                Label("",systemImage: "gearshape.fill")
+                                    .foregroundColor(.black)
+                            }
+                            else{
+                                Label("",systemImage: "gearshape.fill")
+                                    .foregroundColor(.white)
+                            }
+                        }
                     }
                     
                 }
@@ -58,114 +66,134 @@ struct ProfileView: View {
                     } label:{
                         Text("\(followers.count)\nFollowers")
                             .multilineTextAlignment(.center)
-                            .foregroundStyle(.black)
                     }
+                    .buttonStyle(PlainButtonStyle())
                     Spacer().frame(width: 15)
                     NavigationLink{
                         Following(following: following)
                     } label:{
                         Text("\(following.count)\nFollowing")
                             .multilineTextAlignment(.center)
-                            .foregroundStyle(.black)
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 
                 HStack{
-                    Text(fullname)
+                    Text(user.fullname)
                     Spacer()
                 }
                 HStack{
-                    Text(bio)
+                    Text(user.bio)
                     Spacer()
                 }
                 NavigationStack{
+                    
                     Button{
                         showPhotos = true
                     }label:{
-                        Text("Edit Profile")
+                        Text("Show Photos")
                             .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(.black)
+                    .buttonStyle(.borderedProminent)
                     .controlSize(.regular)
+                }
+                .navigationDestination(isPresented: $showPhotos) {
+                    ProfileGridView(user:user)
+                }
+                if selfProfile{
                     NavigationStack{
-                        
                         Button{
                             showPhotos = true
                         }label:{
-                            Text("Show Photos")
+                            Text("Edit Profile")
                                 .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.black)
+                        .buttonStyle(.borderedProminent)
+                        .tint(.gray)
                         .controlSize(.regular)
-                    }
-                    .navigationDestination(isPresented: $showPhotos) {
-                        ProfileGridView()
+                        
                     }
                 }
-                .onAppear(){
-//                    getCurrentUser()
-                    getFollowing()
-                    getFollowers()
+                else{
+                    NavigationStack{
+                        Button{
+//                            showPhotos = true
+                        }label:{
+                            Text("Follow")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.regular)
+                        
+                    }
                 }
+            }
+            .onAppear(){
+                getFollowing()
+                getFollowers()
+                checkUser()
             }
         }
         
+    }
+    func checkUser(){
+        if let currentUser = UserManager.shared.currentUser{
+            if user.id == currentUser.id{
+                selfProfile = true
+            }
+        }
+    }
+    func getPostCount(){
+        var count = 0
+        print("Logged In")
+        db.collection("posts").whereField("userID", isEqualTo: user.id).getDocuments(){(QuerySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }
+            else {
+                for document in QuerySnapshot!.documents{
+                    count = count+1
+                }
+                
+            }
+        }
     }
     func getFollowing(){
         self.following=[]
-        if let currentUser = UserManager.shared.currentUser{
-            print("Logged In")
-            username = currentUser.username
-            bio = currentUser.username
-            fullname = currentUser.fullname
-            db.collection("connections").whereField("userID1", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                }
-                else {
-                    for document in QuerySnapshot!.documents{
-                        if let connection = Connections (id:document.documentID, data: document.data()){
-                            following.append(connection.userID2)
-                        }
+        print("Logged In")
+        db.collection("connections").whereField("userID1", isEqualTo: user.id).getDocuments(){(QuerySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }
+            else {
+                for document in QuerySnapshot!.documents{
+                    if let connection = Connections (id:document.documentID, data: document.data()){
+                        following.append(connection.userID2)
                     }
-                    
                 }
+                
             }
         }
-        else{
-            print("Not logged in")
-        }
-        
     }
     func getFollowers(){
         self.followers=[]
-        if let currentUser = UserManager.shared.currentUser{
-            db.collection("connections").whereField("userID2", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                }
-                else {
-                    for document in QuerySnapshot!.documents{
-                        if let connection = Connections (id:document.documentID, data: document.data()){
-                                followers.append(connection.userID1)
-                        }
+        db.collection("connections").whereField("userID2", isEqualTo: user.id).getDocuments(){(QuerySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }
+            else {
+                for document in QuerySnapshot!.documents{
+                    if let connection = Connections (id:document.documentID, data: document.data()){
+                            followers.append(connection.userID1)
                     }
-                    
                 }
+                
             }
         }
-        else{
-            print("Not logged in")
-        }
-        
     }
-    
-    
 }
 
-#Preview {
-    ProfileView()
-}
+//#Preview {
+//    ProfileView()
+//}

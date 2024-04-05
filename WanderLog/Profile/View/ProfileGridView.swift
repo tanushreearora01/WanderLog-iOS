@@ -10,11 +10,10 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct ProfileGridView: View {
+    @State var user : User
     @State private var showMap = false
     @State private var navigate = false
     @State var posts = [ImageData]()
-//    @State var currentUser = UserManager()
-    //Hardcoding pictures list for now. Will make it dynamic after posting feature is implemented
     @State var images = [UIImage]()
     @State var paths = [String]()
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
@@ -36,7 +35,7 @@ struct ProfileGridView: View {
                             Text("Back")
                             Spacer()
                         }
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.primary)
                     }
                 }
             }
@@ -87,24 +86,22 @@ struct ProfileGridView: View {
         posts = []
         let db = Firestore.firestore()
         let firestoreRef = Storage.storage().reference()
-        if let currentUser = UserManager.shared.currentUser{
-            db.collection("posts").whereField("userID", isEqualTo: currentUser.id).getDocuments(){(QuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                }
-                else {
-                    for document in QuerySnapshot!.documents{
-                        if let post = Posts(id:document.documentID, data: document.data()){
-                            let path = post.imageUrl
-                            let fileRef = firestoreRef.child(path)
-                            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                                if error ==  nil && data != nil{
-                                    if let i = UIImage(data: data!){
-                                        DispatchQueue.main.async{
-                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": currentUser.username, "likes":post.likes, "comments":post.comments]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
-                                            images.append(i)
-                                           
-                                        }
+        db.collection("posts").whereField("userID", isEqualTo: user.id).getDocuments(){(QuerySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }
+            else {
+                for document in QuerySnapshot!.documents{
+                    if let post = Posts(id:document.documentID, data: document.data()){
+                        let path = post.imageUrl
+                        let fileRef = firestoreRef.child(path)
+                        fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                            if error ==  nil && data != nil{
+                                if let i = UIImage(data: data!){
+                                    DispatchQueue.main.async{
+                                        posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": user.username, "likes":post.likes, "comments":post.comments]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
+                                        images.append(i)
+                                       
                                     }
                                 }
                             }
@@ -113,12 +110,9 @@ struct ProfileGridView: View {
                 }
             }
         }
-        else{
-            print("Not logged in")
-        }
     }
 }
 
-#Preview {
-    ProfileGridView()
-}
+//#Preview {
+//    ProfileGridView()
+//}

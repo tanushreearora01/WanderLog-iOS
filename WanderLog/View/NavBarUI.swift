@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct NavBarUI: View {
+    @State var user : User = User(id: "", data: ["fullname" : "",
+                                                 "username" : "",
+                                                 "password" : 0,
+                                                 "bio" : "",
+                                                 "email" : ""])!
     @State public var tabViewSelection : Int
 //    @State public var currentUser : User
     var body: some View {
@@ -26,7 +32,7 @@ struct NavBarUI: View {
                         Image(systemName: "camera")
                     }.tag(2)
                     .toolbar(.hidden, for: .tabBar)
-                ProfileMapView()
+                ProfileMapView(user : user)
                     .tabItem {
                         Image(systemName: "person")
                     }.tag(3)
@@ -35,6 +41,19 @@ struct NavBarUI: View {
             
         }
         .navigationBarHidden(true)
+        .onAppear(){
+            getUser()
+        }
+    }
+    func getUser(){
+        let db = Firestore.firestore()
+        if let currentUser = UserManager.shared.currentUser{
+            db.collection("users").document(currentUser.id).getDocument { snapshot, err in
+                if let u = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
+                    user = u
+                }
+            }
+        }
     }
 }
 

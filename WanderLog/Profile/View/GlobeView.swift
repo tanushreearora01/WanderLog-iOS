@@ -12,10 +12,11 @@ import FirebaseFirestore
 
 struct GlobeView: View {
     let db = Firestore.firestore()
-    //Crete a MapCameraPosition variable to set the globe center and lens distance
+    //Create a MapCameraPosition variable to set the globe center and lens distance
     @State private var mapCamPos: MapCameraPosition = .camera(MapCamera(
         centerCoordinate: CLLocationCoordinate2D(latitude: 39, longitude: 34),
-        distance: 30000000))
+        distance: 29000000))
+    @State var user : User
     //Location array to store markers from the locations collection in the db
     @State private var locations = [Locations]()
     var body: some View {
@@ -33,25 +34,19 @@ struct GlobeView: View {
     }
     func getLocations(){
         self.locations = []
-        if let currentUser = UserManager.shared.currentUser {
-            db.collection("locations")
-                .whereField("userID", isEqualTo: currentUser.id).getDocuments(){
-                    (querySnapshot,err) in
-                    if let err = err{ //error not nil
-                        print("Error getting documents: \(err)")
-                    }
-                    else{ //get locations from db
-                        for document in querySnapshot!.documents{
-                            if let location = Locations(id:document.documentID, data: document.data()){
-                                self.locations.append(location)
-                            }
-                        }
+        db.collection("locations").whereField("userID", isEqualTo: user.id).getDocuments(){(querySnapshot,err) in
+            if let err = err{ //error not nil
+                print("Error getting documents: \(err)")
+            }
+            else{ //get locations from db
+                for document in querySnapshot!.documents{
+                    if let location = Locations(id:document.documentID, data: document.data()){
+                        self.locations.append(location)
                     }
                 }
+            }
         }
     }
 }
 
-#Preview {
-    GlobeView()
-}
+

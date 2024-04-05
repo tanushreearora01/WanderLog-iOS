@@ -23,17 +23,28 @@ struct PostView: View {
     private var imageSize: CGSize {
         return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
     }
+    @State var user : User = User(id: "", data: ["fullname" : "",
+                                                 "username" : "",
+                                                 "password" : 0,
+                                                 "bio" : "",
+                                                 "email" : ""])!
     var body: some View {
         VStack{
-            HStack{
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame( width: 40, height: 40)
-                    .clipShape(Circle())
-                Text(post.username)
+            NavigationLink{
+                ProfileMapView(user: user)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.bottom)
+            label:{
+                HStack{
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame( width: 40, height: 40)
+                        .clipShape(Circle())
+                    Text(post.username)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom)
+            }
+            .foregroundStyle(.primary)
             Image(uiImage: post.image)
                 .resizable()
                 .frame(width: Self.itemSize.width, height: Self.itemSize.height)
@@ -88,9 +99,9 @@ struct PostView: View {
             
             Spacer()
         }
-        .padding()
         .onAppear(){
             liked()
+            getUser()
         }
     }
     func liked(){
@@ -107,6 +118,18 @@ struct PostView: View {
     func removeLikes(){
         let db = Firestore.firestore()
         db.collection("posts").document(post.id).updateData(["likes":FieldValue.arrayRemove([currentUser?.id ?? ""])])
+    }
+    func getUser(){
+        let db = Firestore.firestore()
+        if let currentUser = UserManager.shared.currentUser{
+            db.collection("users").whereField("username", isEqualTo: post.username).getDocuments(){(QuerySnapshot, err) in
+                for document in QuerySnapshot!.documents{
+                    if let u = User (id:document.documentID, data: document.data()){
+                        user = u
+                    }
+                }
+            }
+        }
     }
 }
 
