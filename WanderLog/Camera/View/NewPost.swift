@@ -25,11 +25,7 @@ struct NewPost: View {
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
             
-            TextField("City", text: $city, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-            
-            TextField("Country", text: $country, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
+            CountryCityPickerView()
 
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
