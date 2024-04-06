@@ -57,6 +57,8 @@
 		6EA72E5B2BB225D9006DC548 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E592BB225D9006DC548 /* Followers.swift */; };
 		6EA72E612BB22672006DC548 /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E602BB22671006DC548 /* Connections.swift */; };
 		6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB110D62B8D0950005ED8D5 /* LoginView.swift */; };
+		794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */; };
+		794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */; };
 		798EF1C72BC0A7930001EE0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798EF1C62BC0A7930001EE0B /* Assets.xcassets */; };
 		79F2590C2BC0C8BC008E379E /* userlocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2590B2BC0C8BC008E379E /* userlocation.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		6EA72E592BB225D9006DC548 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		6EA72E602BB22671006DC548 /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCityPickerView.swift; sourceTree = "<group>"; };
 		798EF1C62BC0A7930001EE0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
 		79F2590B2BC0C8BC008E379E /* userlocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userlocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +261,7 @@
 		29B076632B868025007E9BB0 /* WanderLog */ = {
 			isa = PBXGroup;
 			children = (
+				794DB04A2BC1B9FF00CBDAFF /* Picker */,
 				6EA72E4F2BB21BC6006DC548 /* Social Media */,
 				2987C7682BB24DB700139BDB /* BucketList */,
 				2987C75B2BB1E16400139BDB /* Profile */,
@@ -349,6 +354,31 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		794DB04A2BC1B9FF00CBDAFF /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				794DB0502BC1BC5F00CBDAFF /* View */,
+				794DB04F2BC1BC4F00CBDAFF /* Model */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		794DB04F2BC1BC4F00CBDAFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		794DB0502BC1BC5F00CBDAFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +484,7 @@
 				295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */,
 				6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */,
 				298E31732BB4827A0042EA52 /* NewPost.swift in Sources */,
+				794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */,
 				6EA72E612BB22672006DC548 /* Connections.swift in Sources */,
 				2987C76B2BB31E9000139BDB /* Following.swift in Sources */,
 				29D0FE522BACF3C20084575B /* PhotoAssetCollection.swift in Sources */,
@@ -470,6 +501,7 @@
 				291B2AE42B93D47C0093DD5E /* CameraView.swift in Sources */,
 				29E7ADBF2BBCCC3A0083AB12 /* ImageHandler.swift in Sources */,
 				29E5203A2B9902D8005D28CF /* CheckBoxView.swift in Sources */,
+				794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */,
 				29D0FE4C2BACF2860084575B /* Camera.swift in Sources */,
 				29D0FE5A2BACF46B0084575B /* PhotoCollectionView.swift in Sources */,
 				29B076672B868025007E9BB0 /* ContentView.swift in Sources */,
@@ -614,7 +646,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "My app uses photo library to store and load";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WanderLog uses the camera to click your pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user description";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WanderLog uses the photo gallery to add your pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -647,7 +681,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "My app uses photo library to store and load";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WanderLog uses the camera to click your pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user description";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WanderLog uses the photo gallery to add your pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

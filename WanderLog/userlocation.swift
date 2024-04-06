@@ -8,6 +8,8 @@
 import Foundation
 import CoreLocation
 import CoreLocationUI
+import MapKit
+
 
 final class userlocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     
@@ -35,4 +37,5 @@ final class userlocation: NSObject, ObservableObject, CLLocationManagerDelegate 
         print(error.localizedDescription)
     }
 }
+
 
