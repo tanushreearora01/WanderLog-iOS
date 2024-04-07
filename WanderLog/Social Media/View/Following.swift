@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 struct Following: View {
-    @State private var followingUsernames = [String]()
+    @State private var followingUsernames = [User]()
     @State var following : [String]
     let db = Firestore.firestore()
 
@@ -20,36 +20,24 @@ struct Following: View {
             Text("Following (\(following.count))")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
-
-            List(followingUsernames, id: \.self) { username in
+            Divider()
+            ForEach(followingUsernames) { user in
                 HStack {
                     Image(systemName: "person.fill")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .padding(.trailing, 10)
-                    
-                    Text(username)
-                        .padding(.leading, 10)
-                        
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        // need to implement follow/unfollow functionality here
-                    })
-                    {
-                        Text("Following")
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color.gray)
-                            .cornerRadius(10)
-                            .shadow(radius: 1, x: 1, y: 1)
+                    NavigationLink{
+                        ProfileMapView(user: user)
+                    }label:{
+                        Text("\(user.username)")
                     }
-                    .padding(.bottom, 5)
+                    .foregroundStyle(.primary)
+                    Spacer()
                 }
+                .padding(5)
             }
-            .scrollContentBackground(.hidden)
+            Spacer()
         }
         .padding()
         .onAppear {
@@ -60,7 +48,7 @@ struct Following: View {
     
     
     func fetchFollowingUsernames() {
-        print("following")
+        followingUsernames = []
         db.collection("users").getDocuments(){(QuerySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -68,10 +56,8 @@ struct Following: View {
                 for document in QuerySnapshot!.documents{
                     if let user = User (id:document.documentID, data: document.data()){
                         for userid in following{
-                            print("Following"+userid)
                             if user.id == userid{
-                                print(user.username)
-                                followingUsernames.append(user.username)
+                                followingUsernames.append(user)
                             }
                         }
                     }
@@ -88,6 +74,6 @@ struct Following: View {
 }
 
 #Preview {
-    Following(following: [""])
+    Following(following: ["7kDiwlNbTcb5v1inGNIa"])
 }
 

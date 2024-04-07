@@ -91,7 +91,6 @@ struct CameraView: View {
                 }
             }
             Button {
-                print("turn")
                 model.camera.switchCaptureDevice()
             } label: {
                 Label("Switch Camera", systemImage: "arrow.triangle.2.circlepath")
@@ -109,17 +108,11 @@ struct CameraView: View {
     private func closeButtonView() -> some View {
         HStack() {
             Spacer()
-            Button {
-                print("close")
-//                closed = true
-            } label: {
-                NavigationLink(destination: NavBarUI(tabViewSelection: 0)){
-                    Image(systemName: "x.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(.white)
-                }
-                
+            NavigationLink(destination: NavBarUI(tabViewSelection: 0)){
+                Image(systemName: "x.circle.fill")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundStyle(.white)
             }
         }
         .buttonStyle(.plain)

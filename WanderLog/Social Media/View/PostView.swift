@@ -10,83 +10,129 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct PostView: View {
-    @State private var username = "tarasha"
-    @State private var caption = "Hello"
-    @State var image : UIImage
+    @State var username : String = ""
+    @State var caption : String = ""
+    @State var post : ImageData
+    @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
+    @State var isLiked = false
+    @State var showComments = false
+    @State var currentUser = UserManager.shared.currentUser
     @State private var path = ""
-    @State var images : [UIImage]
-    @State var paths : [String]
-    private static let itemSize = CGSize(width: 200, height: 200)
+    private static let itemSize = CGSize(width: 300, height: 300)
     @Environment(\.displayScale) private var displayScale
     private var imageSize: CGSize {
         return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
     }
+    @State var user : User = User(id: "", data: ["fullname" : "",
+                                                 "username" : "",
+                                                 "password" : 0,
+                                                 "bio" : "",
+                                                 "email" : ""])!
     var body: some View {
         VStack{
-            HStack{
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame( width: 40, height: 40)
-                    .clipShape(Circle())
-                Text(self.username)
+            NavigationLink{
+                ProfileMapView(user: user)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.bottom)
-            Image(uiImage: image)
+            label:{
+                HStack{
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame( width: 40, height: 40)
+                        .clipShape(Circle())
+                    Text(post.username)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom)
+            }
+            .foregroundStyle(.primary)
+            Image(uiImage: post.image)
                 .resizable()
                 .frame(width: Self.itemSize.width, height: Self.itemSize.height)
                 .scaledToFit()
             HStack{
-                Image(systemName: "heart")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                if isLiked{
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.red)
+                        .onTapGesture {
+                            isLiked = false
+                            let x = post.likes.firstIndex(of: currentUser?.id ?? "")
+                            post.likes.remove(at: x ?? -1)
+                            removeLikes()
+                        }
+                }
+                else{
+                    Image(systemName: "heart")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            isLiked = true
+                            post.likes.append(currentUser?.id ?? "")
+                            updateLikes()
+                        }
+                }
+                Text("\(post.likes.count)")
                 Image(systemName: "bubble")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                    .onTapGesture {
+                        showComments = true
+                    }
+                    .sheet(isPresented: $showComments, content: {
+                        CommentsView(post: post)
+                    })
+                    
+                Text("\(post.comments.count)")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
             HStack{
-                Text(username)
+                Text(post.username)
                     .bold()
-                Text(caption)
+                Text(post.caption)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
+            Spacer()
         }
-        .padding()
         .onAppear(){
-            let x:Int = images.firstIndex(of: image)!
-            path = paths[x]
-            retrieveImage()
+            liked()
+            getUser()
         }
     }
-    func retrieveImage(){
+    func liked(){
+        if let currentUser = UserManager.shared.currentUser{
+            if post.likes.contains(currentUser.id){
+                isLiked = true
+            }
+        }
+    }
+    func updateLikes(){
+        let db = Firestore.firestore()
+        db.collection("posts").document(post.id).updateData(["likes":FieldValue.arrayUnion([currentUser?.id ?? ""])])
+    }
+    func removeLikes(){
+        let db = Firestore.firestore()
+        db.collection("posts").document(post.id).updateData(["likes":FieldValue.arrayRemove([currentUser?.id ?? ""])])
+    }
+    func getUser(){
         let db = Firestore.firestore()
         if let currentUser = UserManager.shared.currentUser{
-            username = currentUser.username
-            db.collection("posts").whereField("imageUrl", isEqualTo: path).getDocuments(){(QuerySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                }
-                else {
-                    for document in QuerySnapshot!.documents{
-                        if let post = Posts(id:document.documentID, data: document.data()){
-                            caption = post.content
-                        }
+            db.collection("users").whereField("username", isEqualTo: post.username).getDocuments(){(QuerySnapshot, err) in
+                for document in QuerySnapshot!.documents{
+                    if let u = User (id:document.documentID, data: document.data()){
+                        user = u
                     }
                 }
             }
         }
-        else{
-            print("Not logged in")
-        }
     }
 }
 
-#Preview {
-    PostView(image: UIImage(imageLiteralResourceName: "1"), images:[UIImage(imageLiteralResourceName: "1"),UIImage(imageLiteralResourceName: "2"),UIImage(imageLiteralResourceName: "3")],
-    paths: ["","",""])
-}
+//#Preview {
+//    PostView()
+//}

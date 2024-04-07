@@ -8,27 +8,36 @@
 import SwiftUI
 
 struct ProfileMapView: View {
+    @State var user : User
+    @State private var selfProfile = false
     @State private var progress = 0.7
     @State private var showPhotos = false
     var body: some View {
         VStack{
             VStack{
-                ProfileView()
+                ProfileView(user: user, selfProfile: selfProfile)
                 Divider()
             }                
             .padding()
-            GlobeView()
+            GlobeView(user: user)
             ProgressView(value: progress)
                 .padding()
             Spacer()
-                .frame(height: 30)
         }
         .onAppear(){
-            print(currentUserId)
+            checkUser()
+        }
+        
+    }
+    func checkUser(){
+        if let currentUser = UserManager.shared.currentUser{
+            if user.id == currentUser.id{
+                selfProfile = true
+            }
         }
     }
 }
 
-#Preview {
-    ProfileMapView()
-}
+//#Preview {
+//    ProfileMapView()
+//}
