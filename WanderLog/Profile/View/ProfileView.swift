@@ -115,6 +115,7 @@ struct ProfileView: View {
                                 .frame(maxWidth: .infinity)
                             
                         }
+                        .foregroundStyle(.primary)
                         .buttonStyle(.bordered)
                         .controlSize(.regular)
                             
