@@ -67,12 +67,12 @@ struct HomeView: View {
                         
                     }
                 }
-                LazyVGrid(columns: columngrid, spacing: 5){
-                    ForEach(posts){ post in
-                        PostView(post:post)
-                    }
-                    
+                
+                ForEach(posts){ post in
+                    PostView(post:post)
                 }
+                    
+                
                 
                 
                     
