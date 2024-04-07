@@ -34,15 +34,6 @@ struct Following: View {
                     }
                     .foregroundStyle(.primary)
                     Spacer()
-                    
-                    Button(action: {
-                        // need to implement remove follower functionality here
-                    })
-                    {
-                        Text("Following")
-                    }
-                    .buttonStyle(.bordered)
-                    .foregroundColor(.primary)
                 }
                 .padding(5)
             }
