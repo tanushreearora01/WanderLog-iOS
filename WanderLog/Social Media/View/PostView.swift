@@ -40,6 +40,7 @@ struct PostView: View {
                         .frame( width: 40, height: 40)
                         .clipShape(Circle())
                     Text(post.username)
+                    // location to be added
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom)
