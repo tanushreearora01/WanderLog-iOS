@@ -32,10 +32,10 @@ struct HomeView: View {
                         .onTapGesture {
                             showSearchBar.toggle()
                         }
-                    Image(systemName: "heart")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+//                    Image(systemName: "heart")
+//                        .resizable()
+//                        .frame(width: 30, height: 30)
+//                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
         
             }
             .padding()
