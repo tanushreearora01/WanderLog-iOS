@@ -17,20 +17,19 @@ struct CountryCityPickerView: View {
                     Text(country.name).tag(country as Country?)
                 }
             }
-            .pickerStyle(.menu) // or .wheel, depending on your preference
-            
-            // Ensure that a country is selected before showing the city picker
+            .pickerStyle(.menu) 
+        
             if let cities = viewModel.selectedCountry?.cities {
                 Picker("Select City", selection: $viewModel.selectedCity) {
                     ForEach(cities, id: \.self) { city in
                         Text(city.name).tag(city as City?)
                     }
                 }
-                .pickerStyle(.menu) // or .wheel, depending on your preference
+                .pickerStyle(.menu)
             }
         }
         .onChange(of: viewModel.selectedCountry) { newCountry in
-            // Reset the selected city when changing countries
+            // Reseting the selected city when changing countries
             viewModel.selectedCity = newCountry?.cities.first
         }
     }
