@@ -15,6 +15,7 @@ struct Locations: Identifiable {
     var country: String
     var latitude: Double
     var longitude: Double
+    var visited: Bool
     
     init? (id: String, data: [String: Any]){
         self.id = id
@@ -23,6 +24,7 @@ struct Locations: Identifiable {
         self.country = data["country"] as! String
         self.latitude = data["latitude"] as! Double
         self.longitude = data["longitude"] as! Double
+        self.visited = data["visited"] as! Bool
     }
 }
 

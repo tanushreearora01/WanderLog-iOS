@@ -20,8 +20,7 @@ struct ProfileMapView: View {
             }                
             .padding()
             GlobeView(user: user)
-            ProgressView(value: progress)
-                .padding()
+            
             Spacer()
         }
         .onAppear(){

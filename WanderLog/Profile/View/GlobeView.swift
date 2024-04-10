@@ -18,22 +18,44 @@ struct GlobeView: View {
         distance: 29000000))
     @State var user : User
     //Location array to store markers from the locations collection in the db
-    @State private var locations = [Locations]()
+    @State var locations = [Locations]()
+    @State var progress = 0.0
     var body: some View {
-        ZStack{
+        VStack{
             Map(position: $mapCamPos){
                 ForEach(locations){ location in
-                    Marker(location.city,coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
+                    if location.visited{
+                        Marker(location.city,coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
+                            .tint(.green)
+                    }
+                    else{
+                        Marker(location.city,coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
+                            .tint(.red)
+                    }
                 }
             }
             .mapStyle(.hybrid(elevation: .realistic))
+            
+            ProgressView(value: progress)
+                .padding()
         }
         .onAppear(){
             getLocations()
         }
     }
+    func getProgress(){
+        var visitedCount = 0
+        for location in locations{
+            if location.visited {
+                visitedCount += 1
+            }
+        }
+        if locations.count != 0{
+            progress = Double(visitedCount)/Double(locations.count)
+        }
+    }
     func getLocations(){
-        self.locations = []
+        locations = []
         db.collection("locations").whereField("userID", isEqualTo: user.id).getDocuments(){(querySnapshot,err) in
             if let err = err{ //error not nil
                 print("Error getting documents: \(err)")
@@ -41,11 +63,14 @@ struct GlobeView: View {
             else{ //get locations from db
                 for document in querySnapshot!.documents{
                     if let location = Locations(id:document.documentID, data: document.data()){
-                        self.locations.append(location)
+                        locations.append(location)
                     }
                 }
             }
+            getProgress()
         }
+        
+        
     }
 }
 
