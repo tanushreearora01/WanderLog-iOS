@@ -20,6 +20,18 @@ struct BucketListView: View {
             ForEach(locations){ location in
                 CheckBoxView(location: location)
             }
+            HStack{
+                NavigationLink{
+                    NewBucketItemView()
+                }label:{
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(.green)
+                }
+                Text("Add Bucket List Item")
+                Spacer()
+            }
             Spacer()
         }
         .padding()

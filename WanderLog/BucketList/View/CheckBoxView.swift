@@ -13,6 +13,8 @@ struct CheckBoxView: View {
         HStack{
             if location.visited{
                 Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .frame(width: 30, height: 30)
                     .foregroundStyle(.blue)
                     .onTapGesture {
                         location.visited.toggle()
@@ -21,6 +23,8 @@ struct CheckBoxView: View {
             }
             else{
                 Image(systemName: "checkmark.circle")
+                    .resizable()
+                    .frame(width: 30, height: 30)
                     .onTapGesture {
                         location.visited.toggle()
                         check()
