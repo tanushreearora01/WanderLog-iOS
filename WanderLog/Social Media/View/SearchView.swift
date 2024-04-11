@@ -12,7 +12,6 @@ struct SearchView: View {
     @State var searchTerm = ""
     
     var filteredUsers : [User]{
-        guard !searchTerm.isEmpty else { return users }
         return users.filter{$0.username.localizedCaseInsensitiveContains(searchTerm)}
     }
     var body: some View {
