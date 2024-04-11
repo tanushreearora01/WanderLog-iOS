@@ -93,18 +93,16 @@ struct ProfileView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 if selfProfile{
-                    NavigationStack{
-                        Button{
-                            showPhotos = true
-                        }label:{
-                            Text("Edit Profile")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.gray)
-                        .controlSize(.regular)
-                        
+                    NavigationLink{
+                        EditProfileView()
+                    }label: {
+                        Text("Edit Profile")
+                            .frame(maxWidth: .infinity)
+                            
+                            
                     }
+                    .foregroundStyle(.primary)
+                    .buttonStyle(.bordered)
                 }
                 else{
                     if followingUser{
@@ -146,6 +144,7 @@ struct ProfileView: View {
                 getFollowers()
                 checkUser()
                 getPostCount()
+                
             }
         }
         
@@ -187,6 +186,8 @@ struct ProfileView: View {
         if let currentUser = UserManager.shared.currentUser{
             if user.id == currentUser.id{
                 selfProfile = true
+                user.bio = currentUser.bio
+                user.fullname = currentUser.fullname
             }
             else{
                 selfProfile = false

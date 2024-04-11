@@ -11,46 +11,24 @@ import FirebaseStorage
 import Firebase
 
 struct HomeView: View {
-    @State var paths =  [String]()
-    @State var images =  [UIImage]()
     @State var posts = [ImageData]()
     @State var following = [String]()
-    @State private var showSearchBar = false
-    @State private var searchText = ""
-
-    var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5)]
-    @State private var username =  ""
     var body: some View {
         VStack{
             HStack{
-                    LogoView()
-                    Spacer()
+                LogoView()
+                Spacer()
+                NavigationLink{
+                    SearchView()
+                }label:{
                     Image(systemName: "magnifyingglass")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 25, height: 25)
                         .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                        .onTapGesture {
-                            showSearchBar.toggle()
-                        }
-                    Image(systemName: "heart")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-        
+                }
+                .foregroundStyle(.primary)
             }
             .padding()
-            if showSearchBar{
-                HStack{
-                    TextField("Search Here...", text: $searchText)
-                        .textFieldStyle(.roundedBorder)
-                        .padding()
-                    Button{}label:{
-                        Text("Search")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    
-                }
-            }
             ScrollView{
                 Text("Posts")
                     .font(.title)
@@ -67,15 +45,9 @@ struct HomeView: View {
                         
                     }
                 }
-                
                 ForEach(posts){ post in
                     PostView(post:post)
                 }
-                    
-                
-                
-                
-                    
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -127,21 +99,21 @@ struct HomeView: View {
                         if let post = Posts(id:document.documentID, data: document.data()){
                             db.collection("users").document(post.userID).getDocument { snapshot, err in
                                 if let user = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
-                                    username1 = user.username
-                                }
-                            }
-                            let path = post.imageUrl
-                            let fileRef = firestoreRef.child(path)
-                            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                                if error ==  nil && data != nil{
-                                    if let i = UIImage(data: data!){
-                                        DispatchQueue.main.async{
-                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1, "likes":post.likes, "comments":post.comments ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
-                                           
+                                    let path = post.imageUrl
+                                    let fileRef = firestoreRef.child(path)
+                                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                                        if error ==  nil && data != nil{
+                                            if let i = UIImage(data: data!){
+                                                DispatchQueue.main.async{
+                                                    posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":user.username, "likes":post.likes, "comments":post.comments ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
+                                                   
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }

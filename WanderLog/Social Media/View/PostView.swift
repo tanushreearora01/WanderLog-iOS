@@ -10,14 +10,10 @@ import FirebaseStorage
 import FirebaseFirestore
 
 struct PostView: View {
-    @State var username : String = ""
-    @State var caption : String = ""
     @State var post : ImageData
-    @State var image : UIImage =  UIImage(imageLiteralResourceName: "1")
     @State var isLiked = false
     @State var showComments = false
     @State var currentUser = UserManager.shared.currentUser
-    @State private var path = ""
     private static let itemSize = CGSize(width: 300, height: 300)
     @Environment(\.displayScale) private var displayScale
     private var imageSize: CGSize {
@@ -90,13 +86,14 @@ struct PostView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
-            HStack{
-                Text(post.username)
-                    .bold()
-                Text(post.caption)
+            if post.caption != ""{
+                HStack{
+                    Text(post.username)
+                        .bold()
+                    Text(post.caption)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
             Spacer()
         }
         .onAppear(){
@@ -121,7 +118,7 @@ struct PostView: View {
     }
     func getUser(){
         let db = Firestore.firestore()
-        if let currentUser = UserManager.shared.currentUser{
+        if UserManager.shared.currentUser != nil{
             db.collection("users").whereField("username", isEqualTo: post.username).getDocuments(){(QuerySnapshot, err) in
                 for document in QuerySnapshot!.documents{
                     if let u = User (id:document.documentID, data: document.data()){
