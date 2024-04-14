@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // for country data
 struct Country: Identifiable, Hashable {
@@ -42,9 +43,37 @@ class PickerViewModel: ObservableObject {
     
     @Published var selectedCountry: Country?
     @Published var selectedCity: City?
+    @Published var coordinates: CLLocationCoordinate2D?
+    
+    private var geocoder = CLGeocoder()
     
     init() {
         selectedCountry = countries.first
         selectedCity = countries.first?.cities.first
     }
+    
+    func geocodeSelectedCity() {
+            guard let country = selectedCountry?.name,
+                  let city = selectedCity?.name else {
+                print("City or country not selected")
+                return
+            }
+
+            let addressString = "\(city), \(country)"
+            geocoder.geocodeAddressString(addressString) { [weak self] (placemarks, error) in
+                guard let strongSelf = self else { return }
+
+                if let error = error {
+                    print("Geocoding error: \(error.localizedDescription)")
+                    return
+                }
+
+                if let placemark = placemarks?.first, let location = placemark.location {
+                    strongSelf.coordinates = location.coordinate
+                    print("Geocoded coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+                } else {
+                    print("No coordinates found for this location")
+                }
+            }
+        }
 }

@@ -305,8 +305,8 @@
 				29B0766A2B868026007E9BB0 /* Preview Content */,
 				6EB110D82B8D0959005ED8D5 /* View */,
 				6E6A0AE62BC9A50C00066F50 /* ResultViewController.swift */,
-				6E6A0AE82BC9B21D00066F50 /* GooglePlacesManager.swift */,
 				6E6A0AEA2BC9E1EC00066F50 /* ViewController.swift */,
+				6E6A0AE82BC9B21D00066F50 /* GooglePlacesManager.swift */,
 			);
 			path = WanderLog;
 			sourceTree = "<group>";
@@ -684,7 +684,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WanderLog/Preview Content\"";
-				DEVELOPMENT_TEAM = VSBD8Q83DP;
+				DEVELOPMENT_TEAM = K7DCNZ28TM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;
@@ -719,7 +719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WanderLog/Preview Content\"";
-				DEVELOPMENT_TEAM = VSBD8Q83DP;
+				DEVELOPMENT_TEAM = K7DCNZ28TM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;

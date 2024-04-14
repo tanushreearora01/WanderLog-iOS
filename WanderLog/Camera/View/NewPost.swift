@@ -16,6 +16,8 @@ struct NewPost: View {
     @State private var country = ""
     @State var image: Image
     @State private var photoUploaded = false
+    @StateObject var viewModel = PickerViewModel()
+    
     var body: some View {
         VStack{
             image
@@ -26,8 +28,8 @@ struct NewPost: View {
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
             
+            CountryCityPickerView(viewModel: <#T##PickerViewModel#>)
             
-
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
             Button( action:{
@@ -45,7 +47,8 @@ struct NewPost: View {
         
     }
     func uploadPhoto(){
-        if let currentUser = UserManager.shared.currentUser {
+        if let currentUser = UserManager.shared.currentUser,
+           let coorinates = viewModel.coordinates  {
             print("Showing profile for \(currentUser.username)")
             let FirestoreRef = Storage.storage().reference()
             //convert image to data
@@ -68,7 +71,7 @@ struct NewPost: View {
                         "userID" : currentUser.id,
                         "imageUrl" : path,
                         "content" : caption,
-                        "location" : [0,0],
+                        "location" : [coorinates.latitude, coordinates.longitude],
                         "likes" : [],
                         "comments" : [],
                     ])

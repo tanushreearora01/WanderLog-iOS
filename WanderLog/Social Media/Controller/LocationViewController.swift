@@ -36,7 +36,7 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
         if let location = locations.first {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            
+        
             print("Latitude: \(latitude), Longitude: \(longitude)")
         }
     }
@@ -55,7 +55,7 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
             print("Location access was restricted or denied")
         case .authorizedAlways, .authorizedWhenInUse :
             if CLLocationManager.locationServicesEnabled() {
-                locationManager.stopUpdatingLocation()
+                locationManager.startUpdatingLocation()
             }
             
         @unknown default:

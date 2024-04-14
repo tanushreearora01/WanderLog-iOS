@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct CountryCityPickerView: View {
     @StateObject var viewModel = PickerViewModel()
@@ -27,6 +28,7 @@ struct CountryCityPickerView: View {
                 }
                 .pickerStyle(.menu)
             }
+    
         }
         .onChange(of: viewModel.selectedCountry) { 
             newCountry in

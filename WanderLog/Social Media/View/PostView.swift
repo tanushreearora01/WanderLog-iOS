@@ -28,6 +28,7 @@ struct PostView: View {
                                                  "password" : 0,
                                                  "bio" : "",
                                                  "email" : ""])!
+    
     var body: some View {
         VStack{
             NavigationLink{
