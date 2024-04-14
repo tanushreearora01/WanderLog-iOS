@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Created this view to test notifications and check the scheduling triggers
 struct NotificationView: View {
     var body: some View {
         VStack(spacing: 40) {
