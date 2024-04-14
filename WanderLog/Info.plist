@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>WanderLog would like to send notifications.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>WanderLog uses the photo gallery to add your pictures.</string>
 	<key>NSCameraUsageDescription</key>

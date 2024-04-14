@@ -93,6 +93,7 @@ struct LoginView: View {
                             loginSuccess = true
                             //update currentUser
                             UserManager.shared.updateUser(id: user.id, username: user.username, email: user.email,  bio: user.bio, fullname: user.fullname)
+                            NotificationManager.instance.scheduleNotification()
                         }
                         else{
                             print(password.hash)

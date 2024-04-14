@@ -27,6 +27,8 @@
 		29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B872BB0E5EF00C4A28D /* UserManager.swift */; };
 		295D63C92BC6FC0D00352A0C /* NewBucketItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63C82BC6FC0D00352A0C /* NewBucketItemView.swift */; };
 		295D63CD2BC85CB200352A0C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63CC2BC85CB200352A0C /* SearchView.swift */; };
+		295D63CF2BCB146000352A0C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63CE2BCB146000352A0C /* Notifications.swift */; };
+		295D63D62BCB186B00352A0C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63D52BCB186B00352A0C /* NotificationView.swift */; };
 		295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */; };
 		2987C7612BB1E3D300139BDB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C7602BB1E3D300139BDB /* Location.swift */; };
 		2987C76B2BB31E9000139BDB /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C76A2BB31E9000139BDB /* Following.swift */; };
@@ -81,6 +83,8 @@
 		29524B872BB0E5EF00C4A28D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		295D63C82BC6FC0D00352A0C /* NewBucketItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBucketItemView.swift; sourceTree = "<group>"; };
 		295D63CC2BC85CB200352A0C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		295D63CE2BCB146000352A0C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		295D63D52BCB186B00352A0C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridView.swift; sourceTree = "<group>"; };
 		2987C7602BB1E3D300139BDB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2987C76A2BB31E9000139BDB /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
@@ -195,6 +199,31 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		295D63D02BCB17E100352A0C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				295D63D22BCB181100352A0C /* View */,
+				295D63D12BCB17F000352A0C /* Controller */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		295D63D12BCB17F000352A0C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				295D63CE2BCB146000352A0C /* Notifications.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		295D63D22BCB181100352A0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				295D63D52BCB186B00352A0C /* NotificationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2987C75B2BB1E16400139BDB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +306,7 @@
 				29B076642B868025007E9BB0 /* WanderLogApp.swift */,
 				29B0766A2B868026007E9BB0 /* Preview Content */,
 				6EB110D82B8D0959005ED8D5 /* View */,
+				295D63D02BCB17E100352A0C /* Notification */,
 			);
 			path = WanderLog;
 			sourceTree = "<group>";
@@ -469,8 +499,10 @@
 				6EA72E612BB22672006DC548 /* Connections.swift in Sources */,
 				2987C76B2BB31E9000139BDB /* Following.swift in Sources */,
 				29D0FE522BACF3C20084575B /* PhotoAssetCollection.swift in Sources */,
+				295D63CF2BCB146000352A0C /* Notifications.swift in Sources */,
 				29D0FE542BACF3F50084575B /* CachedImageManager.swift in Sources */,
 				29D0FE4E2BACF3560084575B /* PhotoCollection.swift in Sources */,
+				295D63D62BCB186B00352A0C /* NotificationView.swift in Sources */,
 				29524B6B2BB0A88C00C4A28D /* FullLogoView.swift in Sources */,
 				29E7ADC32BBCE01A0083AB12 /* CommentsView.swift in Sources */,
 				29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */,
