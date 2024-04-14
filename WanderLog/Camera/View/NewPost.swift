@@ -28,7 +28,29 @@ struct NewPost: View {
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
             
-            CountryCityPickerView(viewModel: <#T##PickerViewModel#>)
+            Form {
+                Picker("Select Country", selection: $viewModel.selectedCountry) {
+                    ForEach(viewModel.countries, id: \.self) { country in
+                        Text(country.name).tag(country as Country?)
+                    }
+                }
+                .pickerStyle(.menu)
+            
+                if let cities = viewModel.selectedCountry?.cities {
+                    Picker("Select City", selection: $viewModel.selectedCity) {
+                        ForEach(cities, id: \.self) { city in
+                            Text(city.name).tag(city as City?)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+        
+            }
+            .onChange(of: viewModel.selectedCountry) {
+                newCountry in
+                // Reseting the selected city when changing countries
+                viewModel.selectedCity = newCountry?.cities.first
+            }
             
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
@@ -47,8 +69,8 @@ struct NewPost: View {
         
     }
     func uploadPhoto(){
-        if let currentUser = UserManager.shared.currentUser,
-           let coorinates = viewModel.coordinates  {
+        if let currentUser = UserManager.shared.currentUser
+        {   let coordinates = viewModel.coordinates
             print("Showing profile for \(currentUser.username)")
             let FirestoreRef = Storage.storage().reference()
             //convert image to data
@@ -61,7 +83,7 @@ struct NewPost: View {
             }
             let path = "posts/\(currentUser.id)/\(UUID().uuidString).jpg"
             //specify file path and name
-            let FileRef = FirestoreRef.child (path)
+            let FileRef = FirestoreRef.child(path)
             
             //upload photo
             _ = FileRef.putData(imageData!, metadata: nil) { metadata, err in
@@ -71,7 +93,7 @@ struct NewPost: View {
                         "userID" : currentUser.id,
                         "imageUrl" : path,
                         "content" : caption,
-                        "location" : [coorinates.latitude, coordinates.longitude],
+                        "location" : [viewModel.selectedCity, viewModel.selectedCountry],
                         "likes" : [],
                         "comments" : [],
                     ])

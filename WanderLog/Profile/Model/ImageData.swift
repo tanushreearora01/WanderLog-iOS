@@ -16,6 +16,7 @@ class ImageData:Identifiable{
     var username: String
     var likes : [String]
     var comments : [[String:String]]
+    var location : [String]
     
     init? (id: String, d: [String: Any]){
         self.id = id
@@ -24,6 +25,7 @@ class ImageData:Identifiable{
         self.username = d["username"] as! String
         self.likes = d["likes"] as! [String]
         self.comments = d["comments"] as! [[String:String]]
+        self.location = d["location"] as! [String]
     }
 }
 
