@@ -5,6 +5,7 @@
 //  Created by Tarasha Bansal on 4/13/24.
 //
 
+// Inspired from https://github.com/SwiftfulThinking/SwiftUI-Continued-Learning/blob/main/SwiftfulThinkingContinuedLearning/LocalNotificationBootcamp.swift modified as per usage in our app
 import SwiftUI
 import UserNotifications
 import CoreLocation
@@ -48,11 +49,6 @@ class NotificationManager {
             trigger: trigger)
         UNUserNotificationCenter.current().add(request)
 
-    }
-    
-    func cancelNotification() {
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
     
 }

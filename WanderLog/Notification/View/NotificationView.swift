@@ -14,9 +14,6 @@ struct NotificationView: View {
             Button("Schedule notification") {
                 NotificationManager.instance.scheduleNotification()
             }
-            Button("Cancel notification") {
-                NotificationManager.instance.cancelNotification()
-            }
         }
         .onAppear {
             UIApplication.shared.applicationIconBadgeNumber = 0
