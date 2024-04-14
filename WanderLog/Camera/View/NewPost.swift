@@ -69,6 +69,8 @@ struct NewPost: View {
         
     }
     func uploadPhoto(){
+        city = viewModel.selectedCity?.name ?? ""
+        country = viewModel.selectedCountry?.name ?? ""
         if let currentUser = UserManager.shared.currentUser
         {   let coordinates = viewModel.coordinates
             print("Showing profile for \(currentUser.username)")
@@ -93,7 +95,7 @@ struct NewPost: View {
                         "userID" : currentUser.id,
                         "imageUrl" : path,
                         "content" : caption,
-                        "location" : [viewModel.selectedCity, viewModel.selectedCountry],
+                        "location" : [city,country],
                         "likes" : [],
                         "comments" : [],
                     ])

@@ -136,7 +136,7 @@ struct HomeView: View {
                                 if error ==  nil && data != nil{
                                     if let i = UIImage(data: data!){
                                         DispatchQueue.main.async{
-                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1, "likes":post.likes, "comments":post.comments ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
+                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1, "likes":post.likes, "comments":post.comments, "location":post.location ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
                                            
                                         }
                                     }
