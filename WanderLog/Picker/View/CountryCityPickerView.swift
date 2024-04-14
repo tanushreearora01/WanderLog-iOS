@@ -28,7 +28,8 @@ struct CountryCityPickerView: View {
                 .pickerStyle(.menu)
             }
         }
-        .onChange(of: viewModel.selectedCountry) { newCountry in
+        .onChange(of: viewModel.selectedCountry) { 
+            newCountry in
             // Reseting the selected city when changing countries
             viewModel.selectedCity = newCountry?.cities.first
         }

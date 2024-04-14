@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseStorage
 import FirebaseFirestore
+import CoreLocation
 
 struct NewPost: View {
     @State private var caption = ""
@@ -25,7 +26,7 @@ struct NewPost: View {
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
             
-            CountryCityPickerView()
+            
 
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
