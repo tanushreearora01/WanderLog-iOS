@@ -27,19 +27,85 @@ class PickerViewModel: ObservableObject {
         Country(name: "USA", cities: [
             City(name: "New York"),
             City(name: "Los Angeles"),
-            City(name: "Chicago")
+            City(name: "Chicago"),
+            City(name: "Houston"),
+            City(name: "Phoenix"),
+            City(name: "Philadelphia")
         ]),
         Country(name: "Canada", cities: [
             City(name: "Toronto"),
             City(name: "Vancouver"),
-            City(name: "Montreal")
+            City(name: "Montreal"),
+            City(name: "Calgary"),
+            City(name: "Ottawa"),
+            City(name: "Edmonton")
         ]),
         Country(name: "United Kingdom", cities: [
             City(name: "London"),
             City(name: "Manchester"),
-            City(name: "Birmingham")
+            City(name: "Birmingham"),
+            City(name: "Glasgow"),
+            City(name: "Liverpool"),
+            City(name: "Edinburgh")
+        ]),
+        Country(name: "Australia", cities: [
+            City(name: "Sydney"),
+            City(name: "Melbourne"),
+            City(name: "Brisbane"),
+            City(name: "Perth"),
+            City(name: "Adelaide"),
+            City(name: "Canberra")
+        ]),
+        Country(name: "Germany", cities: [
+            City(name: "Berlin"),
+            City(name: "Hamburg"),
+            City(name: "Munich"),
+            City(name: "Cologne"),
+            City(name: "Frankfurt"),
+            City(name: "Stuttgart")
+        ]),
+        Country(name: "Japan", cities: [
+            City(name: "Tokyo"),
+            City(name: "Osaka"),
+            City(name: "Kyoto"),
+            City(name: "Hokkaido"),
+            City(name: "Nagoya"),
+            City(name: "Fukuoka")
+        ]),
+        Country(name: "India", cities: [
+            City(name: "Mumbai"),
+            City(name: "Delhi"),
+            City(name: "Bangalore"),
+            City(name: "Hyderabad"),
+            City(name: "Chennai"),
+            City(name: "Kolkata")
+        ]),
+        Country(name: "Brazil", cities: [
+            City(name: "São Paulo"),
+            City(name: "Rio de Janeiro"),
+            City(name: "Belo Horizonte"),
+            City(name: "Brasília"),
+            City(name: "Salvador"),
+            City(name: "Fortaleza")
+        ]),
+        Country(name: "Italy", cities: [
+            City(name: "Rome"),
+            City(name: "Milan"),
+            City(name: "Naples"),
+            City(name: "Turin"),
+            City(name: "Palermo"),
+            City(name: "Genoa")
+        ]),
+        Country(name: "China", cities: [
+            City(name: "Beijing"),
+            City(name: "Shanghai"),
+            City(name: "Guangzhou"),
+            City(name: "Shenzhen"),
+            City(name: "Chengdu"),
+            City(name: "Xi'an")
         ])
     ]
+
     
     @Published var selectedCountry: Country?
     @Published var selectedCity: City?

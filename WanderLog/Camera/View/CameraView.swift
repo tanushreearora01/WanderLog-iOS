@@ -12,12 +12,18 @@ struct CameraView: View {
     @State private var closed = false
     @State private var photoTaken = false
     private static let barHeightFactor = 0.15
+    @StateObject var viewModel = LocationViewController()
     
     var body: some View {
        
         ZStack{
             NavigationStack {
                 GeometryReader { geometry in
+                    VStack{
+                        if viewModel.isLocationChanged {
+                                                    Text("Location Updated: \(viewModel.userLocation?.coordinate.latitude ?? 0), \(viewModel.userLocation?.coordinate.longitude ?? 0)")
+                                                }
+                    }
                     ViewfinderView(image:  $model.viewfinderImage )
                         .overlay(alignment: .topTrailing){
                             closeButtonView()
@@ -47,7 +53,11 @@ struct CameraView: View {
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
                 .statusBar(hidden: true)
+                .onAppear {
+                            viewModel.isLocationChanged = false
+                               }
             }
+            Text("Latitude: \(viewModel.userLocation?.coordinate.latitude ?? 0), Longitude: \(viewModel.userLocation?.coordinate.longitude ?? 0)")
         }
     }
     
@@ -120,6 +130,7 @@ struct CameraView: View {
         .padding(.trailing,30)
     }
     
+    if et checkAuth = await viewModel.checkLocationAuthorization()
 }
 
 #Preview {

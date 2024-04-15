@@ -42,7 +42,7 @@ struct PostView: View {
                         .clipShape(Circle())
                     VStack (alignment: .leading){
                         Text(post.username)
-                        Text("\(post.location[0]), \(post.location[1])")
+                        Text("\(post.location[0]), \(post.location[0])")
                     }
                     
                 }
