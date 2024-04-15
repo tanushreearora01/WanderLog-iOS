@@ -40,8 +40,11 @@ struct PostView: View {
                         .resizable()
                         .frame( width: 40, height: 40)
                         .clipShape(Circle())
-                    Text(post.username)
-                    Text("\(post.location[0]), \(post.location[1])")
+                    VStack (alignment: .leading){
+                        Text(post.username)
+                        Text("\(post.location[0]), \(post.location[1])")
+                    }
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom)
