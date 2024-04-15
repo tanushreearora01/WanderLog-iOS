@@ -24,6 +24,7 @@ struct PostView: View {
                                                  "password" : 0,
                                                  "bio" : "",
                                                  "email" : ""])!
+    
     var body: some View {
         VStack{
             NavigationLink{
@@ -35,7 +36,15 @@ struct PostView: View {
                         .resizable()
                         .frame( width: 40, height: 40)
                         .clipShape(Circle())
-                    Text(post.username)
+                    VStack (alignment: .leading){
+                        Text(post.username)
+                        if post.location[0] != ""{
+                            Text("\(post.location[0]), \(post.location[1])")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom)
@@ -130,6 +139,6 @@ struct PostView: View {
     }
 }
 
-//#Preview {
-//    PostView()
-//}
+#Preview {
+    PostView(post: ImageData(id:"jrJ7U2nGZfzELMMhEySN", d: ["username" : "tarasha", "location": ["LA","USA"], "caption":"..", "image":UIImage(imageLiteralResourceName: "1"),"likes":[], "comments":[]])!)
+}

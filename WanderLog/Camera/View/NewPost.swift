@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseStorage
 import FirebaseFirestore
+import CoreLocation
 
 struct NewPost: View {
     @State private var caption = ""
@@ -15,6 +16,9 @@ struct NewPost: View {
     @State private var country = ""
     @State var image: Image
     @State private var photoUploaded = false
+    @StateObject var viewModel = PickerViewModel()
+    @StateObject var locationViewModel = LocationViewController()
+    
     var body: some View {
         VStack{
             image
@@ -25,12 +29,30 @@ struct NewPost: View {
                 .textFieldStyle(.roundedBorder)
                 .lineLimit(5, reservesSpace: true)
             
-            TextField("City", text: $city, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
+            Form {
+                Picker("Select Country", selection: $viewModel.selectedCountry) {
+                    ForEach(viewModel.countries, id: \.self) { country in
+                        Text(country.name).tag(country as Country?)
+                    }
+                }
+                .pickerStyle(.menu)
             
-            TextField("Country", text: $country, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-
+                if let cities = viewModel.selectedCountry?.cities {
+                    Picker("Select City", selection: $viewModel.selectedCity) {
+                        ForEach(cities, id: \.self) { city in
+                            Text(city.name).tag(city as City?)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+        
+            }
+            .onChange(of: viewModel.selectedCountry) {
+                newCountry in
+                // Reseting the selected city when changing countries
+                viewModel.selectedCity = newCountry?.cities.first
+            }
+            
             Spacer()
             NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $photoUploaded){}
             Button( action:{
@@ -45,10 +67,17 @@ struct NewPost: View {
             
         }
         .padding()
+        .task{
+            locationViewModel.viewDidLoad()
+            await locationViewModel.checkLocationAuthorization()
+        }
         
     }
     func uploadPhoto(){
-        if let currentUser = UserManager.shared.currentUser {
+        city = viewModel.selectedCity?.name ?? ""
+        country = viewModel.selectedCountry?.name ?? ""
+        if let currentUser = UserManager.shared.currentUser
+        {   let coordinates = viewModel.coordinates
             print("Showing profile for \(currentUser.username)")
             let FirestoreRef = Storage.storage().reference()
             //convert image to data
@@ -61,7 +90,7 @@ struct NewPost: View {
             }
             let path = "posts/\(currentUser.id)/\(UUID().uuidString).jpg"
             //specify file path and name
-            let FileRef = FirestoreRef.child (path)
+            let FileRef = FirestoreRef.child(path)
             
             //upload photo
             _ = FileRef.putData(imageData!, metadata: nil) { metadata, err in
@@ -71,7 +100,7 @@ struct NewPost: View {
                         "userID" : currentUser.id,
                         "imageUrl" : path,
                         "content" : caption,
-                        "location" : [0,0],
+                        "location" : [city,country],
                         "likes" : [],
                         "comments" : [],
                     ])

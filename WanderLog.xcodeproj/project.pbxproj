@@ -30,9 +30,13 @@
 		295D63CF2BCB146000352A0C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63CE2BCB146000352A0C /* Notifications.swift */; };
 		295D63D62BCB186B00352A0C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63D52BCB186B00352A0C /* NotificationView.swift */; };
 		295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */; };
+		29614FBB2BCD97FE00321513 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB52BCD97FE00321513 /* CommentsView.swift */; };
+		29614FBC2BCD97FE00321513 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB62BCD97FE00321513 /* Followers.swift */; };
+		29614FBD2BCD97FE00321513 /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB72BCD97FE00321513 /* Following.swift */; };
+		29614FBE2BCD97FE00321513 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB82BCD97FE00321513 /* HomeView.swift */; };
+		29614FBF2BCD97FE00321513 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB92BCD97FE00321513 /* PostView.swift */; };
 		2987C7612BB1E3D300139BDB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C7602BB1E3D300139BDB /* Location.swift */; };
 		2987C76B2BB31E9000139BDB /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C76A2BB31E9000139BDB /* Following.swift */; };
-		298E316F2BB3C1420042EA52 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 298E316E2BB3C1420042EA52 /* FirebaseStorage */; };
 		298E31732BB4827A0042EA52 /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E31722BB4827A0042EA52 /* NewPost.swift */; };
 		298E31752BB499830042EA52 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E31742BB499830042EA52 /* Post.swift */; };
 		298E317B2BB49E460042EA52 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E317A2BB49E460042EA52 /* PostView.swift */; };
@@ -57,13 +61,17 @@
 		29E7ADBD2BBB39370083AB12 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7ADBC2BBB39370083AB12 /* ImageData.swift */; };
 		29E7ADBF2BBCCC3A0083AB12 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7ADBE2BBCCC3A0083AB12 /* ImageHandler.swift */; };
 		29E7ADC32BBCE01A0083AB12 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7ADC22BBCE01A0083AB12 /* CommentsView.swift */; };
-		29FD00042BC3638E00B427ED /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD00032BC3638E00B427ED /* EditProfileView.swift */; };
-		29FD00062BC36E2D00B427ED /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD00052BC36E2D00B427ED /* ChangePasswordView.swift */; };
-		29FD00082BC45F4300B427ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FD00072BC45F4300B427ED /* Assets.xcassets */; };
+		6E5E61062BC4607000D6E4BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5E61052BC4607000D6E4BB /* Assets.xcassets */; };
+		6E913F7A2BC6005B00CDAF87 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6E913F792BC6005B00CDAF87 /* FirebaseStorage */; };
 		6EA72E492BB1A2C0006DC548 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6EA72E482BB1A2C0006DC548 /* FirebaseFirestoreSwift */; };
 		6EA72E5B2BB225D9006DC548 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E592BB225D9006DC548 /* Followers.swift */; };
 		6EA72E612BB22672006DC548 /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E602BB22671006DC548 /* Connections.swift */; };
 		6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB110D62B8D0950005ED8D5 /* LoginView.swift */; };
+		6EBFA5DF2BCC9B8B00B59E79 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */; };
+		6EBFA5E12BCCD61600B59E79 /* InitialBucketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */; };
+		794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */; };
+		794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +94,11 @@
 		295D63CE2BCB146000352A0C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		295D63D52BCB186B00352A0C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridView.swift; sourceTree = "<group>"; };
+		29614FB52BCD97FE00321513 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		29614FB62BCD97FE00321513 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
+		29614FB72BCD97FE00321513 /* Following.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
+		29614FB82BCD97FE00321513 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		29614FB92BCD97FE00321513 /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2987C7602BB1E3D300139BDB /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2987C76A2BB31E9000139BDB /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
 		298E31722BB4827A0042EA52 /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
@@ -113,12 +126,16 @@
 		29E7ADBC2BBB39370083AB12 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		29E7ADBE2BBCCC3A0083AB12 /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		29E7ADC22BBCE01A0083AB12 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
-		29FD00032BC3638E00B427ED /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		29FD00052BC36E2D00B427ED /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
-		29FD00072BC45F4300B427ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E4575212BC75A2E004CDFCE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6E4575232BC75A39004CDFCE /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
+		6E5E61052BC4607000D6E4BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EA72E592BB225D9006DC548 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
 		6EA72E602BB22671006DC548 /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = WanderLog/LocationViewController.swift; sourceTree = SOURCE_ROOT; };
+		6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialBucketList.swift; path = ../InitialBucketList.swift; sourceTree = "<group>"; };
+		794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCityPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +148,7 @@
 				29524B6F2BB0B27600C4A28D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				6EA72E492BB1A2C0006DC548 /* FirebaseFirestoreSwift in Frameworks */,
 				29524B752BB0B27600C4A28D /* FirebaseAppCheck in Frameworks */,
-				298E316F2BB3C1420042EA52 /* FirebaseStorage in Frameworks */,
+				6E913F7A2BC6005B00CDAF87 /* FirebaseStorage in Frameworks */,
 				29524B732BB0B27600C4A28D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				29524B772BB0B32000C4A28D /* FirebaseFirestore in Frameworks */,
 			);
@@ -186,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				6EB110D62B8D0950005ED8D5 /* LoginView.swift */,
+				6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */,
 				29524B662BB0A78600C4A28D /* SignUpView.swift */,
 			);
 			path = View;
@@ -199,27 +217,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		295D63D02BCB17E100352A0C /* Notification */ = {
+		29614FBA2BCD97FE00321513 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				295D63D22BCB181100352A0C /* View */,
-				295D63D12BCB17F000352A0C /* Controller */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
-		295D63D12BCB17F000352A0C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				295D63CE2BCB146000352A0C /* Notifications.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		295D63D22BCB181100352A0C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				295D63D52BCB186B00352A0C /* NotificationView.swift */,
+				29614FB52BCD97FE00321513 /* CommentsView.swift */,
+				29614FB62BCD97FE00321513 /* Followers.swift */,
+				29614FB72BCD97FE00321513 /* Following.swift */,
+				29614FB82BCD97FE00321513 /* HomeView.swift */,
+				29614FB92BCD97FE00321513 /* PostView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,18 +300,20 @@
 		29B076632B868025007E9BB0 /* WanderLog */ = {
 			isa = PBXGroup;
 			children = (
+				794DB04A2BC1B9FF00CBDAFF /* Picker */,
 				6EA72E4F2BB21BC6006DC548 /* Social Media */,
 				2987C7682BB24DB700139BDB /* BucketList */,
+				6EA72E5A2BB225D9006DC548 /* View */,
 				2987C75B2BB1E16400139BDB /* Profile */,
 				29524B632BB0A70400C4A28D /* Login */,
 				29524B612BB0A5A700C4A28D /* Camera */,
 				29099C3E2BAE4060001A53F1 /* WanderLog.entitlements */,
+				6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */,
 				29099C3C2BAE3E99001A53F1 /* Info.plist */,
-				29FD00072BC45F4300B427ED /* Assets.xcassets */,
+				6E5E61052BC4607000D6E4BB /* Assets.xcassets */,
 				29B076642B868025007E9BB0 /* WanderLogApp.swift */,
 				29B0766A2B868026007E9BB0 /* Preview Content */,
 				6EB110D82B8D0959005ED8D5 /* View */,
-				295D63D02BCB17E100352A0C /* Notification */,
 			);
 			path = WanderLog;
 			sourceTree = "<group>";
@@ -344,8 +351,8 @@
 		6EA72E4F2BB21BC6006DC548 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
+				29614FBA2BCD97FE00321513 /* View */,
 				6EA72E5F2BB22612006DC548 /* Model */,
-				6EA72E5A2BB225D9006DC548 /* View */,
 			);
 			path = "Social Media";
 			sourceTree = "<group>";
@@ -360,7 +367,8 @@
 				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
 				295D63CC2BC85CB200352A0C /* SearchView.swift */,
 			);
-			path = View;
+			name = View;
+			path = "Social Media/View";
 			sourceTree = "<group>";
 		};
 		6EA72E5F2BB22612006DC548 /* Model */ = {
@@ -386,8 +394,35 @@
 		6EB110E42B8D0DA9005ED8D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E4575232BC75A39004CDFCE /* CoreLocationUI.framework */,
+				6E4575212BC75A2E004CDFCE /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		794DB04A2BC1B9FF00CBDAFF /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				794DB0502BC1BC5F00CBDAFF /* View */,
+				794DB04F2BC1BC4F00CBDAFF /* Model */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		794DB04F2BC1BC4F00CBDAFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		794DB0502BC1BC5F00CBDAFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,7 +449,7 @@
 				29524B742BB0B27600C4A28D /* FirebaseAppCheck */,
 				29524B762BB0B32000C4A28D /* FirebaseFirestore */,
 				6EA72E482BB1A2C0006DC548 /* FirebaseFirestoreSwift */,
-				298E316E2BB3C1420042EA52 /* FirebaseStorage */,
+				6E913F792BC6005B00CDAF87 /* FirebaseStorage */,
 			);
 			productName = WanderLog;
 			productReference = 29B076612B868025007E9BB0 /* WanderLog.app */;
@@ -446,6 +481,7 @@
 			mainGroup = 29B076582B868025007E9BB0;
 			packageReferences = (
 				6EB110D92B8D0D79005ED8D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6E6A0AE12BC9A2CF00066F50 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 			);
 			productRefGroup = 29B076622B868025007E9BB0 /* Products */;
 			projectDirPath = "";
@@ -463,7 +499,7 @@
 			files = (
 				29D0FE242BAB7B9E0084575B /* Launch Screen.storyboard in Resources */,
 				29E7ADBB2BBB33FA0083AB12 /* GoogleService-Info.plist in Resources */,
-				29FD00082BC45F4300B427ED /* Assets.xcassets in Resources */,
+				6E5E61062BC4607000D6E4BB /* Assets.xcassets in Resources */,
 				29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,27 +519,32 @@
 				29524B692BB0A7B600C4A28D /* LogoView.swift in Sources */,
 				291B2AE22B93D4100093DD5E /* BucketListView.swift in Sources */,
 				29D0FE502BACF3870084575B /* PhotoLibrary.swift in Sources */,
+				29614FBB2BCD97FE00321513 /* CommentsView.swift in Sources */,
 				291B2ADE2B93D3570093DD5E /* HomeView.swift in Sources */,
 				29D0FE642BACF77C0084575B /* PhotoItemView.swift in Sources */,
 				291B2AD42B911E830093DD5E /* ProfileView.swift in Sources */,
+				29614FBF2BCD97FE00321513 /* PostView.swift in Sources */,
 				29D0FE662BACF7970084575B /* PhotoView.swift in Sources */,
 				29FD00042BC3638E00B427ED /* EditProfileView.swift in Sources */,
 				29524B7A2BB0B36600C4A28D /* User.swift in Sources */,
-				295D63CD2BC85CB200352A0C /* SearchView.swift in Sources */,
+				29614FBC2BCD97FE00321513 /* Followers.swift in Sources */,
 				291B2ADC2B93D32C0093DD5E /* NavBarUI.swift in Sources */,
 				29524B672BB0A78600C4A28D /* SignUpView.swift in Sources */,
 				298E31752BB499830042EA52 /* Post.swift in Sources */,
 				295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */,
 				6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */,
 				298E31732BB4827A0042EA52 /* NewPost.swift in Sources */,
+				29614FBD2BCD97FE00321513 /* Following.swift in Sources */,
+				794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */,
 				6EA72E612BB22672006DC548 /* Connections.swift in Sources */,
 				2987C76B2BB31E9000139BDB /* Following.swift in Sources */,
 				29D0FE522BACF3C20084575B /* PhotoAssetCollection.swift in Sources */,
-				295D63CF2BCB146000352A0C /* Notifications.swift in Sources */,
+				6EBFA5DF2BCC9B8B00B59E79 /* LocationViewController.swift in Sources */,
 				29D0FE542BACF3F50084575B /* CachedImageManager.swift in Sources */,
 				29D0FE4E2BACF3560084575B /* PhotoCollection.swift in Sources */,
-				295D63D62BCB186B00352A0C /* NotificationView.swift in Sources */,
+				29614FBE2BCD97FE00321513 /* HomeView.swift in Sources */,
 				29524B6B2BB0A88C00C4A28D /* FullLogoView.swift in Sources */,
+				6EBFA5E12BCCD61600B59E79 /* InitialBucketList.swift in Sources */,
 				29E7ADC32BBCE01A0083AB12 /* CommentsView.swift in Sources */,
 				29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */,
 				29D0FE6C2BACF7DD0084575B /* ViewfinderView.swift in Sources */,
@@ -514,6 +555,7 @@
 				291B2AE42B93D47C0093DD5E /* CameraView.swift in Sources */,
 				29E7ADBF2BBCCC3A0083AB12 /* ImageHandler.swift in Sources */,
 				29E5203A2B9902D8005D28CF /* CheckBoxView.swift in Sources */,
+				794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */,
 				29D0FE4C2BACF2860084575B /* Camera.swift in Sources */,
 				29D0FE5A2BACF46B0084575B /* PhotoCollectionView.swift in Sources */,
 				29B076672B868025007E9BB0 /* ContentView.swift in Sources */,
@@ -654,11 +696,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WanderLog/Preview Content\"";
-				DEVELOPMENT_TEAM = VSBD8Q83DP;
+				DEVELOPMENT_TEAM = K7DCNZ28TM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "My app uses photo library to store and load";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WanderLog uses the camera to click your pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user description";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WanderLog uses the photo gallery to add your pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -687,11 +731,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WanderLog/Preview Content\"";
-				DEVELOPMENT_TEAM = VSBD8Q83DP;
+				DEVELOPMENT_TEAM = K7DCNZ28TM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderLog/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "My app uses photo library to store and load";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WanderLog uses the camera to click your pictures.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user description";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WanderLog uses the photo gallery to add your pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -735,6 +781,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6E6A0AE12BC9A2CF00066F50 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
 		6EB110D92B8D0D79005ED8D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -776,7 +830,7 @@
 			package = 6EB110D92B8D0D79005ED8D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		298E316E2BB3C1420042EA52 /* FirebaseStorage */ = {
+		6E913F792BC6005B00CDAF87 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6EB110D92B8D0D79005ED8D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;

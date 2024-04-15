@@ -4,8 +4,10 @@
 <dict>
 	<key>API_KEY</key>
 	<string>AIzaSyAhE4XTtI6uXYsWAfXShbillklmU-BCZ7s</string>
-	<key>GCM_SENDER_ID</key>
-	<string>174630504860</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs you location to provide best feature based on location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs you location to provide best feature based on location</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
@@ -15,15 +17,15 @@
 	<key>STORAGE_BUCKET</key>
 	<string>wanderlog-s24-c3f37.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:174630504860:ios:da2011703f61734fc72059</string>
 </dict>

@@ -14,6 +14,7 @@ class Posts:Identifiable{
     var userID: String
     var likes : [String] = []
     var comments : [[String:String]] = []
+    var location : [String] = []
     
     init? (id: String, data: [String: Any]){
         self.id = id
@@ -22,6 +23,7 @@ class Posts:Identifiable{
         self.userID = data["userID"] as! String
         self.likes = data["likes"] as! [String]
         self.comments = data["comments"] as! [[String:String]]
+        self.location = data["location"] as! [String]
     }
 }
 

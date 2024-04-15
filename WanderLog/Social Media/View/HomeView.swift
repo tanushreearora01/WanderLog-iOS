@@ -99,16 +99,17 @@ struct HomeView: View {
                         if let post = Posts(id:document.documentID, data: document.data()){
                             db.collection("users").document(post.userID).getDocument { snapshot, err in
                                 if let user = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
-                                    let path = post.imageUrl
-                                    let fileRef = firestoreRef.child(path)
-                                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                                        if error ==  nil && data != nil{
-                                            if let i = UIImage(data: data!){
-                                                DispatchQueue.main.async{
-                                                    posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":user.username, "likes":post.likes, "comments":post.comments ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
-                                                   
-                                                }
-                                            }
+                                    username1 = user.username
+                                }
+                            }
+                            let path = post.imageUrl
+                            let fileRef = firestoreRef.child(path)
+                            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                                if error ==  nil && data != nil{
+                                    if let i = UIImage(data: data!){
+                                        DispatchQueue.main.async{
+                                            posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username":username1, "likes":post.likes, "comments":post.comments, "location":post.location ]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(),"username":""]))!)
+                                           
                                         }
                                     }
                                 }

@@ -17,6 +17,5 @@ class Connections: Identifiable{
         self.id = id
         self.userID1 = data["userID1"] as! String
         self.userID2 = data["userID2"] as! String
-
     }
 }

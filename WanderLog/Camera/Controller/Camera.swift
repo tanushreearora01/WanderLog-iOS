@@ -357,7 +357,7 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate {
 }
 
 fileprivate extension UIScreen {
-
+    
     var orientation: UIDeviceOrientation {
         let point = coordinateSpace.convert(CGPoint.zero, to: fixedCoordinateSpace)
         if point == CGPoint.zero {
@@ -373,6 +373,6 @@ fileprivate extension UIScreen {
         }
     }
 }
-
-fileprivate let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "Camera")
+    fileprivate let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "Camera")
+    
 
