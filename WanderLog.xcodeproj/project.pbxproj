@@ -114,7 +114,7 @@
 		6EA72E602BB22671006DC548 /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = WanderLog/LocationViewController.swift; sourceTree = SOURCE_ROOT; };
-		6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialBucketList.swift; sourceTree = "<group>"; };
+		6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialBucketList.swift; path = ../InitialBucketList.swift; sourceTree = "<group>"; };
 		794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCityPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +168,6 @@
 				29524B862BB0E5E300C4A28D /* Controller */,
 				29524B7B2BB0B3EA00C4A28D /* View */,
 				29524B782BB0B35600C4A28D /* Model */,
-				6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -185,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				6EB110D62B8D0950005ED8D5 /* LoginView.swift */,
+				6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */,
 				29524B662BB0A78600C4A28D /* SignUpView.swift */,
 			);
 			path = View;

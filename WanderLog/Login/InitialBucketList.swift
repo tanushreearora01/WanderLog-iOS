@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BucketListView: View {
+struct InitialBucketList: View {
     @State var city = ""
     @State var country = ""
     var body: some View {
@@ -53,7 +53,7 @@ struct BucketListView: View {
     
 }
 
-struct BucketListView_Previews: PreviewProvider {
+struct InitialBucketList_Previews: PreviewProvider {
     static var previews: some View {
         BucketListView()
     }
