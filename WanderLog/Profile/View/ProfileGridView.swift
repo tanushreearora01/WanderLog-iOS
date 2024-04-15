@@ -11,10 +11,10 @@ import FirebaseFirestore
 
 struct ProfileGridView: View {
     @State var user : User
+    @State var selfProfile = false
     @State private var showMap = false
     @State private var navigate = false
     @State var posts = [ImageData]()
-    @State var images = [UIImage]()
     @State var paths = [String]()
     var columngrid:[GridItem] = [GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5),GridItem(.flexible(),spacing:5)]
     private static let itemSize = CGSize(width: 120, height: 120)
@@ -24,22 +24,6 @@ struct ProfileGridView: View {
     }
     var body: some View {
         NavigationStack{
-            VStack{
-                HStack{
-                    Button{
-                        showMap = true
-                    }label:{
-                        
-                        HStack{
-                            Image(systemName: "chevron.backward")
-                            Text("Back")
-                            Spacer()
-                        }
-                        .foregroundStyle(.primary)
-                    }
-                }
-            }
-            .padding()
             ScrollView{
                 if (posts.count == 0){
                     VStack{
@@ -70,19 +54,23 @@ struct ProfileGridView: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $showMap) {
-                         NavBarUI(tabViewSelection: 4)
-                     }
+        .navigationTitle("Posts")
         .onAppear(){
+            checkUser()
             retrieveImages()
         }
         
         
     }
+    func checkUser(){
+        if let currentUser = UserManager.shared.currentUser{
+            if user.id == currentUser.id{
+                selfProfile = true
+            }
+        }
+    }
     func retrieveImages(){
         paths = []
-        images = []
         posts = []
         let db = Firestore.firestore()
         let firestoreRef = Storage.storage().reference()
@@ -100,7 +88,6 @@ struct ProfileGridView: View {
                                 if let i = UIImage(data: data!){
                                     DispatchQueue.main.async{
                                         posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": user.username, "likes":post.likes, "comments":post.comments, "location":post.location]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
-                                        images.append(i)
                                        
                                     }
                                 }

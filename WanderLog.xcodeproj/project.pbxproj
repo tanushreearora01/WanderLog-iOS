@@ -25,6 +25,10 @@
 		29524B772BB0B32000C4A28D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 29524B762BB0B32000C4A28D /* FirebaseFirestore */; };
 		29524B7A2BB0B36600C4A28D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B792BB0B36600C4A28D /* User.swift */; };
 		29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29524B872BB0E5EF00C4A28D /* UserManager.swift */; };
+		295D63C92BC6FC0D00352A0C /* NewBucketItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63C82BC6FC0D00352A0C /* NewBucketItemView.swift */; };
+		295D63CD2BC85CB200352A0C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63CC2BC85CB200352A0C /* SearchView.swift */; };
+		295D63CF2BCB146000352A0C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63CE2BCB146000352A0C /* Notifications.swift */; };
+		295D63D62BCB186B00352A0C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D63D52BCB186B00352A0C /* NotificationView.swift */; };
 		295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */; };
 		29614FBB2BCD97FE00321513 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB52BCD97FE00321513 /* CommentsView.swift */; };
 		29614FBC2BCD97FE00321513 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29614FB62BCD97FE00321513 /* Followers.swift */; };
@@ -67,6 +71,7 @@
 		6EBFA5E12BCCD61600B59E79 /* InitialBucketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */; };
 		794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */; };
 		794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +89,10 @@
 		29524B6A2BB0A88C00C4A28D /* FullLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullLogoView.swift; sourceTree = "<group>"; };
 		29524B792BB0B36600C4A28D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		29524B872BB0E5EF00C4A28D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		295D63C82BC6FC0D00352A0C /* NewBucketItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBucketItemView.swift; sourceTree = "<group>"; };
+		295D63CC2BC85CB200352A0C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		295D63CE2BCB146000352A0C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		295D63D52BCB186B00352A0C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridView.swift; sourceTree = "<group>"; };
 		29614FB52BCD97FE00321513 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		29614FB62BCD97FE00321513 /* Followers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
@@ -236,6 +245,8 @@
 				295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */,
 				291B2AD92B91501C0093DD5E /* ProfileMapView.swift */,
 				291B2AD52B9143090093DD5E /* GlobeView.swift */,
+				29FD00052BC36E2D00B427ED /* ChangePasswordView.swift */,
+				29FD00032BC3638E00B427ED /* EditProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 			children = (
 				291B2AE12B93D4100093DD5E /* BucketListView.swift */,
 				29E520392B9902D8005D28CF /* CheckBoxView.swift */,
+				295D63C82BC6FC0D00352A0C /* NewBucketItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +365,7 @@
 				298E317A2BB49E460042EA52 /* PostView.swift */,
 				29E7ADC22BBCE01A0083AB12 /* CommentsView.swift */,
 				291B2ADD2B93D3570093DD5E /* HomeView.swift */,
+				295D63CC2BC85CB200352A0C /* SearchView.swift */,
 			);
 			name = View;
 			path = "Social Media/View";
@@ -500,7 +513,9 @@
 			files = (
 				6EA72E5B2BB225D9006DC548 /* Followers.swift in Sources */,
 				29D0FE682BACF7AF0084575B /* ThumbnailView.swift in Sources */,
+				295D63C92BC6FC0D00352A0C /* NewBucketItemView.swift in Sources */,
 				29E7ADBD2BBB39370083AB12 /* ImageData.swift in Sources */,
+				29FD00062BC36E2D00B427ED /* ChangePasswordView.swift in Sources */,
 				29524B692BB0A7B600C4A28D /* LogoView.swift in Sources */,
 				291B2AE22B93D4100093DD5E /* BucketListView.swift in Sources */,
 				29D0FE502BACF3870084575B /* PhotoLibrary.swift in Sources */,
@@ -510,6 +525,7 @@
 				291B2AD42B911E830093DD5E /* ProfileView.swift in Sources */,
 				29614FBF2BCD97FE00321513 /* PostView.swift in Sources */,
 				29D0FE662BACF7970084575B /* PhotoView.swift in Sources */,
+				29FD00042BC3638E00B427ED /* EditProfileView.swift in Sources */,
 				29524B7A2BB0B36600C4A28D /* User.swift in Sources */,
 				29614FBC2BCD97FE00321513 /* Followers.swift in Sources */,
 				291B2ADC2B93D32C0093DD5E /* NavBarUI.swift in Sources */,
