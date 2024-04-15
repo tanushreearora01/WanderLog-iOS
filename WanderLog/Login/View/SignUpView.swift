@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct SignUpView: View {
     let db = Firestore.firestore()
+    @State var id = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
@@ -52,11 +53,11 @@ struct SignUpView: View {
                         .foregroundStyle(.red)
                 }
                 
-                NavigationLink(destination: LoginView(), isActive: $signUpSuccess){}
+                NavigationLink(destination: InitialBucketList(id : id), isActive: $signUpSuccess){}
                 Button( action:{
                     createUser()
                 } ,label:{
-                    Text("Sign Up")
+                    Text("Continue")
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 })
                 .buttonStyle(.borderedProminent)
@@ -115,6 +116,7 @@ struct SignUpView: View {
                     }
                     else{
                         print("Document added with ID : \(ref!.documentID)")
+                        id = ref!.documentID
                         signUpSuccess = true
                     }
                 }

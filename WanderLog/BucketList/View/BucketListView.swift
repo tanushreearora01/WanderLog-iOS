@@ -28,8 +28,10 @@ struct BucketListView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundStyle(.green)
+                    Text("Add Bucket List Item")
+                        .foregroundStyle(.primary)
                 }
-                Text("Add Bucket List Item")
+                .foregroundStyle(.primary)
                 Spacer()
             }
             Spacer()

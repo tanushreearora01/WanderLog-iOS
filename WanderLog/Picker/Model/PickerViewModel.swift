@@ -24,6 +24,7 @@ struct City: Identifiable, Hashable {
 class PickerViewModel: ObservableObject {
     // sample data 
     let countries: [Country] = [
+        Country(name: "Select Country", cities: []),
         Country(name: "USA", cities: [
             City(name: "New York"),
             City(name: "Los Angeles"),
@@ -116,6 +117,7 @@ class PickerViewModel: ObservableObject {
     init() {
         selectedCountry = countries.first
         selectedCity = countries.first?.cities.first
+
     }
     
     func geocodeSelectedCity() {
@@ -123,11 +125,12 @@ class PickerViewModel: ObservableObject {
                   let city = selectedCity?.name else {
                 print("City or country not selected")
                 return
+                
             }
 
             let addressString = "\(city), \(country)"
             geocoder.geocodeAddressString(addressString) { [weak self] (placemarks, error) in
-                guard let strongSelf = self else { return }
+//                guard let strongSelf = self else { return }
 
                 if let error = error {
                     print("Geocoding error: \(error.localizedDescription)")
@@ -135,8 +138,9 @@ class PickerViewModel: ObservableObject {
                 }
 
                 if let placemark = placemarks?.first, let location = placemark.location {
-                    strongSelf.coordinates = location.coordinate
-                    print("Geocoded coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+//                    self!.coordinates.wrappedValue = location.coordinate
+                    print(type(of: location.coordinate))
+//                    print("Geocoded coordinates: \(Double(location.coordinate.latitude)), \(Double(location.coordinate.longitude))")
                 } else {
                     print("No coordinates found for this location")
                 }
