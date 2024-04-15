@@ -15,6 +15,7 @@ struct InitialBucketList: View {
     @StateObject var viewModel = PickerViewModel()
     @State var city = ""
     @State var country = ""
+    @State var loginSuccess = false
     @State var coordinates = CLLocationCoordinate2D()
     var body: some View {
         VStack {
@@ -35,6 +36,7 @@ struct InitialBucketList: View {
                     .pickerStyle(.menu)
                 }
                 HStack{
+                    NavigationLink(destination: LoginView(), isActive: $loginSuccess){}
                     Button("Sign Up") {
                         geocodeSelectedCity()
                     }
@@ -42,6 +44,7 @@ struct InitialBucketList: View {
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    
                 }
             }
             .onChange(of: viewModel.selectedCountry) {
@@ -70,6 +73,8 @@ struct InitialBucketList: View {
                     print("Document added with ID : \(ref!.documentID)")
                 }
             }
+        loginSuccess = true
+        
     }
     func geocodeSelectedCity() {
         let geocoder = CLGeocoder()
