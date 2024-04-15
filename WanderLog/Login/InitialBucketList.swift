@@ -25,15 +25,15 @@ struct InitialBucketList: View {
                 Spacer()
                 Text("Create a Bucket List to begin")
                     .font(.headline)
-                    
+                
                 TextField("City", text: $city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-                    TextField("Country", text: $country)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                    
-                Button() {
+                
+                TextField("Country", text: $country)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Button(action: addToBucketList) {
                     HStack {
                         Image(systemName: "plus")
                         Text("Add another Item")
@@ -43,19 +43,21 @@ struct InitialBucketList: View {
                 Button("Sign Up") {
                     // Handle sign up action
                 }
-//                .buttonStyle(.borderedProminent)
+                //                .buttonStyle(.borderedProminent)
                 .padding()
                 Spacer()
             }
         }
     }
-    
-    
-}
-
-struct InitialBucketList_Previews: PreviewProvider {
-    static var previews: some View {
-        BucketListView()
+        func addToBucketList() {
+            
+        }
     }
-}
+    
+    struct InitialBucketList_Previews: PreviewProvider {
+        static var previews: some View {
+            BucketListView()
+        }
+    }
+    
 

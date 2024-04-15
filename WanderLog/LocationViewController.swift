@@ -28,9 +28,9 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
         //asking for user's permisssion for location sercvices
         locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.startUpdatingLocation()
+//        }
     }
     
     // getting the cordinates of the location
@@ -65,7 +65,7 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
     //        }
     //    }
     
-    private func checkLocationAuthorization() async -> Bool {
+     func checkLocationAuthorization() async -> Bool {
         switch locationManager.authorizationStatus {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()

@@ -17,6 +17,7 @@ struct NewPost: View {
     @State var image: Image
     @State private var photoUploaded = false
     @StateObject var viewModel = PickerViewModel()
+    @StateObject var locationViewModel = LocationViewController()
     
     var body: some View {
         VStack{
@@ -66,6 +67,10 @@ struct NewPost: View {
             
         }
         .padding()
+        .task{
+            locationViewModel.viewDidLoad()
+            await locationViewModel.checkLocationAuthorization()
+        }
         
     }
     func uploadPhoto(){

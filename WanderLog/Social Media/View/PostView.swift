@@ -42,7 +42,11 @@ struct PostView: View {
                         .clipShape(Circle())
                     VStack (alignment: .leading){
                         Text(post.username)
-                        Text("\(post.location[0]), \(post.location[0])")
+                        if post.location[0] != ""{
+                            Text("\(post.location[0]), \(post.location[1])")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                        }
                     }
                     
                 }
@@ -138,6 +142,6 @@ struct PostView: View {
     }
 }
 
-//#Preview {
-//    PostView()
-//}
+#Preview {
+    PostView(post: ImageData(id:"jrJ7U2nGZfzELMMhEySN", d: ["username" : "tarasha", "location": ["LA","USA"], "caption":"..", "image":UIImage(imageLiteralResourceName: "1"),"likes":[], "comments":[]])!)
+}
