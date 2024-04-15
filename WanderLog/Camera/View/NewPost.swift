@@ -69,15 +69,21 @@ struct NewPost: View {
         .padding()
         .task{
             locationViewModel.viewDidLoad()
-            await locationViewModel.checkLocationAuthorization()
+            let _ = await locationViewModel.checkLocationAuthorization()
         }
         
     }
     func uploadPhoto(){
-        city = viewModel.selectedCity?.name ?? ""
-        country = viewModel.selectedCountry?.name ?? ""
+        if  ((viewModel.selectedCountry?.name) != nil), ((viewModel.selectedCity?.name) != nil) {
+            print("city,country added")
+        }
+            else {
+                print(locationViewModel.userLocation?.coordinate.latitude ?? 0.0,locationViewModel.userLocation?.coordinate.longitude ?? 0.0)
+                reverseGeocodeCoordinates()
+            
+        }
         if let currentUser = UserManager.shared.currentUser
-        {   let coordinates = viewModel.coordinates
+        {
             print("Showing profile for \(currentUser.username)")
             let FirestoreRef = Storage.storage().reference()
             //convert image to data
@@ -110,6 +116,29 @@ struct NewPost: View {
             print("No user is currently logged in.")
         }
     }
+    func reverseGeocodeCoordinates() {
+        var geocoder = CLGeocoder()
+        let location = locationViewModel.userLocation
+        geocoder.reverseGeocodeLocation(location!) { placemarks, error in
+
+                if let error = error {
+                    print("Reverse geocoding error: \(error.localizedDescription)")
+                    return
+                }
+
+                if let placemark = placemarks?.first {
+                    // create a readable address from the lattitudes and longitudes
+                    let address = [ placemark.locality, placemark.country]
+                        .compactMap { $0 }
+                        .joined(separator: ", ")
+                    city = placemark.locality ?? ""
+                    country = placemark.country ?? ""
+                    print("Reverse geocoded address: \(address)")
+                } else {
+                    print("No address found for these coordinates")
+                }
+            }
+        }
 }
 
 #Preview {

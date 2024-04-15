@@ -17,8 +17,15 @@ struct BucketListView: View {
                 .font(.largeTitle)
                 .bold()
             Divider()
-            ForEach(locations){ location in
-                CheckBoxView(location: location)
+            List {
+                ForEach(locations, id: \.self.id) { location in
+                    CheckBoxView(location: location)
+                }.onDelete { indexSet in
+                    print(type(of: indexSet))
+                    delete_bl_item(id:locations[indexSet.count].id)
+                    
+                    // TODO: delete items
+                }
             }
             HStack{
                 NavigationLink{
@@ -28,16 +35,22 @@ struct BucketListView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundStyle(.green)
+                    Text("Add Bucket List Item")
+                        .foregroundStyle(.primary)
                 }
-                Text("Add Bucket List Item")
+                .foregroundStyle(.primary)
                 Spacer()
             }
-            Spacer()
+            Spacer()    
         }
         .padding()
         .onAppear(){
             getLocations()
         }
+    }
+    func delete_bl_item(id : String){
+        let db = Firestore.firestore()
+        db.collection("locations").document(id).delete()
     }
     func getLocations(){
         let db = Firestore.firestore()

@@ -37,7 +37,7 @@ struct ProfileGridView: View {
                 }
                 else{
                     LazyVGrid(columns: columngrid, spacing: 5){
-                        ForEach(posts){ post in
+                        ForEach(posts, id:\.self.id){ post in
                             NavigationLink{
                                 PostView(post:post)
                             }
