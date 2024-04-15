@@ -45,7 +45,7 @@ struct HomeView: View {
                         
                     }
                 }
-                ForEach(posts){ post in
+                ForEach(posts, id:\.self.id){ post in
                     PostView(post:post)
                 }
             }
