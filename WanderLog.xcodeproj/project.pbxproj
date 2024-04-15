@@ -59,6 +59,7 @@
 		6EA72E612BB22672006DC548 /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA72E602BB22671006DC548 /* Connections.swift */; };
 		6EB110D72B8D0950005ED8D5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB110D62B8D0950005ED8D5 /* LoginView.swift */; };
 		6EBFA5DF2BCC9B8B00B59E79 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */; };
+		6EBFA5E12BCCD61600B59E79 /* InitialBucketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */; };
 		794DB04C2BC1BA3200CBDAFF /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */; };
 		794DB04E2BC1BAFC00CBDAFF /* CountryCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		6EA72E602BB22671006DC548 /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
 		6EB110D62B8D0950005ED8D5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6EBFA5DE2BCC9B8B00B59E79 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = WanderLog/LocationViewController.swift; sourceTree = SOURCE_ROOT; };
+		6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialBucketList.swift; sourceTree = "<group>"; };
 		794DB04B2BC1BA3200CBDAFF /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		794DB04D2BC1BAFC00CBDAFF /* CountryCityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCityPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 				29524B862BB0E5E300C4A28D /* Controller */,
 				29524B7B2BB0B3EA00C4A28D /* View */,
 				29524B782BB0B35600C4A28D /* Model */,
+				6EBFA5E02BCCD61600B59E79 /* InitialBucketList.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				29D0FE542BACF3F50084575B /* CachedImageManager.swift in Sources */,
 				29D0FE4E2BACF3560084575B /* PhotoCollection.swift in Sources */,
 				29524B6B2BB0A88C00C4A28D /* FullLogoView.swift in Sources */,
+				6EBFA5E12BCCD61600B59E79 /* InitialBucketList.swift in Sources */,
 				29E7ADC32BBCE01A0083AB12 /* CommentsView.swift in Sources */,
 				29524B882BB0E5EF00C4A28D /* UserManager.swift in Sources */,
 				29D0FE6C2BACF7DD0084575B /* ViewfinderView.swift in Sources */,
