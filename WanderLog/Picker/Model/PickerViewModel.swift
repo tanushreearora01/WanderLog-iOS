@@ -146,4 +146,31 @@ class PickerViewModel: ObservableObject {
                 }
             }
         }
+    
+    func reverseGeocodeCoordinates() {
+            guard let coordinates = coordinates else {
+                print("No coordinates available to reverse geocode")
+                return
+            }
+
+            let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+            geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+                guard let strongSelf = self else { return }
+
+                if let error = error {
+                    print("Reverse geocoding error: \(error.localizedDescription)")
+                    return
+                }
+
+                if let placemark = placemarks?.first {
+                    // create a readable address from the lattitudes and longitudes
+                    let address = [placemark.thoroughfare, placemark.subThoroughfare, placemark.locality, placemark.administrativeArea, placemark.postalCode, placemark.country]
+                        .compactMap { $0 }
+                        .joined(separator: ", ")
+                    print("Reverse geocoded address: \(address)")
+                } else {
+                    print("No address found for these coordinates")
+                }
+            }
+        }
 }

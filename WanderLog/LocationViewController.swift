@@ -23,14 +23,14 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 1000
+        locationManager.distanceFilter = 10
         
         //asking for user's permisssion for location sercvices
         locationManager.requestWhenInUseAuthorization()
         
-//        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.startUpdatingLocation()
-//        }
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
     }
     
     // getting the cordinates of the location
@@ -38,8 +38,8 @@ class LocationViewController: UIViewController, ObservableObject, CLLocationMana
         if let location = locations.first {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            
-            print("Latitude: \(latitude), Longitude: \(longitude)")
+            self.userLocation = location
+//            print("Latitude: \(latitude), Longitude: \(longitude)")
         }
     }
     
