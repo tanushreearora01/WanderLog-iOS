@@ -9,6 +9,7 @@
 import SwiftUI
 import UserNotifications
 import CoreLocation
+import FirebaseFirestore
 
 class NotificationManager {
     
@@ -30,19 +31,7 @@ class NotificationManager {
         dateComponents.minute = 0
         // everyday at 4:00 PM Local time.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        // location
-//        let coordinates = CLLocationCoordinate2D(
-//            latitude: 40.00,
-//            longitude: 50.00)
-//        let region = CLCircularRegion(
-//            center: coordinates,
-//            radius: 100,
-//            identifier: UUID().uuidString)
-//        region.notifyOnEntry = true
-//        region.notifyOnExit = true
-//        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-        
+    
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
             content: content,
@@ -50,5 +39,33 @@ class NotificationManager {
         UNUserNotificationCenter.current().add(request)
 
     }
+    func scheduleNotificationLocation(latitude: Double, longitude: Double) {
+        print("scheduled!")
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Happy Travelling!"
+        content.subtitle = "It's time to capture your moments..."
+        content.sound = .default
+        content.badge = 1 // NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
+                
+        let coordinates = CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude)
+        let region = CLCircularRegion(
+            center: coordinates,
+            radius: 100,
+            identifier: UUID().uuidString)
+        region.notifyOnEntry = true
+        region.notifyOnExit = false
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+        
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        print("schedule for (\(latitude),\(longitude)")
+    }
+    
     
 }

@@ -77,6 +77,26 @@ struct LoginView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
+    func getLocations(){
+//        self.locations = []
+        if let currentUser = UserManager.shared.currentUser{
+            db.collection("locations")
+                .whereField("userID", isEqualTo: currentUser.id)
+                .whereField("visited", isEqualTo: false)
+                .getDocuments(){(querySnapshot,err) in
+            if let err = err{ //error not nil
+                print("Error getting documents: \(err)")
+            }
+            else{ //get locations from db
+                for document in querySnapshot!.documents{
+                    if let location = Locations(id:document.documentID, data: document.data()){
+                        NotificationManager.instance.scheduleNotificationLocation(latitude: location.latitude, longitude: location.latitude)
+                        }
+                    }
+                }
+            }
+        }
+    }
     func getUser(){
         self.users = []
         db.collection("users").whereField("username", isEqualTo: username)
@@ -94,6 +114,7 @@ struct LoginView: View {
                             //update currentUser
                             UserManager.shared.updateUser(id: user.id, username: user.username, email: user.email,  bio: user.bio, fullname: user.fullname)
                             NotificationManager.instance.scheduleNotification()
+                            getLocations()
                         }
                         else{
                             print(password.hash)
