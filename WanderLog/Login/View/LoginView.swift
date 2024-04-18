@@ -90,7 +90,7 @@ struct LoginView: View {
             else{ //get locations from db
                 for document in querySnapshot!.documents{
                     if let location = Locations(id:document.documentID, data: document.data()){
-                        NotificationManager.instance.scheduleNotificationLocation(latitude: location.latitude, longitude: location.latitude)
+                        NotificationManager.instance.scheduleNotificationLocation(latitude: location.latitude, longitude: location.longitude)
                         }
                     }
                 }

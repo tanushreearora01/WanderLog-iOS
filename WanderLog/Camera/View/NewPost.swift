@@ -67,6 +67,10 @@ struct NewPost: View {
             
         }
         .padding()
+        .onTapGesture {
+            // Dismiss the keyboard when tapping outside of text fields
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .task{
             locationViewModel.viewDidLoad()
             let _ = await locationViewModel.checkLocationAuthorization()
@@ -139,7 +143,11 @@ struct NewPost: View {
                 }
             }
         }
+    
+    
 }
+
+
 
 #Preview {
     NewPost(image: Image("1"))

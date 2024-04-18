@@ -24,13 +24,7 @@ class NotificationManager {
         content.sound = .default
         content.badge = 1 // NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
                 
-
-        // calendar
-        var dateComponents = DateComponents()
-        dateComponents.hour = 16
-        dateComponents.minute = 0
-        // everyday at 4:00 PM Local time.
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
     
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
@@ -56,7 +50,7 @@ class NotificationManager {
             radius: 100,
             identifier: UUID().uuidString)
         region.notifyOnEntry = true
-        region.notifyOnExit = false
+        region.notifyOnExit = true
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
         
         let request = UNNotificationRequest(
