@@ -39,7 +39,7 @@ struct PostView: View {
                     VStack (alignment: .leading){
                         Text(post.username)
                         if post.location[0] != ""{
-                            Text("\(post.location[0]), \(post.location[1])")
+                            Text("\(post.location[0]) \(post.location[1])")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
                         }
