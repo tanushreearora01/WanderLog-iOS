@@ -25,7 +25,7 @@ struct NavBarUI: View {
                     }.tag(0)
                 BucketListView()
                     .tabItem {
-                        Image(systemName: "basket")
+                        Image(systemName: "list.bullet")
                     }.tag(1)
                 CameraView()
                     .tabItem {
@@ -37,8 +37,6 @@ struct NavBarUI: View {
                         Image(systemName: "person")
                     }.tag(3)
             }
-            
-            
         }
         .navigationBarHidden(true)
         .onAppear(){

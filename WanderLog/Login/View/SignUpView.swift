@@ -28,21 +28,31 @@ struct SignUpView: View {
                 TextField("Email ID *", text: $email)
                     .padding(10)
                     .autocapitalization(.none)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth:1))
                 
                 TextField("Full Name *", text: $fullname)
                     .padding(10)
                     .disableAutocorrection(true)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth:1))
                 
                 TextField("Username *", text: $username)
                     .padding(10)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth:1))
                 
                 SecureField("Password *", text: $password)
                     .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth:1))
                 
                 SecureField("Confirm Password *", text: $confirmPassword)
                     .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth:1))
                     
                 if emptyFields{
                     Text("Please enter all the required fields!")

@@ -29,10 +29,13 @@ struct LoginView: View {
                         TextField("Username", text: $username)
                             .padding(10)
                             .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth:1))
                             
                         SecureField("Password", text: $password)
                             .padding(10)
-
+                            .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth:1))
                     }.padding(20)
                     if incorrectPassword{
                         Text("Incorrect Password! Please Try again!")
