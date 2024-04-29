@@ -40,6 +40,7 @@
 		29B076652B868025007E9BB0 /* WanderLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076642B868025007E9BB0 /* WanderLogApp.swift */; };
 		29B076672B868025007E9BB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B076662B868025007E9BB0 /* ContentView.swift */; };
 		29B0766C2B868026007E9BB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B0766B2B868026007E9BB0 /* Preview Assets.xcassets */; };
+		29C59F7D2BE0432400D1E3D7 /* ProfilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C59F7C2BE0432400D1E3D7 /* ProfilePic.swift */; };
 		29D0FE242BAB7B9E0084575B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29D0FE232BAB7B9D0084575B /* Launch Screen.storyboard */; };
 		29D0FE4A2BACF1C20084575B /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D0FE492BACF1C20084575B /* DataModel.swift */; };
 		29D0FE4C2BACF2860084575B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D0FE4B2BACF2860084575B /* Camera.swift */; };
@@ -107,6 +108,7 @@
 		29B076642B868025007E9BB0 /* WanderLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderLogApp.swift; sourceTree = "<group>"; };
 		29B076662B868025007E9BB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29B0766B2B868026007E9BB0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29C59F7C2BE0432400D1E3D7 /* ProfilePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePic.swift; sourceTree = "<group>"; };
 		29D0FE232BAB7B9D0084575B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		29D0FE492BACF1C20084575B /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		29D0FE4B2BACF2860084575B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				295D6FB92BAF625C00C135E3 /* ProfileGridView.swift */,
 				291B2AD92B91501C0093DD5E /* ProfileMapView.swift */,
 				291B2AD52B9143090093DD5E /* GlobeView.swift */,
+				29C59F7C2BE0432400D1E3D7 /* ProfilePic.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				29614FBC2BCD97FE00321513 /* Followers.swift in Sources */,
 				291B2ADC2B93D32C0093DD5E /* NavBarUI.swift in Sources */,
 				29524B672BB0A78600C4A28D /* SignUpView.swift in Sources */,
+				29C59F7D2BE0432400D1E3D7 /* ProfilePic.swift in Sources */,
 				298E31752BB499830042EA52 /* Post.swift in Sources */,
 				295D6FBA2BAF625C00C135E3 /* ProfileGridView.swift in Sources */,
 				29D986302BCD9CD200F16324 /* ChangePasswordView.swift in Sources */,

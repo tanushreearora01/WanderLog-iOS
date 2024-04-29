@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseFirestore
 struct EditProfileView: View {
+    @StateObject private var model = DataModel()
     @Environment(\.presentationMode) var presentationMode
     @State var currentUser = UserManager.shared.currentUser
     @State var name = ""
@@ -27,7 +28,7 @@ struct EditProfileView: View {
                 }
                 .padding(15)
                 NavigationLink{
-                    
+                    PhotoCollectionView(photoCollection: model.photoCollection, source:"profile")
                 }label:{
                     Text("Edit Profile Picture")
                         .font(.title2)
@@ -101,6 +102,9 @@ struct EditProfileView: View {
         }
         .navigationTitle("Edit Profile")
         .padding()
+        .task {
+            await model.loadPhotos()
+        }
     }
     func getUserData(){
         if let currentUser = UserManager.shared.currentUser{

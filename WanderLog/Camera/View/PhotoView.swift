@@ -10,6 +10,7 @@ import Photos
 import FirebaseStorage
 
 struct PhotoView: View {
+    @State var source : String = "camera"
     var asset: PhotoAsset
     var cache: CachedImageManager?
     @State private var photoUploaded = false
@@ -50,8 +51,15 @@ struct PhotoView: View {
     
     private func buttonsView() -> some View {
         HStack(spacing: 60) {
-            NavigationLink(destination: NewPost(image: image ?? Image("1"))){
-                Text("Next")
+            if source == "camera"{
+                NavigationLink(destination: NewPost(image: image ?? Image("1"))){
+                    Text("Next")
+                }
+            }
+            else{
+                NavigationLink(destination: ProfilePic(image: image ?? Image("1"))){
+                    Text("Next")
+                }
             }
         }
     }

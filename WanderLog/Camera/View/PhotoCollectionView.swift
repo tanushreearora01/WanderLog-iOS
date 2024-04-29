@@ -10,7 +10,7 @@ import os.log
 
 struct PhotoCollectionView: View {
     @ObservedObject var photoCollection : PhotoCollection
-    
+    @State var source : String = "camera"
     @Environment(\.displayScale) private var displayScale
         
     private static let itemSpacing = 1.0
@@ -28,7 +28,7 @@ struct PhotoCollectionView: View {
             LazyVGrid(columns: columns) {
                 ForEach(photoCollection.photoAssets) { asset in
                     NavigationLink {
-                        PhotoView(asset: asset, cache: photoCollection.cache)
+                        PhotoView(source: source, asset: asset, cache: photoCollection.cache)
                     } label: {
                         photoItemView(asset: asset)
                     }
