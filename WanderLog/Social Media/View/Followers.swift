@@ -23,10 +23,6 @@ struct Followers: View {
             Divider()
             ForEach(followerUsernames) { user in
                 HStack {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                        .padding(.trailing, 10)
                     NavigationLink{
                         ProfileMapView(user: user)
                     }label:{

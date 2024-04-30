@@ -87,6 +87,7 @@ struct HomeView: View {
     func retrieveImages(){
         posts = []
         var username1 = ""
+        var profilePicPath = ""
         let db = Firestore.firestore()
         let firestoreRef = Storage.storage().reference()
         if UserManager.shared.currentUser != nil{

@@ -42,7 +42,7 @@ struct NewBucketItemView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     Button("Cancel") {
-                        cancel()
+                        presentationMode.wrappedValue.dismiss()
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .background(.secondary)
@@ -59,9 +59,9 @@ struct NewBucketItemView: View {
         .navigationBarTitle("New Bucket List Item", displayMode: .inline)
         Spacer()
     }
-    func cancel(){
-        presentationMode.wrappedValue.dismiss()
-    }
+//    func cancel(){
+//
+//    }
     func addToBucketList(){
         let db = Firestore.firestore()
         print("Geocoded coordinates: \(Double(coordinates.latitude)), \(Double(coordinates.longitude))")

@@ -14,6 +14,7 @@ class User:Identifiable{
     var password: Int
     var username: String
     var bio: String
+    var profilePicture: String 
     
     init? (id: String, data: [String: Any]){
         self.id = id
@@ -22,6 +23,7 @@ class User:Identifiable{
         self.password = data["password"] as! Int
         self.username = data["username"] as! String
         self.bio = data["bio"] as! String
+        self.profilePicture = data["profilePicture"] as! String 
     }
 }
 

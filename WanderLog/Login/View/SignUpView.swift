@@ -116,7 +116,8 @@ struct SignUpView: View {
                         "email":email,
                         "fullname":fullname,
                         "password":password.hash,
-                        "bio":""] as [String:Any]
+                        "bio":"",
+                        "profilePicture":""] as [String:Any]
             var ref: DocumentReference? = nil
             //Add entry to db
             ref = db.collection("users")

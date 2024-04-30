@@ -9,7 +9,9 @@ import SwiftUI
 import FirebaseStorage
 import FirebaseFirestore
 
+
 struct PostView: View {
+    @State var profilePic : UIImage = UIImage(imageLiteralResourceName: "1")
     @State var post : ImageData
     @State var isLiked = false
     @State var showComments = false
@@ -23,7 +25,8 @@ struct PostView: View {
                                                  "username" : "",
                                                  "password" : 0,
                                                  "bio" : "",
-                                                 "email" : ""])!
+                                                 "email" : "",
+                                                 "profilePicture" : ""])!
     
     var body: some View {
         VStack{
@@ -32,14 +35,14 @@ struct PostView: View {
             }
             label:{
                 HStack{
-                    Image(systemName: "person.circle.fill")
+                    Image(uiImage: profilePic)
                         .resizable()
                         .frame( width: 40, height: 40)
                         .clipShape(Circle())
                     VStack (alignment: .leading){
                         Text(post.username)
                         if post.location[0] != ""{
-                            Text("\(post.location[0]) \(post.location[1])")
+                            Text("\(post.location[0]), \(post.location[1])")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
                         }
@@ -127,11 +130,25 @@ struct PostView: View {
     }
     func getUser(){
         let db = Firestore.firestore()
+        let firestoreRef = Storage.storage().reference()
         if UserManager.shared.currentUser != nil{
             db.collection("users").whereField("username", isEqualTo: post.username).getDocuments(){(QuerySnapshot, err) in
                 for document in QuerySnapshot!.documents{
                     if let u = User (id:document.documentID, data: document.data()){
                         user = u
+                        if u.profilePicture != ""{
+                            let profilePicPath = user.profilePicture
+                            let fileRef1 = firestoreRef.child(profilePicPath)
+                            fileRef1.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                                if error ==  nil && data != nil{
+                                    if let i1 = UIImage(data: data!){
+                                        DispatchQueue.main.async{
+                                            profilePic = i1
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

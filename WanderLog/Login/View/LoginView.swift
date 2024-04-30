@@ -41,19 +41,6 @@ struct LoginView: View {
                         Text("Incorrect Password! Please Try again!")
                             .foregroundStyle(.red)
                     }
-                        
-                        
-                    Button {
-                        print("show forget password")
-                    } label: {
-                        Text("Forgot Password?")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .padding(.top)
-                            .padding(.trailing, 28)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    
                     NavigationLink(destination: NavBarUI(tabViewSelection: 0), isActive: $loginSuccess){}
                     Button( action:{
                         getUser()

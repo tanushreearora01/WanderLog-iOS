@@ -13,7 +13,8 @@ struct NavBarUI: View {
                                                  "username" : "",
                                                  "password" : 0,
                                                  "bio" : "",
-                                                 "email" : ""])!
+                                                 "email" : "",
+                                                 "profilePicture" : ""])!
     @State public var tabViewSelection : Int
 //    @State public var currentUser : User
     var body: some View {

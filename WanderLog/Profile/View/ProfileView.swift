@@ -8,8 +8,10 @@
 import SwiftUI
 import MapKit
 import FirebaseFirestore
+import FirebaseStorage
 
 struct ProfileView: View {
+    @State var profilePic : UIImage = UIImage(imageLiteralResourceName: "1")
     @State var user : User
     @State var selfProfile : Bool
     @State var followingUser = false
@@ -22,6 +24,7 @@ struct ProfileView: View {
     @State private var following = [String]()
     @State private var followers = [String]()
     @State private var remove = false
+
     var body: some View {
         NavigationStack{
             VStack{
@@ -50,10 +53,11 @@ struct ProfileView: View {
                 }
                 
                 HStack{
-                    Image(systemName: "person.circle.fill")
+                    Image(uiImage: profilePic)
                         .resizable()
-                        .frame( width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                        .clipShape(Circle())
+                        .frame(width: 100, height: 100)
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    
                     Spacer().frame(width: 20)
                     Text("\(postCount)\nPosts")
                         .multilineTextAlignment(.center)
@@ -140,6 +144,7 @@ struct ProfileView: View {
                 Button("Cancel", role: .cancel) {}
             }
             .onAppear(){
+                getProfilePic()
                 getFollowing()
                 getFollowers()
                 checkUser()
@@ -163,6 +168,30 @@ struct ProfileView: View {
             }
         }
         followingUser = false
+    }
+    func getProfilePic(){
+        let firestoreRef = Storage.storage().reference()
+
+        db.collection("users").document(user.id).getDocument{ snapshot, err in
+            if let user1 = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
+                if user1.profilePicture != ""{
+                    print(user1.profilePicture)
+                    let profilePicPath = user1.profilePicture
+                    let fileRef1 = firestoreRef.child(profilePicPath)
+                    fileRef1.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                        if error ==  nil && data != nil{
+                            if let i1 = UIImage(data: data!){
+                                print(i1)
+                                DispatchQueue.main.async{
+                                    profilePic = i1
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
     }
     func follow(){
         let currentUser = UserManager.shared.currentUser

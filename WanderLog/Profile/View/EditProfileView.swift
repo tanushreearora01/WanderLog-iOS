@@ -7,10 +7,13 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseStorage
+
 struct EditProfileView: View {
     @StateObject private var model = DataModel()
     @Environment(\.presentationMode) var presentationMode
     @State var currentUser = UserManager.shared.currentUser
+    @State var profilePic : UIImage = UIImage(imageLiteralResourceName: "1")
     @State var name = ""
     @State var username = ""
     @State var bio = ""
@@ -21,7 +24,7 @@ struct EditProfileView: View {
         NavigationStack{
             VStack{
                 HStack{
-                    Image(systemName: "person.circle.fill")
+                    Image(uiImage: profilePic)
                         .resizable()
                         .frame( width: 100, height: 100)
                         .clipShape(Circle())
@@ -107,10 +110,30 @@ struct EditProfileView: View {
         }
     }
     func getUserData(){
+        let db = Firestore.firestore()
         if let currentUser = UserManager.shared.currentUser{
             name = currentUser.fullname
             username = currentUser.username
             bio = currentUser.bio
+            let firestoreRef = Storage.storage().reference()
+            db.collection("users").document(currentUser.id).getDocument{ snapshot, err in
+                if let user1 = User(id: snapshot?.documentID ?? "", data: snapshot?.data() ?? ["username":""]){
+                    if user1.profilePicture != ""{
+                        let profilePicPath = user1.profilePicture
+                        let fileRef1 = firestoreRef.child(profilePicPath)
+                        fileRef1.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                            if error ==  nil && data != nil{
+                                if let i1 = UIImage(data: data!){
+                                    DispatchQueue.main.async{
+                                        profilePic = i1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        
         }
     }
     func submit(){

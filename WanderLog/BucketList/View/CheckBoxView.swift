@@ -30,7 +30,7 @@ struct CheckBoxView: View {
                         check()
                     }
             }
-            Text("\(location.city),\(location.country)")
+            Text("\(location.city), \(location.country)")
             Spacer()
         }
         .padding(.bottom,5)

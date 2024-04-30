@@ -7,10 +7,10 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseStorage
 struct SearchView: View {
     @State var users = [User]()
     @State var searchTerm = ""
-    
     var filteredUsers : [User]{
         return users.filter{$0.username.localizedCaseInsensitiveContains(searchTerm)}
     }
@@ -22,10 +22,6 @@ struct SearchView: View {
                         ProfileMapView(user: user)
                     }
                     label:{
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 44, height: 44)
-                            .padding(.trailing, 10)
                         VStack{
                             Text("\(user.fullname)")
                             
@@ -46,6 +42,7 @@ struct SearchView: View {
     func getUsers(){
         self.users = []
         let db = Firestore.firestore()
+        let firestoreRef = Storage.storage().reference()
         if let currentUser = UserManager.shared.currentUser{
             db.collection("users").whereField("username", isNotEqualTo: currentUser.id).getDocuments(){(querySnapshot,err) in
                 if let err = err{ //error not nil
