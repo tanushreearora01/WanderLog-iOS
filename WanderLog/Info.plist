@@ -4,9 +4,5 @@
 <dict>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>WanderLog would like to send notifications.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>WanderLog uses the photo gallery to add your pictures.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>WanderLog uses the camera to click your pictures.</string>
 </dict>
 </plist>

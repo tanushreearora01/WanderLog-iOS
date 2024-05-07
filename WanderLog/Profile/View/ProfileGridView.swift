@@ -86,6 +86,7 @@ struct ProfileGridView: View {
                         fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
                             if error ==  nil && data != nil{
                                 if let i = UIImage(data: data!){
+                                    print("got it!")
                                     DispatchQueue.main.async{
                                         posts.append((ImageData(id:post.id,d:["caption":post.content, "image": i, "username": user.username, "likes":post.likes, "comments":post.comments, "location":post.location]) ?? ImageData(id: "", d: ["caption" : "","image" : UIImage(), "username":""]))!)
                                        

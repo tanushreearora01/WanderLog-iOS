@@ -80,6 +80,8 @@ struct NewPost: View {
     func uploadPhoto(){
         if  ((viewModel.selectedCountry?.name) != nil), ((viewModel.selectedCity?.name) != nil) {
             print("city,country added")
+            city = viewModel.selectedCity?.name ?? ""
+            country = viewModel.selectedCountry?.name ?? ""
         }
             else {
                 print(locationViewModel.userLocation?.coordinate.latitude ?? 0.0,locationViewModel.userLocation?.coordinate.longitude ?? 0.0)
